@@ -29,6 +29,7 @@ def load_model():
         st.stop()
     
 model = load_model()
+# st.write("Pipeline Steps:", model.named_steps)
 
 
 ###############################
@@ -68,7 +69,7 @@ input_data = [
     alcohol_drinker,                     # alcohol_drinkers
     general_health,                       # general_health
     smoker_status,                        # smoker_status
-    1 if physical_activities == "1" else 0,  # Physical activities
+    1 if physical_activities == "Yes" else 0,  # Physical activities
     1 if had_angina == "Yes" else 0,     # had_angina
     1 if had_stroke == "Yes" else 0,     # had_stroke
     had_copd,                       # had_copd

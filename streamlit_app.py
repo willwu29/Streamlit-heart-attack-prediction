@@ -92,7 +92,7 @@ st.markdown("Please fill out the following information:")
 # had_arthritis = st.selectbox("Have you ever been diagnosed with Arthritis?", 
 #                              ["No", "Yes", "Unknown"])  
 with st.sidebar:
-    st.markdown("### Sex")
+    st.markdown("<h2>Sex</h2>", unsafe_allow_html=True)
     sex = st.selectbox("Select your sex:", ["Male", "Female"])
     
     st.markdown("### Race/Ethnicity")

@@ -25,6 +25,8 @@ def load_model():
     except ModuleNotFoundError as e:
         st.error(f"Failed to load model due to a missing module: {str(e)}")
         st.stop()
+    
+model = load_model()
 
 
 ###############################

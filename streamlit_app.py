@@ -94,7 +94,7 @@ st.markdown("Please fill out the following information:")
 with st.sidebar:
     st.markdown("### Gender")
     st.markdown("#### Select your gender:")
-    sex = st.selectbox("", ["Male", "Female"])
+    sex = st.selectbox(["Male", "Female"])
     
     st.markdown("### Race/Ethnicity")
     race_ethnicity = st.selectbox("What is your race/ethnicity", 

@@ -75,12 +75,19 @@ with col1:
     st.container(height=40)  # Adjust height value as needed
     
     # Habits & Lifestyle with increased vertical spacing
+     # Add invisible vertical space using markdown
+    st.markdown("<div style='height: 40px;'></div>", unsafe_allow_html=True)
+    
     st.markdown("<h3 style='margin-top: 40px;'>Habits & Lifestyle</h3>", unsafe_allow_html=True)  # Increased from 20px to 40px
     physical_activities = st.selectbox("In the past month, did you engage in any physical activities or exercises?", ["No", "Yes"])  
     alcohol_drinker = st.selectbox("In the past 30 days, have you consumed at least one alcoholic drink?", 
                                    ["No", "Yes", "Unknown"])  
     smoker_status = st.selectbox("Please describe your smoking habit:", 
                                  ["Never", "Former", "Every day smoker", "Some days smoker"])
+
+# Spacer column remains empty
+with spacer:
+    st.empty()  # Ensures the spacer column has no content
 
 # Medical History with horizontal spacing
 with col2:

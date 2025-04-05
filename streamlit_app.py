@@ -8,7 +8,7 @@ from imblearn.pipeline import Pipeline
 ###################
 # Create a title
 ###################
-st.title('💓🩺 Heart Attack Prediction App')
+st.title('💓🩺 Heart Attack Prediction App🩺💓')
 st.write('Use this app to predict your heart attack risk!')
 
 
@@ -36,6 +36,7 @@ model = load_model()
 # Create User Input on the App
 ################################
 # Create input fields for user input
+# Create input fields for user input
 sex = st.selectbox("Sex", ["Male", "Female"])
 race_ethnicity = st.selectbox("What is your race/ethnicity", 
                                ["White", "Hispanic", "Black", "Asian", "Multiracial", "Other", "Unknown"])
@@ -43,22 +44,36 @@ age_category = st.selectbox("Age Category",
                              ["18-24", "25-29", "30-34", "35-39", "40-44", "45-49", 
                               "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80+"])
 bmi_category = st.selectbox("BMI Category: (Underweight <= 18.4), (Healthy 18.5-24.9), (Overweight 25.0-29.9), (Obese >= 30.0)", 
-                            ["Underweight","Healthy", "Overweight", "Obese"])
-general_health = st.selectbox("Would you say that in general your health is:", ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
-physical_activities = st.selectbox("In the past month, aside from your regular job, did you engage in any physical activities or exercises for exercise?", ["Yes", "No"])
-alcohol_drinker = st.selectbox("In the past 30 days, have you consumed at least one alcoholic drink?", ["Yes", "No", "Unknown"])
-smoker_status = st.selectbox("Please describe your smoking habit:", ["Never", "Former", "Every day smoker", "Some days smoker"])
-deaf_or_hard_of_hearing = st.selectbox("Are you deaf or do you have serious difficulty hearing?", ["Yes", "No", "Unknown"])
-blind_or_vision_difficulty = st.selectbox("Are you blind or do you have serious difficulty seeing, even when wearing glasses?", ["Yes", "No", "Unknown"])
-difficulty_walking = st.selectbox("Do you have serious difficulty walking or climbing stairs?", ["Yes", "No", "Unknown"])
-difficulty_dressing_bathing = st.selectbox("Do you have difficulty dressing or bathing?", ["Yes", "No", "Unknown"])
-had_depressive_disorder = st.selectbox("Have you ever been diagnosed with Depressive Disorder?", ["Yes", "No", "Unknown"])
-had_diabetes = st.selectbox("Have you ever been diagnosed with Diabetes?", ["Yes", "No", "Pre-diabetes", "Gestational-diabetes", "Unknown"])
-had_kidney_disease = st.selectbox("Have you ever been diagnosed with Kidney Disease?", ["Yes", "No", "Unknown"])
-had_angina = st.selectbox("Have you ever been diagnosed with Angina, which is a type of chest pain caused by reduced blood flow to the heart?", ["Yes", "No"])
-had_stroke = st.selectbox("Have you ever had a Stroke, which is a medical condition where the blood supply to the brain is interrupted or reduced?", ["Yes", "No"])
-had_copd = st.selectbox("Have you ever been diagnosed with Chronic Obstructive Pulmonary Disease (COPD), which is a progressive lung disease that makes it difficult to breathe due to airflow blockage?", ["Yes", "No", "Unknown"])
-had_arthritis = st.selectbox("Have you ever been diagnosed with Arthritis?", ["Yes", "No", "Unknown"])
+                            ["Underweight", "Healthy", "Overweight", "Obese"])
+general_health = st.selectbox("Would you say that in general your health is:", 
+                              ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
+physical_activities = st.selectbox("In the past month, aside from your regular job, did you engage in any physical activities or exercises for exercise?", ["No", "Yes"])  
+alcohol_drinker = st.selectbox("In the past 30 days, have you consumed at least one alcoholic drink?", 
+                               ["No", "Yes", "Unknown"])  
+smoker_status = st.selectbox("Please describe your smoking habit:", 
+                             ["Never", "Former", "Some days smoker", "Every day smoker"]) 
+deaf_or_hard_of_hearing = st.selectbox("Are you deaf or do you have serious difficulty hearing?", 
+                                       ["No", "Yes", "Unknown"])  
+blind_or_vision_difficulty = st.selectbox("Are you blind or do you have serious difficulty seeing, even when wearing glasses?", 
+                                          ["No", "Yes", "Unknown"])  
+difficulty_walking = st.selectbox("Do you have serious difficulty walking or climbing stairs?", 
+                                  ["No", "Yes", "Unknown"])  
+difficulty_dressing_bathing = st.selectbox("Do you have difficulty dressing or bathing?", 
+                                           ["No", "Yes", "Unknown"])  
+had_depressive_disorder = st.selectbox("Have you ever been diagnosed with Depressive Disorder?", 
+                                       ["No", "Yes", "Unknown"]) 
+had_diabetes = st.selectbox("Have you ever been diagnosed with Diabetes?", 
+                            ["No", "Yes", "Pre-diabetes", "Gestational-diabetes", "Unknown"])  
+had_kidney_disease = st.selectbox("Have you ever been diagnosed with Kidney Disease?", 
+                                  ["No", "Yes", "Unknown"])  
+had_angina = st.selectbox("Have you ever been diagnosed with Angina, which is a type of chest pain caused by reduced blood flow to the heart?", 
+                          ["No", "Yes"])  
+had_stroke = st.selectbox("Have you ever had a Stroke, which is a medical condition where the blood supply to the brain is interrupted or reduced?", 
+                          ["No", "Yes"])  
+had_copd = st.selectbox("Have you ever been diagnosed with Chronic Obstructive Pulmonary Disease (COPD), which is a progressive lung disease that makes it difficult to breathe due to airflow blockage?", 
+                        ["No", "Yes", "Unknown"])  
+had_arthritis = st.selectbox("Have you ever been diagnosed with Arthritis?", 
+                             ["No", "Yes", "Unknown"])  
 
 # Prepare input data
 input_data = [
@@ -73,7 +88,7 @@ input_data = [
     had_angina,                         # had_angina
     had_stroke,                         # had_stroke
     had_copd,                           # had_copd
-    had_diabetes,               # had_diabetes
+    had_diabetes,                       # had_diabetes
     had_kidney_disease,                 # had_kidney_disease
     had_depressive_disorder,            # had_depressive_disorder
     had_arthritis,                      # had_arthritis
@@ -85,7 +100,7 @@ input_data = [
 
 # Create input column name that match the model inpul column name and order
 input_columns = [
-     'sex', 'race_ethnicity_category', 'age_category', 'bmi_category',
+       'sex', 'race_ethnicity_category', 'age_category', 'bmi_category',
        'alcohol_drinkers', 'general_health', 'smoker_status',
        'physical_activities', 'had_angina', 'had_stroke', 'had_copd',
        'had_diabetes', 'had_kidney_disease', 'had_depressive_disorder',

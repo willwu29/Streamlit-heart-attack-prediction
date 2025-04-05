@@ -1,7 +1,6 @@
 import streamlit as st
 import joblib  
 import pandas as pd
-from resampler import DownSampler 
 
 
 ###################

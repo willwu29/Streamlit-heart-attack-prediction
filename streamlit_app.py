@@ -16,7 +16,7 @@ st.write('Use this app to predict your heart attack risk!')
 # Load the model at the start of the app
 @st.cache_resource
 def load_model():
-    model = joblib.load('..\model\pipeline_logreg_final.joblib')  
+    model = joblib.load('../model/pipeline_logreg_final.joblib')  
     return model
 
 # Create a variable to retreieve the model

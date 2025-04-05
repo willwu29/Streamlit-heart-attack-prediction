@@ -54,17 +54,18 @@ def load_model():
 
 model = load_model()
 
-# Sidebar for user input organized into sections
-with st.sidebar:
-    st.markdown("<h3 style='font-size: 24px;'>Personal Information</h3>", unsafe_allow_html=True)
+# Create two columns for layout
+col1, col2 = st.columns(2)
+
+# Personal Information in the left column
+with col1:
+    st.header("Personal Information")
     sex = st.selectbox("Select your sex:", ["Male", "Female"])
     race_ethnicity = st.selectbox("What is your race/ethnicity", 
                                    ["White", "Hispanic", "Black", "Asian", "Multiracial", "Other", "Unknown"])
     age_category = st.selectbox("Select your age category:", 
                                  ["18-24", "25-29", "30-34", "35-39", "40-44", "45-49", 
                                   "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80+"])
-
-    st.markdown("<h3 style='font-size: 24px;'>Habits & Lifestyle</h3>", unsafe_allow_html=True)
     bmi_category = st.selectbox("BMI Category: (Underweight <= 18.4), (Healthy 18.5-24.9), (Overweight 25.0-29.9), (Obese >= 30.0)", 
                                 ["Underweight", "Healthy", "Overweight", "Obese"])
     general_health = st.selectbox("Would you say that in general your health is:", 
@@ -72,10 +73,12 @@ with st.sidebar:
     physical_activities = st.selectbox("In the past month, did you engage in any physical activities or exercises?", ["No", "Yes"])  
     alcohol_drinker = st.selectbox("In the past 30 days, have you consumed at least one alcoholic drink?", 
                                    ["No", "Yes", "Unknown"])  
+
+# Medical History in the right column
+with col2:
+    st.header("Medical History")
     smoker_status = st.selectbox("Please describe your smoking habit:", 
                                  ["Never", "Former", "Every day smoker", "Some days smoker"])
-
-    st.markdown("<h3 style='font-size: 24px;'>Medical History</h3>", unsafe_allow_html=True)
     deaf_or_hard_of_hearing = st.selectbox("Do you have serious difficulty hearing?", ["No", "Yes", "Unknown"])  
     blind_or_vision_difficulty = st.selectbox("Do you have serious difficulty seeing, even when wearing glasses?", ["No", "Yes", "Unknown"])  
     difficulty_walking = st.selectbox("Do you have serious difficulty walking or climbing stairs?", ["No", "Yes", "Unknown"])  
@@ -86,29 +89,29 @@ with st.sidebar:
     had_angina = st.selectbox("Have you ever been diagnosed with Angina?", ["No", "Yes"])  
     had_stroke = st.selectbox("Have you ever had a Stroke?", ["No", "Yes"])  
     had_copd = st.selectbox("Have you ever been diagnosed with Chronic Obstructive Pulmonary Disease (COPD)?", ["No", "Yes", "Unknown"])  
-    had_arthritis = st.selectbox("Have you ever been diagnosed with Arthritis?", ["No", "Yes", "Unknown"])
+     had_arthritis = st.selectbox("Have you ever been diagnosed with Arthritis?", ["No", "Yes", "Unknown"])
 
 # Prepare input data
 input_data = [
-    1 if sex == "Female" else 0,  # Gender
+    sex,  # Gender
     race_ethnicity,                # Race/Ethnicity
     age_category,                  # Age Category
     bmi_category.lower(),          # BMI Category
     alcohol_drinker,               # Alcohol Drinkers
-    general_health.lower(),        # Convert to lowercase
-    smoker_status.lower(),         # Convert to lowercase
-    1 if physical_activities == "Yes" else 0,  # Physical Activities
-    1 if had_angina == "Yes" else 0,  # Had Angina
-    1 if had_stroke == "Yes" else 0,  # Had Stroke
-    1 if had_copd == "Yes" else 0,    # Had COPD
-    had_diabetes.lower(),           # Convert to lowercase
-    had_kidney_disease.lower(),     # Convert to lowercase
-    had_depressive_disorder.lower(), # Convert to lowercase
-    had_arthritis.lower(),           # Convert to lowercase
-    1 if deaf_or_hard_of_hearing == "Yes" else 0,  # Hearing Difficulty
-    1 if blind_or_vision_difficulty == "Yes" else 0,  # Vision Difficulty
-    1 if difficulty_walking == "Yes" else 0,      # Difficulty Walking
-    1 if difficulty_dressing_bathing == "Yes" else 0  # Difficulty Dressing/Bathing
+    general_health,        # Convert to lowercase
+    smoker_status,         # Convert to lowercase
+    physical_activities,  # Physical Activities
+    had_angina,  # Had Angina
+    had_stroke,  # Had Stroke
+    had_copd,    # Had COPD
+    had_diabetes,           # Convert to lowercase
+    had_kidney_disease,     # Convert to lowercase
+    had_depressive_disorder, # Convert to lowercase
+    had_arthritis,           # Convert to lowercase
+    deaf_or_hard_of_hearing,  # Hearing Difficulty
+    blind_or_vision_difficulty,  # Vision Difficulty
+    difficulty_walking,      # Difficulty Walking
+    difficulty_dressing_bathing  # Difficulty Dressing/Bathing
 ]
 
 # Create input column names that match the model input column name and order
@@ -141,6 +144,6 @@ if st.button('Predict Heart Attack Risk'):
                       "It is crucial that you consult a healthcare professional immediately for further evaluation.")
         else:
             st.success("✅ Good News! Our assessment indicates you are at low risk for a heart attack. Keep up the good work and maintain a healthy lifestyle!")
-            
+
     except Exception as e:
         st.error(f"An error occurred while making the prediction: {str(e)}")

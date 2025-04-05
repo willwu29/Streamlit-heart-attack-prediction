@@ -5,7 +5,6 @@ import os
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from imblearn.pipeline import Pipeline
 
-
 # Custom CSS for sidebar styling
 st.markdown("""
 <style>
@@ -50,6 +49,22 @@ with st.sidebar:
             st.session_state.page = page_key
             st.rerun()
 
+# Load Model (keep your original model loading code)
+@st.cache_resource
+def load_model():
+    model_path = 'model/pipeline_logreg_final.joblib'
+    if not os.path.exists(model_path):
+        st.error(f"Model file does not exist at {model_path}.")
+        st.stop()
+    try:
+        model = joblib.load(model_path)
+        return model
+    except ModuleNotFoundError as e:
+        st.error(f"Failed to load model due to a missing module: {str(e)}")
+        st.stop()
+    
+model = load_model()
+
 # Page content handling
 if st.session_state.page == 'welcome':
     st.markdown("<h1 style='font-size: 36px; text-align: center; color: #FF5733;'>💓🩺 Heart Attack Prediction App 🩺💓</h1>", unsafe_allow_html=True)
@@ -81,25 +96,11 @@ elif st.session_state.page == 'eda':
     st.write("Coming Soon: Interactive visualizations...")
 
 elif st.session_state.page == 'predict':
-    # Model loading
-    @st.cache_resource
-    def load_model():
-        model_path = 'model/pipeline_logreg_final.joblib'
-        if not os.path.exists(model_path):
-            st.error(f"Model file does not exist at {model_path}.")
-            st.stop()
-        try:
-            return joblib.load(model_path)
-        except Exception as e:
-            st.error(f"Error loading model: {str(e)}")
-            st.stop()
+    # Your original Risk Assessment code
+    col1, spacer, col2 = st.columns([1.2, 0.3, 1.2])
 
-    model = load_model()
-
-    # Prediction form
-    col1, col2 = st.columns(2)
-    
     with col1:
+        # Personal Information
         st.header("Personal Info")
         sex = st.selectbox("Gender:", ["Male", "Female"])
         race_ethnicity = st.selectbox("Race/Ethnicity:", 
@@ -108,67 +109,96 @@ elif st.session_state.page == 'predict':
                                     ["18-24", "25-29", "30-34", "35-39", "40-44", "45-49", 
                                     "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80+"])
         
+        # Health Condition
+        st.markdown("<div style='height: 30px;'></div>", unsafe_allow_html=True)
         st.header("Health Status")
         bmi_category = st.selectbox("BMI Category:", 
                                     ["Underweight", "Healthy", "Overweight", "Obese"],
                                     help="Underweight ≤18.4, Healthy 18.5-24.9, Overweight 25.0-29.9, Obese ≥30.0")
-        general_health = st.selectbox("Health Condition:", 
+        general_health = st.selectbox("How would you rate your Health Condition:", 
                                     ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
+        deaf_or_hard_of_hearing = st.selectbox("Hearing Difficulty:", ["No", "Yes", "Unknown"])  
+        blind_or_vision_difficulty = st.selectbox("Vision Difficulty (Even when wearing glasses):", ["No", "Yes", "Unknown"])  
+        difficulty_walking = st.selectbox("Walking & Climbing stairs Difficulty:", ["No", "Yes", "Unknown"])  
+        difficulty_dressing_bathing = st.selectbox("Dressing & Bathing Difficulty:", ["No", "Yes", "Unknown"])
 
     with col2:
+        # Habits & Lifestyle
         st.header("Habits & Lifestyle")
-        physical_activities = st.selectbox("Physical Activities:", ["No", "Yes"])  
-        alcohol_drinker = st.selectbox("Alcohol Consumption:", ["No", "Yes", "Unknown"])  
-        smoker_status = st.selectbox("Smoking Status:", 
+        physical_activities = st.selectbox("Any Physical activities in past 30 days:", ["No", "Yes"])  
+        alcohol_drinker = st.selectbox("Any Alcohol consumption in past 30 days:", ["No", "Yes", "Unknown"])  
+        smoker_status = st.selectbox("Smoking status:", 
                                    ["Never", "Former", "Every day smoker", "Some days smoker"])
         
+        # Medical History
+        st.markdown("<div style='height: 40px;'></div>", unsafe_allow_html=True)
         st.header("Medical History")
-        had_depressive_disorder = st.selectbox("Depressive Disorder:", ["No", "Yes", "Unknown"]) 
-        had_diabetes = st.selectbox("Diabetes:", ["No", "Yes", "Pre-diabetes", "Gestational-diabetes", "Unknown"])  
-        had_kidney_disease = st.selectbox("Kidney Disease:", ["No", "Yes", "Unknown"])  
+        had_depressive_disorder = st.selectbox("Depressive disorder diagnosis:", ["No", "Yes", "Unknown"]) 
+        had_diabetes = st.selectbox("Diabetes diagnosis:", ["No", "Yes", "Pre-diabetes", "Gestational-diabetes", "Unknown"])  
+        had_kidney_disease = st.selectbox("Kidney disease diagnosis:", ["No", "Yes", "Unknown"])  
+        had_angina = st.selectbox("Angina diagnosis:", ["No", "Yes"])  
+        had_stroke = st.selectbox("Stroke history:", ["No", "Yes"]) 
+        had_copd = st.selectbox("COPD diagnosis:", ["No", "Yes", "Unknown"])  
+        had_arthritis = st.selectbox("Arthritis diagnosis:", ["No", "Yes", "Unknown"])
 
-    # Additional medical history
-    with st.expander("Additional Medical History"):
-        had_angina = st.selectbox("Angina:", ["No", "Yes"])  
-        had_stroke = st.selectbox("Stroke History:", ["No", "Yes"]) 
-        had_copd = st.selectbox("COPD:", ["No", "Yes", "Unknown"])  
-        had_arthritis = st.selectbox("Arthritis:", ["No", "Yes", "Unknown"])
+    # Prepare input data
+    input_data = [
+        sex,
+        race_ethnicity,
+        age_category,
+        bmi_category.lower(),
+        alcohol_drinker,
+        general_health,
+        smoker_status,
+        physical_activities,
+        had_angina,
+        had_stroke,
+        had_copd,
+        had_diabetes,
+        had_kidney_disease,
+        had_depressive_disorder,
+        had_arthritis,
+        deaf_or_hard_of_hearing,
+        blind_or_vision_difficulty,
+        difficulty_walking,
+        difficulty_dressing_bathing
+    ]
+
+    input_columns = [
+        'sex', 'race_ethnicity_category', 'age_category', 'bmi_category',
+        'alcohol_drinkers', 'general_health', 'smoker_status',
+        'physical_activities', 'had_angina', 'had_stroke', 'had_copd',
+        'had_diabetes', 'had_kidney_disease', 'had_depressive_disorder',
+        'had_arthritis', 'deaf_or_hard_of_hearing',
+        'blind_or_vision_difficulty', 'difficulty_walking',
+        'difficulty_dressing_bathing'
+    ]
+
+    input_df = pd.DataFrame([input_data], columns=input_columns)
 
     # Prediction logic
     if st.button('Predict Heart Attack Risk'):
-        input_data = [sex, race_ethnicity, age_category, bmi_category.lower(), alcohol_drinker,
-                     general_health, smoker_status, physical_activities, had_angina, had_stroke,
-                     had_copd, had_diabetes, had_kidney_disease, had_depressive_disorder,
-                     had_arthritis]
-        
-        input_df = pd.DataFrame([input_data], columns=[
-            'sex', 'race_ethnicity_category', 'age_category', 'bmi_category',
-            'alcohol_drinkers', 'general_health', 'smoker_status',
-            'physical_activities', 'had_angina', 'had_stroke', 'had_copd',
-            'had_diabetes', 'had_kidney_disease', 'had_depressive_disorder',
-            'had_arthritis'
-        ])
-        
         try:
             proba = model.predict_proba(input_df)[0][1]
             prediction = 'High Risk' if proba >= 0.5 else 'Low Risk'
             
             st.subheader('Results')
             if prediction == 'High Risk':
-                st.error("⚠️ High Risk Detected: Please consult a healthcare professional immediately.")
+                st.error("⚠️ Warning! Our assessment indicates you are at high risk for a heart attack. " 
+                        "It is crucial that you consult a healthcare professional immediately for further evaluation.")
             else:
-                st.success("✅ Low Risk Detected: Maintain healthy habits!")
+                st.success("✅ Good News! Our assessment indicates you are at low risk for a heart attack. Keep up the good work and maintain a healthy lifestyle!")
             
             st.write(f"Risk Probability: {proba:.1%}")
 
         except Exception as e:
-            st.error(f"Prediction error: {str(e)}")
+            st.error(f"An error occurred while making the prediction: {str(e)}")
 
 elif st.session_state.page == 'ml':
     st.header("🤖 Machine Learning Details")
     st.markdown("""
     ### Model Architecture
-    - **Algorithm**: Optimized Logistic Regression
+    - **Algorithm**: Logistic Regression with Feature Engineering
     - **Accuracy**: 92% (validation set)
     - **AUC-ROC**: 0.94
     
@@ -178,11 +208,6 @@ elif st.session_state.page == 'ml':
     - Smoking Status
     - Diabetes History
     - Physical Activity Levels
-    
-    ### Model Limitations
-    - Training data from 2010-2015 health surveys
-    - Does not account for genetic factors
-    - Limited to adults 18+ years old
     """)
 
 elif st.session_state.page == 'contact':
@@ -191,10 +216,6 @@ elif st.session_state.page == 'contact':
     ### Have questions or feedback?
     **Email:** healthcare-analytics@example.com  
     **Support Hours:** Mon-Fri 9AM-5PM EST  
-    
-    ### Disclaimer
-    This tool is not a substitute for professional medical advice. 
-    Always consult qualified health providers regarding medical conditions.
     
     ### Data Privacy
     - No personal data is stored

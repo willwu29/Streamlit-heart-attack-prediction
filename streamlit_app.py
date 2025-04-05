@@ -55,54 +55,53 @@ def load_model():
 model = load_model()
 
 # Create three sections with improved spacing
-col1, spacer, col2 = st.columns([1, 0.3, 1])  # Added spacer column between main columns
+col1, spacer, col2 = st.columns([1, 0.1, 1])  # Added spacer column
 
-# Personal Information with vertical spacing
+# Personal Information Column
 with col1:
     st.header("Personal Information")
     sex = st.selectbox("Select your sex:", ["Male", "Female"])
     race_ethnicity = st.selectbox("What is your race/ethnicity", 
-                                   ["White", "Hispanic", "Black", "Asian", "Multiracial", "Other", "Unknown"])
+                                ["White", "Hispanic", "Black", "Asian", "Multiracial", "Other", "Unknown"])
     age_category = st.selectbox("Select your age category:", 
-                                 ["18-24", "25-29", "30-34", "35-39", "40-44", "45-49", 
-                                  "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80+"])
-    bmi_category = st.selectbox("BMI Category: (Underweight <= 18.4), (Healthy 18.5-24.9), (Overweight 25.0-29.9), (Obese >= 30.0)", 
-                                ["Underweight", "Healthy", "Overweight", "Obese"])
-    general_health = st.selectbox("Would you say that in general your health is:", 
-                                   ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
-    
-    # # Add vertical space using container + empty space
-    # st.container(height=40)  # Adjust height value as needed
-    
-    # Habits & Lifestyle with increased vertical spacing
-     # Add invisible vertical space using markdown
-    st.markdown("<div style='height: 60px;'></div>", unsafe_allow_html=True)
-    
-    st.markdown("<h3 style='margin-top: 40px;'>Habits & Lifestyle</h3>", unsafe_allow_html=True)  # Increased from 20px to 40px
-    physical_activities = st.selectbox("In the past month, did you engage in any physical activities or exercises?", ["No", "Yes"])  
-    alcohol_drinker = st.selectbox("In the past 30 days, have you consumed at least one alcoholic drink?", 
-                                   ["No", "Yes", "Unknown"])  
-    smoker_status = st.selectbox("Please describe your smoking habit:", 
-                                 ["Never", "Former", "Every day smoker", "Some days smoker"])
+                                ["18-24", "25-29", "30-34", "35-39", "40-44", "45-49", 
+                                "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80+"])
+
+    # Health Condition Section
+    st.markdown("<div style='height: 30px;'></div>", unsafe_allow_html=True)
+    st.header("Health Condition")
+    bmi_category = st.selectbox("BMI Category:", 
+                                ["Underweight", "Healthy", "Overweight", "Obese"],
+                                help="Underweight ≤18.4, Healthy 18.5-24.9, Overweight 25.0-29.9, Obese ≥30.0")
+    general_health = st.selectbox("General health assessment:", 
+                                ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
+    deaf_or_hard_of_hearing = st.selectbox("Hearing difficulty:", ["No", "Yes", "Unknown"])  
+    blind_or_vision_difficulty = st.selectbox("Vision difficulty:", ["No", "Yes", "Unknown"])  
+    difficulty_walking = st.selectbox("Walking/climbing stairs difficulty:", ["No", "Yes", "Unknown"])  
+    difficulty_dressing_bathing = st.selectbox("Dressing/bathing difficulty:", ["No", "Yes", "Unknown"])
+
+    # Habits & Lifestyle Section
+    st.markdown("<div style='height: 30px;'></div>", unsafe_allow_html=True)
+    st.header("Habits & Lifestyle")
+    physical_activities = st.selectbox("Physical activities in past month:", ["No", "Yes"])  
+    alcohol_drinker = st.selectbox("Alcohol consumption in past 30 days:", ["No", "Yes", "Unknown"])  
+    smoker_status = st.selectbox("Smoking status:", 
+                               ["Never", "Former", "Every day smoker", "Some days smoker"])
+
+# Medical History Column
+with col2:
+    st.header("Medical History")
+    had_depressive_disorder = st.selectbox("Depressive disorder diagnosis:", ["No", "Yes", "Unknown"]) 
+    had_diabetes = st.selectbox("Diabetes diagnosis:", ["No", "Yes", "Pre-diabetes", "Gestational-diabetes", "Unknown"])  
+    had_kidney_disease = st.selectbox("Kidney disease diagnosis:", ["No", "Yes", "Unknown"])  
+    had_angina = st.selectbox("Angina diagnosis:", ["No", "Yes"])  
+    had_stroke = st.selectbox("Stroke history:", ["No", "Yes"]) 
+    had_copd = st.selectbox("COPD diagnosis:", ["No", "Yes", "Unknown"])  
+    had_arthritis = st.selectbox("Arthritis diagnosis:", ["No", "Yes", "Unknown"])
 
 # Spacer column remains empty
 with spacer:
-    st.empty()  # Ensures the spacer column has no content
-
-# Medical History with horizontal spacing
-with col2:
-    st.header("Medical History")
-    deaf_or_hard_of_hearing = st.selectbox("Do you have serious difficulty hearing?", ["No", "Yes", "Unknown"])  
-    blind_or_vision_difficulty = st.selectbox("Do you have serious difficulty seeing, even when wearing glasses?", ["No", "Yes", "Unknown"])  
-    difficulty_walking = st.selectbox("Do you have serious difficulty walking or climbing stairs?", ["No", "Yes", "Unknown"])  
-    difficulty_dressing_bathing = st.selectbox("Do you have difficulty dressing or bathing?", ["No", "Yes", "Unknown"])  
-    had_depressive_disorder = st.selectbox("Have you ever been diagnosed with Depressive Disorder?", ["No", "Yes", "Unknown"]) 
-    had_diabetes = st.selectbox("Have you ever been diagnosed with Diabetes?", ["No", "Yes", "Pre-diabetes", "Gestational-diabetes", "Unknown"])  
-    had_kidney_disease = st.selectbox("Have you ever been diagnosed with Kidney Disease?", ["No", "Yes", "Unknown"])  
-    had_angina = st.selectbox("Have you ever been diagnosed with Angina?", ["No", "Yes"])  
-    had_stroke = st.selectbox("Have you ever had a Stroke?", ["No", "Yes"]) 
-    had_copd = st.selectbox("Have you ever been diagnosed with Chronic Obstructive Pulmonary Disease (COPD)?", ["No", "Yes", "Unknown"])  
-    had_arthritis = st.selectbox("Have you ever been diagnosed with Arthritis?", ["No", "Yes", "Unknown"])
+    st.empty()
 
 
 # Prepare input data

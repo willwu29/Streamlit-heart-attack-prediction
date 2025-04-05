@@ -43,7 +43,7 @@ age_category = st.selectbox("Age Category",
                              ["18-24", "25-29", "30-34", "35-39", "40-44", "45-49", 
                               "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80+"])
 bmi_category = st.selectbox("BMI Category: (Underweight <= 18.4), (Healthy 18.5-24.9), (Overweight 25.0-29.9), (Obese >= 30.0)", 
-                            ["underweight","healthy", "overweight", "obese"])
+                            ["Underweight","Healthy", "Overweight", "Obese"])
 general_health = st.selectbox("Would you say that in general your health is:", ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
 physical_activities = st.selectbox("In the past month, aside from your regular job, did you engage in any physical activities or exercises for exercise?", ["Yes", "No"])
 alcohol_drinker = st.selectbox("In the past 30 days, have you consumed at least one alcoholic drink?", ["Yes", "No", "Unknown"])
@@ -62,25 +62,25 @@ had_arthritis = st.selectbox("Have you ever been diagnosed with Arthritis?", ["Y
 
 # Prepare input data
 input_data = [
-    sex,  # Gender
-    race_ethnicity,                       # race_ethnicity_category
-    age_category,                         # age_category
-    bmi_category,                         # bmi_category
-    alcohol_drinker,                     # alcohol_drinkers
-    general_health,                       # general_health
-    smoker_status,                        # smoker_status
-    physical_activities,  # Physical activities
-    had_angina,     # had_angina
-    had_stroke,     # had_stroke
-    had_copd,                       # had_copd
-    had_diabetes,                         # had_diabetes
-    had_kidney_disease,                   # had_kidney_disease
-    had_depressive_disorder,              # had_depressive_disorder
-    had_arthritis,                        # had_arthritis
-    deaf_or_hard_of_hearing,              # deaf_or_hard_of_hearing
-    blind_or_vision_difficulty,            # blind_or_vision_difficulty
-    difficulty_walking,                    # difficulty_walking
-    difficulty_dressing_bathing            # difficulty_dressing_bathing
+    sex,                                # Gender
+    race_ethnicity,                     # race_ethnicity_category
+    age_category,                       # age_category
+    bmi_category,                       # bmi_category
+    alcohol_drinker,                    # alcohol_drinkers
+    general_health,                     # general_health
+    smoker_status,                      # smoker_status
+    physical_activities,                # Physical activities
+    had_angina,                         # had_angina
+    had_stroke,                         # had_stroke
+    had_copd,                           # had_copd
+    had_diabetes.lower(),               # had_diabetes
+    had_kidney_disease,                 # had_kidney_disease
+    had_depressive_disorder,            # had_depressive_disorder
+    had_arthritis,                      # had_arthritis
+    deaf_or_hard_of_hearing,            # deaf_or_hard_of_hearing
+    blind_or_vision_difficulty,         # blind_or_vision_difficulty
+    difficulty_walking,                 # difficulty_walking
+    difficulty_dressing_bathing         # difficulty_dressing_bathing
 ]
 
 # Create input column name that match the model inpul column name and order

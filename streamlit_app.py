@@ -13,7 +13,7 @@ from imblearn.pipeline import Pipeline
 st.set_page_config(page_title="Heart Attack Prediction App", page_icon="💓", layout="centered")
 
 st.markdown("<h1 style='font-size: 36px; text-align: center; color: #FF5733;'>💓🩺 Heart Attack Prediction App 🩺💓</h1>", unsafe_allow_html=True)
-st.write("<h3 style='text-align: center; color: #555;'>Use this app to predict your heart attack risk!</h3>", unsafe_allow_html=True)
+st.write("<h4 style='text-align: center; color: #555;'>Use this app to predict your heart attack risk!</h4>", unsafe_allow_html=True)
 
 # Centered message with adjusted styling
 st.markdown("<h4 style='font-size: 20px; text-align: center; color: #555;'>Please fill out your information on the left!</h4>", unsafe_allow_html=True)

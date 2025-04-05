@@ -54,10 +54,10 @@ def load_model():
 
 model = load_model()
 
-# Create two columns for layout
-col1, col2 = st.columns(2)
+# Create three sections: Personal Information, Habits & Lifestyle, and Medical History
+col1, col2 = st.columns([1, 1])  # Creates two equal columns
 
-# Personal Information in the left column
+# Personal Information on the top left
 with col1:
     st.header("Personal Information")
     sex = st.selectbox("Select your sex:", ["Male", "Female"])
@@ -71,18 +71,17 @@ with col1:
     general_health = st.selectbox("Would you say that in general your health is:", 
                                    ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
 
-# Habits & Lifestyle in the right column
-with col2:
-    st.header("Habits & Lifestyle")
-    smoker_status = st.selectbox("Please describe your smoking habit:", 
-                                 ["Never", "Former", "Every day smoker", "Some days smoker"])
-    
+# Habits & Lifestyle at the bottom left
+with col1:
+    st.markdown("<h3 style='margin-top: 20px;'>Habits & Lifestyle</h3>", unsafe_allow_html=True)
     physical_activities = st.selectbox("In the past month, did you engage in any physical activities or exercises?", ["No", "Yes"])  
     alcohol_drinker = st.selectbox("In the past 30 days, have you consumed at least one alcoholic drink?", 
                                    ["No", "Yes", "Unknown"])  
+    smoker_status = st.selectbox("Please describe your smoking habit:", 
+                                 ["Never", "Former", "Every day smoker", "Some days smoker"])
 
-# Medical History in the left column
-with col1:
+# Medical History on the top right
+with col2:
     st.header("Medical History")
     deaf_or_hard_of_hearing = st.selectbox("Do you have serious difficulty hearing?", ["No", "Yes", "Unknown"])  
     blind_or_vision_difficulty = st.selectbox("Do you have serious difficulty seeing, even when wearing glasses?", ["No", "Yes", "Unknown"])  
@@ -92,9 +91,10 @@ with col1:
     had_diabetes = st.selectbox("Have you ever been diagnosed with Diabetes?", ["No", "Yes", "Pre-diabetes", "Gestational-diabetes", "Unknown"])  
     had_kidney_disease = st.selectbox("Have you ever been diagnosed with Kidney Disease?", ["No", "Yes", "Unknown"])  
     had_angina = st.selectbox("Have you ever been diagnosed with Angina?", ["No", "Yes"])  
-    had_stroke = st.selectbox("Have you ever had a Stroke?", ["No", "Yes"])  
+    had_stroke = st.selectbox("Have you ever had a Stroke?", ["No", "Yes"]) 
     had_copd = st.selectbox("Have you ever been diagnosed with Chronic Obstructive Pulmonary Disease (COPD)?", ["No", "Yes", "Unknown"])  
     had_arthritis = st.selectbox("Have you ever been diagnosed with Arthritis?", ["No", "Yes", "Unknown"])
+
 
 # Prepare input data
 input_data = [

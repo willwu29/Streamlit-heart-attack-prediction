@@ -71,8 +71,8 @@ with col1:
     general_health = st.selectbox("Would you say that in general your health is:", 
                                    ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
     
-    # Add vertical space using container + empty space
-    st.container(height=40)  # Adjust height value as needed
+    # # Add vertical space using container + empty space
+    # st.container(height=40)  # Adjust height value as needed
     
     # Habits & Lifestyle with increased vertical spacing
      # Add invisible vertical space using markdown

@@ -55,7 +55,7 @@ def load_model():
 model = load_model()
 
 # Create columns with adjusted ratios
-col1, spacer, col2 = st.columns([1.2, 0.3, 1.2])  # Wider left column
+col1, spacer, col2 = st.columns([1.3, 0.3, 1.3])  # Wider left column
 
 with col1:
     # Personal Information

@@ -11,7 +11,7 @@ from imblearn.pipeline import Pipeline
 
 
 st.title('💓🩺 Heart Attack Prediction App 🩺💓')
-st.markdown("### Use this app to predict your heart attack risk!')
+st.markdown("### Use this app to predict your heart attack risk!")
 st.markdown("### Please fill out your information on the left!")
 
 ###################

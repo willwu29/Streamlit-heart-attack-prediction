@@ -55,7 +55,7 @@ def load_model():
 model = load_model()
 
 # Create three sections with improved spacing
-col1, spacer, col2 = st.columns([1, 0.2, 1])  # Added spacer column between main columns
+col1, spacer, col2 = st.columns([1, 0.3, 1])  # Added spacer column between main columns
 
 # Personal Information with vertical spacing
 with col1:
@@ -76,7 +76,7 @@ with col1:
     
     # Habits & Lifestyle with increased vertical spacing
      # Add invisible vertical space using markdown
-    st.markdown("<div style='height: 40px;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height: 60px;'></div>", unsafe_allow_html=True)
     
     st.markdown("<h3 style='margin-top: 40px;'>Habits & Lifestyle</h3>", unsafe_allow_html=True)  # Increased from 20px to 40px
     physical_activities = st.selectbox("In the past month, did you engage in any physical activities or exercises?", ["No", "Yes"])  

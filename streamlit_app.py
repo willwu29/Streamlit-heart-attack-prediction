@@ -18,6 +18,23 @@ st.write("<h4 style='text-align: center; color: #555;'>Use this app to predict y
 # Centered message with adjusted styling
 st.markdown("<h4 style='font-size: 20px; text-align: center; color: #555;'>Please fill out your information on the left!</h4>", unsafe_allow_html=True)
 
+# Introduction section
+st.markdown("<h2 style='text-align: center;'>Welcome to the Heart Attack Prediction App</h2>", unsafe_allow_html=True)
+st.markdown("""
+This application aims to assess your risk of experiencing a heart attack based on various health and lifestyle factors. 
+By filling out the information on the left, the app will use a trained machine learning model to provide a risk assessment. 
+Please ensure to provide accurate information to receive a reliable prediction.
+
+### How It Works
+- The model utilizes multiple health indicators to predict heart attack risk.
+- After you fill in the required fields, click on the *Predict Heart Attack Risk* button.
+- The app will calculate the prediction and display the results along with important health guidance.
+
+### Disclaimer
+This application is for informational purposes only and should not be considered a substitute for professional medical advice.
+In case of health concerns, consult a qualified healthcare professional.
+""")
+
 ###################
 # Load Model
 ###################

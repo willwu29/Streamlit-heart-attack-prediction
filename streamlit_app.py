@@ -60,10 +60,10 @@ col1, spacer, col2 = st.columns([1.2, 0.3, 1.2])  # Wider left column
 with col1:
     # Personal Information
     st.header("Personal Info")
-    sex = st.selectbox("Select your Gender:", ["Male", "Female"])
-    race_ethnicity = st.selectbox("What is your race/ethnicity", 
+    sex = st.selectbox("Gender:", ["Male", "Female"])
+    race_ethnicity = st.selectbox("Race/Ethnicity", 
                                 ["White", "Hispanic", "Black", "Asian", "Multiracial", "Other", "Unknown"])
-    age_category = st.selectbox("Select your age category:", 
+    age_category = st.selectbox("Age Category:", 
                                 ["18-24", "25-29", "30-34", "35-39", "40-44", "45-49", 
                                 "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80+"])
     
@@ -73,17 +73,17 @@ with col1:
     bmi_category = st.selectbox("BMI Category:", 
                                 ["Underweight", "Healthy", "Overweight", "Obese"],
                                 help="Underweight ≤18.4, Healthy 18.5-24.9, Overweight 25.0-29.9, Obese ≥30.0")
-    general_health = st.selectbox("General health assessment:", 
+    general_health = st.selectbox("How would you rate your health condition:", 
                                 ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
-    deaf_or_hard_of_hearing = st.selectbox("Hearing difficulty:", ["No", "Yes", "Unknown"])  
-    blind_or_vision_difficulty = st.selectbox("Vision difficulty:", ["No", "Yes", "Unknown"])  
-    difficulty_walking = st.selectbox("Walking/climbing stairs difficulty:", ["No", "Yes", "Unknown"])  
-    difficulty_dressing_bathing = st.selectbox("Dressing/bathing difficulty:", ["No", "Yes", "Unknown"])
+    deaf_or_hard_of_hearing = st.selectbox("Hearing Difficulty?:", ["No", "Yes", "Unknown"])  
+    blind_or_vision_difficulty = st.selectbox("Vision difficulty (Even when wearing glasses)?:", ["No", "Yes", "Unknown"])  
+    difficulty_walking = st.selectbox("Walking & Climbing stairs Difficulty:", ["No", "Yes", "Unknown"])  
+    difficulty_dressing_bathing = st.selectbox("Dressing & Bathing difficulty:", ["No", "Yes", "Unknown"])
 
 with col2:
     # Habits & Lifestyle
     st.header("Habits & Lifestyle")
-    physical_activities = st.selectbox("Physical activities in past month:", ["No", "Yes"])  
+    physical_activities = st.selectbox("Physical activities in past 30 days:", ["No", "Yes"])  
     alcohol_drinker = st.selectbox("Alcohol consumption in past 30 days:", ["No", "Yes", "Unknown"])  
     smoker_status = st.selectbox("Smoking status:", 
                                ["Never", "Former", "Every day smoker", "Some days smoker"])

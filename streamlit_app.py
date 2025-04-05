@@ -61,7 +61,7 @@ with col1:
     # Personal Information
     st.header("Personal Info")
     sex = st.selectbox("Gender:", ["Male", "Female"])
-    race_ethnicity = st.selectbox("Race/Ethnicity", 
+    race_ethnicity = st.selectbox("Race/Ethnicity:", 
                                 ["White", "Hispanic", "Black", "Asian", "Multiracial", "Other", "Unknown"])
     age_category = st.selectbox("Age Category:", 
                                 ["18-24", "25-29", "30-34", "35-39", "40-44", "45-49", 
@@ -73,7 +73,7 @@ with col1:
     bmi_category = st.selectbox("BMI Category:", 
                                 ["Underweight", "Healthy", "Overweight", "Obese"],
                                 help="Underweight ≤18.4, Healthy 18.5-24.9, Overweight 25.0-29.9, Obese ≥30.0")
-    general_health = st.selectbox("How would you rate your health condition:", 
+    general_health = st.selectbox("How would you rate your Health Condition:", 
                                 ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
     deaf_or_hard_of_hearing = st.selectbox("Hearing Difficulty:", ["No", "Yes", "Unknown"])  
     blind_or_vision_difficulty = st.selectbox("Vision difficulty (Even when wearing glasses):", ["No", "Yes", "Unknown"])  

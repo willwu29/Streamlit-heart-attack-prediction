@@ -6,36 +6,60 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from imblearn.pipeline import Pipeline
 
 
-# Configure page first
-st.set_page_config(page_title="Heart Attack Prediction App", page_icon="💓", layout="centered")
+# Custom CSS for sidebar styling
+st.markdown("""
+<style>
+    /* Narrower sidebar */
+    [data-testid="stSidebar"] {
+        min-width: 140px !important;
+        max-width: 140px !important;
+    }
+    
+    /* Link-style navigation */
+    .nav-item {
+        padding: 0.5rem;
+        margin: 0.25rem 0;
+        cursor: pointer;
+        color: #555 !important;
+        text-decoration: none !important;
+        border-radius: 0.25rem;
+    }
+    .nav-item:hover {
+        background-color: #f0f2f6;
+        color: #FF5733 !important;
+    }
+    .nav-item.active {
+        background-color: #FF573320;
+        color: #FF5733 !important;
+        font-weight: 500;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# Initialize session state
+if 'page' not in st.session_state:
+    st.session_state.page = 'welcome'
 
 # Sidebar navigation
 with st.sidebar:
-    st.title("Navigation")
-    page = st.radio("Choose a page:", 
-                   ["🏠 Welcome", 
-                    "📊 EDA Findings", 
-                    "📝 Risk Assessment", 
-                    "🤖 ML Insights", 
-                    "📧 Contact"])
-
-# Load model (cached)
-@st.cache_resource
-def load_model():
-    model_path = 'model/pipeline_logreg_final.joblib'
-    if not os.path.exists(model_path):
-        st.error(f"Model file does not exist at {model_path}.")
-        st.stop()
-    try:
-        return joblib.load(model_path)
-    except Exception as e:
-        st.error(f"Error loading model: {str(e)}")
-        st.stop()
-
-model = load_model()
+    st.markdown("""
+    <div style="margin-top: 20px;">
+        <div class="nav-item %s" onclick="window.parent.document.querySelector('section[data-testid=\"stSidebar\"]').parentElement.style.width = '140px'; window.parent.document.querySelector('section[data-testid=\"stSidebar\"]').parentElement.firstChild.style.width = '140px'; this.parentElement.style.width = '140px'; st.session_state.page = 'welcome'">🏠 Welcome</div>
+        <div class="nav-item %s" onclick="st.session_state.page = 'eda'">📊 EDA Findings</div>
+        <div class="nav-item %s" onclick="st.session_state.page = 'predict'">📝 Risk Assessment</div>
+        <div class="nav-item %s" onclick="st.session_state.page = 'ml'">🤖 ML Insights</div>
+        <div class="nav-item %s" onclick="st.session_state.page = 'contact'">📧 Contact</div>
+    </div>
+""" % (
+    'active' if st.session_state.page == 'welcome' else '',
+    'active' if st.session_state.page == 'eda' else '',
+    'active' if st.session_state.page == 'predict' else '',
+    'active' if st.session_state.page == 'ml' else '',
+    'active' if st.session_state.page == 'contact' else '',
+), unsafe_allow_html=True)
 
 # Page content handling
-if page == "🏠 Welcome":
+if st.session_state.page == 'welcome':
     st.markdown("<h1 style='font-size: 36px; text-align: center; color: #FF5733;'>💓🩺 Heart Attack Prediction App 🩺💓</h1>", unsafe_allow_html=True)
     st.write("<h4 style='text-align: center; color: #555;'>Use this app to predict your heart attack risk!</h4>", unsafe_allow_html=True)
     
@@ -59,7 +83,7 @@ if page == "🏠 Welcome":
     This application is for informational purposes only and should not replace professional medical advice.
     """)
 
-elif page == "📊 EDA Findings":
+elif st.session_state.page == 'eda':
     st.header("📊 Exploratory Data Analysis")
     st.subheader("Key Insights from Health Data")
     
@@ -72,7 +96,7 @@ elif page == "📊 EDA Findings":
     - Health indicator trends
     """)
 
-elif page == "📝 Risk Assessment":
+elif st.session_state.page == 'predict':
     # Original form content
     col1, spacer, col2 = st.columns([1.2, 0.3, 1.2])
 
@@ -151,7 +175,7 @@ elif page == "📝 Risk Assessment":
         except Exception as e:
             st.error(f"Prediction error: {str(e)}")
 
-elif page == "🤖 ML Insights":
+elif st.session_state.page == 'ml':
     st.header("🤖 Machine Learning Details")
     st.write("""
     ### Model Architecture
@@ -172,7 +196,7 @@ elif page == "🤖 ML Insights":
     - Limited to adults 18+ years old
     """)
 
-elif page == "📧 Contact":
+elif st.session_state.page == 'contact':
     st.header("📧 Contact & Support")
     st.write("""
     ### Have questions or feedback?

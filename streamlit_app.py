@@ -1,9 +1,7 @@
 import streamlit as st
 import joblib  
 import pandas as pd
-import sys
-import os
-
+from resampler import DownSampler 
 
 
 ###################
@@ -16,11 +14,6 @@ st.write('Use this app to predict your heart attack risk!')
 ###################
 # Load Model
 ###################
-# Get the current directory of the notebook
-current_directory = os.getcwd()
-src_directory = os.path.join(current_directory, 'src')
-sys.path.append(src_directory)
-
 # Load the model at the start of the app
 @st.cache_resource  # Use caching to improve performance
 def load_model():

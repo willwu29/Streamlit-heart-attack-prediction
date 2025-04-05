@@ -36,7 +36,7 @@ model = load_model()
 # Create User Input on the App
 ################################
 # Create input fields for user input
-is_female = st.selectbox("Sex", ["Male", "Female"])
+sex = st.selectbox("Sex", ["Male", "Female"])
 race_ethnicity = st.selectbox("What is your race/ethnicity", 
                                ["White", "Hispanic", "Black", "Asian", "Multiracial", "Other", "Unknown"])
 age_category = st.selectbox("Age Category", 
@@ -62,16 +62,16 @@ had_arthritis = st.selectbox("Have you ever been diagnosed with Arthritis?", ["Y
 
 # Prepare input data
 input_data = [
-    1 if is_female == "Female" else 0,  # Gender
+    sex,  # Gender
     race_ethnicity,                       # race_ethnicity_category
     age_category,                         # age_category
     bmi_category,                         # bmi_category
     alcohol_drinker,                     # alcohol_drinkers
     general_health,                       # general_health
     smoker_status,                        # smoker_status
-    1 if physical_activities == "Yes" else 0,  # Physical activities
-    1 if had_angina == "Yes" else 0,     # had_angina
-    1 if had_stroke == "Yes" else 0,     # had_stroke
+    physical_activities,  # Physical activities
+    had_angina,     # had_angina
+    had_stroke,     # had_stroke
     had_copd,                       # had_copd
     had_diabetes,                         # had_diabetes
     had_kidney_disease,                   # had_kidney_disease
@@ -85,7 +85,7 @@ input_data = [
 
 # Create input column name that match the model inpul column name and order
 input_columns = [
-     'is_female', 'race_ethnicity_category', 'age_category', 'bmi_category',
+     'sex', 'race_ethnicity_category', 'age_category', 'bmi_category',
        'alcohol_drinkers', 'general_health', 'smoker_status',
        'physical_activities', 'had_angina', 'had_stroke', 'had_copd',
        'had_diabetes', 'had_kidney_disease', 'had_depressive_disorder',
@@ -125,4 +125,7 @@ if st.button('Predict Heart Attack Risk'):
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
         st.write("Please check your input values and try again.")
+
+# Create an input DataFrame
+input_df = pd.DataFrame([input_data], columns=input_columns)
 

@@ -1,9 +1,31 @@
 import streamlit as st
-import joblib  # Assuming you saved your model using joblib
+import joblib  
+import pandas as pd
 
-st.title('💓🩺💓🩺 Heart Attack Prediction App')
+
+###################
+# Create a title
+###################
+st.title('💓🩺 Heart Attack Prediction App')
 st.write('Use this app to predict your heart attack risk!')
 
+
+###################
+# Load Model
+###################
+# Load the model at the start of the app
+@st.cache_resource
+def load_model():
+    model = joblib.load('..\model\pipeline_logreg_final.joblib')  
+    return model
+
+# Create a variable to retreieve the model
+model = load_model()
+
+
+###############################
+# Create User Input on the App
+################################
 # Create input fields for user input
 is_female = st.selectbox("Sex", ["Male", "Female"])
 race_ethnicity = st.selectbox("What is your race/ethnicity", 
@@ -32,27 +54,66 @@ had_arthritis = st.selectbox("Have you ever been diagnosed with Arthritis?", ["Y
 # Prepare input data
 input_data = [
     1 if is_female == "Female" else 0,  # Gender
-    race_ethnicity,
-    age_category,
-    bmi_category,
-    alcohol_drinker,
-    general_health,
-    smoker_status,
+    race_ethnicity,                       # race_ethnicity_category
+    age_category,                         # age_category
+    bmi_category,                         # bmi_category
+    alcohol_drinker,                     # alcohol_drinkers
+    general_health,                       # general_health
+    smoker_status,                        # smoker_status
     1 if physical_activities == "1" else 0,  # Physical activities
-    1 if had_angina == "Yes" else 0,
-    1 if had_stroke == "Yes" else 0,
-    1 if had_copd == "Yes" else 0,
-    had_diabetes,
-    had_kidney_disease,
-    had_depressive_disorder,
-    had_arthritis,
-    deaf_or_hard_of_hearing,
-    blind_or_vision_difficulty,
-    difficulty_walking,
-    difficulty_dressing_bathing
+    1 if had_angina == "Yes" else 0,     # had_angina
+    1 if had_stroke == "Yes" else 0,     # had_stroke
+    had_copd,                       # had_copd
+    had_diabetes,                         # had_diabetes
+    had_kidney_disease,                   # had_kidney_disease
+    had_depressive_disorder,              # had_depressive_disorder
+    had_arthritis,                        # had_arthritis
+    deaf_or_hard_of_hearing,              # deaf_or_hard_of_hearing
+    blind_or_vision_difficulty,            # blind_or_vision_difficulty
+    difficulty_walking,                    # difficulty_walking
+    difficulty_dressing_bathing            # difficulty_dressing_bathing
 ]
 
-# Load the model at the start of the app
-@st.cache_resource
-def load_model():
-    model = joblib.load('heart_attack_model.joblib')  # Update
+# Create input column name that match the model inpul column name and order
+input_columns = [
+     'is_female', 'race_ethnicity_category', 'age_category', 'bmi_category',
+       'alcohol_drinkers', 'general_health', 'smoker_status',
+       'physical_activities', 'had_angina', 'had_stroke', 'had_copd',
+       'had_diabetes', 'had_kidney_disease', 'had_depressive_disorder',
+       'had_arthritis', 'deaf_or_hard_of_hearing',
+       'blind_or_vision_difficulty', 'difficulty_walking',
+       'difficulty_dressing_bathing']
+
+# Creae a input df
+input_df = pd.DataFrame([input_data], columns=input_columns)
+
+
+##################
+# Make Prediction
+##################
+# Get prediction probability and apply custom threshold
+if st.button('Predict Heart Attack Risk'):
+    try:
+        # Get probability of positive class
+        proba = model.predict_proba(input_df)[0][1]
+        
+        # Retrieve threshold from the model
+        model_threshold = model.named_steps['logreg'].threshold
+        
+        # Make prediction using custom threshold
+        prediction = 'High Risk' if proba >= model_threshold else 'Low Risk'
+        
+        # Display results
+        st.subheader('Results')
+        
+        # Add interpretation
+        if prediction == 'High Risk':
+            st.error("⚠️ Warning! Our assessment indicates you are at high risk for a heart attack. " \
+            "It is crucial that you consult a healthcare professional immediately for further evaluation.")
+        else:
+            st.success("✅ Good News! Our assessment indicates you are at low risk for a heart attack. Keep up the good work and maintain a healthy lifestyle!")
+            
+    except Exception as e:
+        st.error(f"An error occurred: {str(e)}")
+        st.write("Please check your input values and try again.")
+

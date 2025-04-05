@@ -89,7 +89,7 @@ with col2:
     had_angina = st.selectbox("Have you ever been diagnosed with Angina?", ["No", "Yes"])  
     had_stroke = st.selectbox("Have you ever had a Stroke?", ["No", "Yes"])  
     had_copd = st.selectbox("Have you ever been diagnosed with Chronic Obstructive Pulmonary Disease (COPD)?", ["No", "Yes", "Unknown"])  
-     had_arthritis = st.selectbox("Have you ever been diagnosed with Arthritis?", ["No", "Yes", "Unknown"])
+    had_arthritis = st.selectbox("Have you ever been diagnosed with Arthritis?", ["No", "Yes", "Unknown"])
 
 # Prepare input data
 input_data = [

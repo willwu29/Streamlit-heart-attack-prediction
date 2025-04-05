@@ -71,9 +71,7 @@ with col1:
     general_health = st.selectbox("Would you say that in general your health is:", 
                                    ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
 
-     # # Adding an empty write call creates some vertical space
-    st.write("")  
-    st.write("") 
+
 
 # Habits & Lifestyle at the bottom left
 with col1:

@@ -92,8 +92,8 @@ st.markdown("Please fill out the following information:")
 # had_arthritis = st.selectbox("Have you ever been diagnosed with Arthritis?", 
 #                              ["No", "Yes", "Unknown"])  
 with st.sidebar:
-    st.markdown("### Sex")
-    sex = st.selectbox("## Select your sex:", ["Male", "Female"])
+    st.markdown("<h3 style='font-size: 24px;'>Select your sex:</h3>", unsafe_allow_html=True)  # Adjust font size as desired
+    sex = st.selectbox("", ["Male", "Female"])  # Use an empty string for the label in selectbox
     
     st.markdown("### Race/Ethnicity")
     race_ethnicity = st.selectbox("What is your race/ethnicity", 

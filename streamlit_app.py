@@ -14,13 +14,18 @@ st.write('Use this app to predict your heart attack risk!')
 # Load Model
 ###################
 # Load the model at the start of the app
-@st.cache_resource
+@st.cache_resource  # Use caching to improve performance
 def load_model():
+    # Load your model from the specified path
     model = joblib.load('../model/pipeline_logreg_final.joblib')  
     return model
 
-# Create a variable to retreieve the model
-model = load_model()
+# Create a variable to retrieve the model
+try:
+    model = load_model()
+except FileNotFoundError as e:
+    st.error("Model file not found. Please check the path and ensure the model exists.")
+    st.stop()  # Stop the app if the model cannot be loaded
 
 
 ###############################

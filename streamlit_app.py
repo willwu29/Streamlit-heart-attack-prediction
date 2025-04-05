@@ -121,7 +121,7 @@ input_data = [
 
 # Create input column names that match the model input column names and order
 input_columns = [
-    'is_female', 'race_ethnicity_category', 'age_category', 'bmi_category',
+    'sex', 'race_ethnicity_category', 'age_category', 'bmi_category',
     'alcohol_drinkers', 'general_health', 'smoker_status',
     'physical_activities', 'had_angina', 'had_stroke', 'had_copd',
     'had_diabetes', 'had_kidney_disease', 'had_depressive_disorder',

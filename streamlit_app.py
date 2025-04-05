@@ -76,9 +76,9 @@ with col1:
     general_health = st.selectbox("How would you rate your Health Condition:", 
                                 ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
     deaf_or_hard_of_hearing = st.selectbox("Hearing Difficulty:", ["No", "Yes", "Unknown"])  
-    blind_or_vision_difficulty = st.selectbox("Vision difficulty (Even when wearing glasses):", ["No", "Yes", "Unknown"])  
+    blind_or_vision_difficulty = st.selectbox("Vision Difficulty (Even when wearing glasses):", ["No", "Yes", "Unknown"])  
     difficulty_walking = st.selectbox("Walking & Climbing stairs Difficulty:", ["No", "Yes", "Unknown"])  
-    difficulty_dressing_bathing = st.selectbox("Dressing & Bathing difficulty:", ["No", "Yes", "Unknown"])
+    difficulty_dressing_bathing = st.selectbox("Dressing & Bathing Difficulty:", ["No", "Yes", "Unknown"])
 
 with col2:
     # Habits & Lifestyle

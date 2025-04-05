@@ -1,7 +1,7 @@
 import streamlit as st
 import joblib  
 import pandas as pd
-
+from sklearn.preprocessing import StandardScaler, OneHotEncoder  
 
 ###################
 # Create a title
@@ -13,19 +13,18 @@ st.write('Use this app to predict your heart attack risk!')
 ###################
 # Load Model
 ###################
-# Load the model at the start of the app
-@st.cache_resource  # Use caching to improve performance
+@st.cache_resource
 def load_model():
-    # Load your model from the specified path
-    model = joblib.load('model/pipeline_logreg_final.joblib')  
-    return model
-
-# Create a variable to retrieve the model
-try:
-    model = load_model()
-except FileNotFoundError as e:
-    st.error("Model file not found. Please check the path and ensure the model exists.")
-    st.stop()  # Stop the app if the model cannot be loaded
+    model_path = 'model/pipeline_logreg_final.joblib'
+    if not os.path.exists(model_path):
+        st.error(f"Model file does not exist at {model_path}.")
+        st.stop()
+    try:
+        model = joblib.load(model_path)
+        return model
+    except ModuleNotFoundError as e:
+        st.error(f"Failed to load model due to a missing module: {str(e)}")
+        st.stop()
 
 
 ###############################

@@ -10,25 +10,18 @@ from imblearn.pipeline import Pipeline
 st.markdown("""
 <style>
     [data-testid="stSidebar"] {
-        min-width: 240px !important;
-        max-width: 240px !important;
+        min-width: 280px !important;
+        max-width: 280px !important;
     }
-    .nav-item {
-        padding: 0.5rem;
+    .stButton>button {
+        width: 100%;
+        justify-content: left;
+        padding: 0.5rem 1rem;
         margin: 0.25rem 0;
-        cursor: pointer;
-        color: #555;
-        border-radius: 0.25rem;
-        transition: all 0.3s;
     }
-    .nav-item:hover {
+    .stButton>button:hover {
         background-color: #f0f2f6;
         color: #FF5733;
-    }
-    .nav-item.active {
-        background-color: #FF573320;
-        color: #FF5733;
-        font-weight: 500;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -40,20 +33,22 @@ if 'page' not in st.session_state:
 # Sidebar navigation
 with st.sidebar:
     st.markdown("## Navigation")
-    pages = [
-        ('🏠 Welcome', 'welcome'),
-        ('📊 EDA Findings', 'eda'),
-        ('📝 Risk Assessment', 'predict'),
-        ('🤖 ML Insights', 'ml'),
-        ('📧 Contact', 'contact')
-    ]
     
-    for label, key in pages:
-        is_active = st.session_state.page == key
-        class_name = "nav-item active" if is_active else "nav-item"
-        if st.button(label, key=key, use_container_width=True):
-            st.session_state.page = key
-        st.markdown(f'<div class="{class_name}">{label}</div>', unsafe_allow_html=True)
+    # Create navigation buttons
+    pages = {
+        '🏠 Welcome': 'welcome',
+        '📊 EDA Findings': 'eda',
+        '📝 Risk Assessment': 'predict',
+        '🤖 ML Insights': 'ml',
+        '📧 Contact': 'contact'
+    }
+    
+    for label, page_key in pages.items():
+        if st.button(label, key=page_key, 
+                    use_container_width=True,
+                    type="primary" if st.session_state.page == page_key else "secondary"):
+            st.session_state.page = page_key
+            st.rerun()
 
 # Page content handling
 if st.session_state.page == 'welcome':
@@ -103,6 +98,7 @@ elif st.session_state.page == 'predict':
 
     # Prediction form
     col1, col2 = st.columns(2)
+    
     with col1:
         st.header("Personal Info")
         sex = st.selectbox("Gender:", ["Male", "Female"])
@@ -131,7 +127,7 @@ elif st.session_state.page == 'predict':
         had_diabetes = st.selectbox("Diabetes:", ["No", "Yes", "Pre-diabetes", "Gestational-diabetes", "Unknown"])  
         had_kidney_disease = st.selectbox("Kidney Disease:", ["No", "Yes", "Unknown"])  
 
-    # Additional medical history fields
+    # Additional medical history
     with st.expander("Additional Medical History"):
         had_angina = st.selectbox("Angina:", ["No", "Yes"])  
         had_stroke = st.selectbox("Stroke History:", ["No", "Yes"]) 
@@ -175,37 +171,33 @@ elif st.session_state.page == 'ml':
     - **Algorithm**: Optimized Logistic Regression
     - **Accuracy**: 92% (validation set)
     - **AUC-ROC**: 0.94
-    - **Precision**: 89%
-    - **Recall**: 93%
-
-    ### Feature Importance
-    1. Age Category
-    2. Diabetes Status
-    3. BMI Classification
-    4. Smoking History
-    5. Physical Activity Level
-
-    ### Model Development
-    - Trained on 500,000+ health records
-    - Regularized to prevent overfitting
-    - Feature-engineered using medical domain knowledge
+    
+    ### Key Features
+    - Age Category
+    - BMI Classification
+    - Smoking Status
+    - Diabetes History
+    - Physical Activity Levels
+    
+    ### Model Limitations
+    - Training data from 2010-2015 health surveys
+    - Does not account for genetic factors
+    - Limited to adults 18+ years old
     """)
 
 elif st.session_state.page == 'contact':
     st.header("📧 Contact & Support")
     st.markdown("""
-    ### Technical Support
-    **Email**: support@healthanalytics.com  
-    **Phone**: +1 (800) 123-4567  
-    **Hours**: Mon-Fri 9AM-5PM EST
-
-    ### Medical Advisory
-    **Dr. Jane Smith**  
-    Cardiology Specialist  
-    jane.smith@cardiohealth.com
-
+    ### Have questions or feedback?
+    **Email:** healthcare-analytics@example.com  
+    **Support Hours:** Mon-Fri 9AM-5PM EST  
+    
+    ### Disclaimer
+    This tool is not a substitute for professional medical advice. 
+    Always consult qualified health providers regarding medical conditions.
+    
     ### Data Privacy
-    - All data is processed anonymously
-    - No personal information is stored
-    - HIPAA-compliant data handling
+    - No personal data is stored
+    - All predictions are transient
+    - Anonymous usage statistics only
     """)

@@ -65,7 +65,7 @@ input_data = [
     sex,                                # Gender
     race_ethnicity,                     # race_ethnicity_category
     age_category,                       # age_category
-    bmi_category,                       # bmi_category
+    bmi_category.lower(),               # bmi_category
     alcohol_drinker,                    # alcohol_drinkers
     general_health,                     # general_health
     smoker_status,                      # smoker_status
@@ -73,7 +73,7 @@ input_data = [
     had_angina,                         # had_angina
     had_stroke,                         # had_stroke
     had_copd,                           # had_copd
-    had_diabetes.lower(),               # had_diabetes
+    had_diabetes,               # had_diabetes
     had_kidney_disease,                 # had_kidney_disease
     had_depressive_disorder,            # had_depressive_disorder
     had_arthritis,                      # had_arthritis

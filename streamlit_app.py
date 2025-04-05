@@ -69,16 +69,21 @@ with col1:
     bmi_category = st.selectbox("BMI Category: (Underweight <= 18.4), (Healthy 18.5-24.9), (Overweight 25.0-29.9), (Obese >= 30.0)", 
                                 ["Underweight", "Healthy", "Overweight", "Obese"])
     general_health = st.selectbox("Would you say that in general your health is:", 
-                                  ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
+                                   ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
+
+# Habits & Lifestyle in the right column
+with col2:
+    st.header("Habits & Lifestyle")
+    smoker_status = st.selectbox("Please describe your smoking habit:", 
+                                 ["Never", "Former", "Every day smoker", "Some days smoker"])
+    
     physical_activities = st.selectbox("In the past month, did you engage in any physical activities or exercises?", ["No", "Yes"])  
     alcohol_drinker = st.selectbox("In the past 30 days, have you consumed at least one alcoholic drink?", 
                                    ["No", "Yes", "Unknown"])  
 
-# Medical History in the right column
-with col2:
+# Medical History in the left column
+with col1:
     st.header("Medical History")
-    smoker_status = st.selectbox("Please describe your smoking habit:", 
-                                 ["Never", "Former", "Every day smoker", "Some days smoker"])
     deaf_or_hard_of_hearing = st.selectbox("Do you have serious difficulty hearing?", ["No", "Yes", "Unknown"])  
     blind_or_vision_difficulty = st.selectbox("Do you have serious difficulty seeing, even when wearing glasses?", ["No", "Yes", "Unknown"])  
     difficulty_walking = st.selectbox("Do you have serious difficulty walking or climbing stairs?", ["No", "Yes", "Unknown"])  
@@ -114,7 +119,7 @@ input_data = [
     difficulty_dressing_bathing  # Difficulty Dressing/Bathing
 ]
 
-# Create input column names that match the model input column name and order
+# Create input column names that match the model input column names and order
 input_columns = [
     'is_female', 'race_ethnicity_category', 'age_category', 'bmi_category',
     'alcohol_drinkers', 'general_health', 'smoker_status',

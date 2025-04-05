@@ -54,10 +54,10 @@ def load_model():
 
 model = load_model()
 
-# Create three sections: Personal Information, Habits & Lifestyle, and Medical History
-col1, col2 = st.columns([1, 1])  # Creates two equal columns
+# Create three sections with improved spacing
+col1, spacer, col2 = st.columns([1, 0.2, 1])  # Added spacer column between main columns
 
-# Personal Information on the top left
+# Personal Information with vertical spacing
 with col1:
     st.header("Personal Information")
     sex = st.selectbox("Select your sex:", ["Male", "Female"])
@@ -70,19 +70,19 @@ with col1:
                                 ["Underweight", "Healthy", "Overweight", "Obese"])
     general_health = st.selectbox("Would you say that in general your health is:", 
                                    ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
-
-
-
-# Habits & Lifestyle at the bottom left
-with col1:
-    st.markdown("<h3 style='margin-top: 20px;'>Habits & Lifestyle</h3>", unsafe_allow_html=True)
+    
+    # Add vertical space using container + empty space
+    st.container(height=40)  # Adjust height value as needed
+    
+    # Habits & Lifestyle with increased vertical spacing
+    st.markdown("<h3 style='margin-top: 40px;'>Habits & Lifestyle</h3>", unsafe_allow_html=True)  # Increased from 20px to 40px
     physical_activities = st.selectbox("In the past month, did you engage in any physical activities or exercises?", ["No", "Yes"])  
     alcohol_drinker = st.selectbox("In the past 30 days, have you consumed at least one alcoholic drink?", 
                                    ["No", "Yes", "Unknown"])  
     smoker_status = st.selectbox("Please describe your smoking habit:", 
                                  ["Never", "Former", "Every day smoker", "Some days smoker"])
 
-# Medical History on the top right
+# Medical History with horizontal spacing
 with col2:
     st.header("Medical History")
     deaf_or_hard_of_hearing = st.selectbox("Do you have serious difficulty hearing?", ["No", "Yes", "Unknown"])  

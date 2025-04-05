@@ -11,7 +11,8 @@ from imblearn.pipeline import Pipeline
 
 
 st.title('💓🩺 Heart Attack Prediction App 🩺💓')
-st.write('Use this app to predict your heart attack risk!')
+st.header('Use this app to predict your heart attack risk!')
+st.markdown("### Please fill out your information on the left!")
 
 ###################
 # Load Model
@@ -50,8 +51,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.header("User Input")
-st.markdown("Please fill out the following information:")
+
 
 # Create input fields for user input
 # sex = st.selectbox("Sex", ["Male", "Female"])

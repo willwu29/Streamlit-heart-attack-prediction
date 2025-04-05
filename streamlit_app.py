@@ -59,7 +59,7 @@ col1, spacer, col2 = st.columns([1.2, 0.3, 1.2])  # Wider left column
 
 with col1:
     # Personal Information
-    st.header("Personal Info")
+    st.header("Personal Information")
     sex = st.selectbox("Gender:", ["Male", "Female"])
     race_ethnicity = st.selectbox("Race/Ethnicity:", 
                                 ["White", "Hispanic", "Black", "Asian", "Multiracial", "Other", "Unknown"])
@@ -69,7 +69,7 @@ with col1:
     
     # Health Condition
     st.markdown("<div style='height: 30px;'></div>", unsafe_allow_html=True)
-    st.header("Health Condition")
+    st.header("Health Status")
     bmi_category = st.selectbox("BMI Category:", 
                                 ["Underweight", "Healthy", "Overweight", "Obese"],
                                 help="Underweight ≤18.4, Healthy 18.5-24.9, Overweight 25.0-29.9, Obese ≥30.0")

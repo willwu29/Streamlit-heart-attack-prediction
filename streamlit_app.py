@@ -75,16 +75,16 @@ with col1:
                                 help="Underweight ≤18.4, Healthy 18.5-24.9, Overweight 25.0-29.9, Obese ≥30.0")
     general_health = st.selectbox("How would you rate your health condition:", 
                                 ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
-    deaf_or_hard_of_hearing = st.selectbox("Hearing Difficulty?:", ["No", "Yes", "Unknown"])  
-    blind_or_vision_difficulty = st.selectbox("Vision difficulty (Even when wearing glasses)?:", ["No", "Yes", "Unknown"])  
+    deaf_or_hard_of_hearing = st.selectbox("Hearing Difficulty:", ["No", "Yes", "Unknown"])  
+    blind_or_vision_difficulty = st.selectbox("Vision difficulty (Even when wearing glasses):", ["No", "Yes", "Unknown"])  
     difficulty_walking = st.selectbox("Walking & Climbing stairs Difficulty:", ["No", "Yes", "Unknown"])  
     difficulty_dressing_bathing = st.selectbox("Dressing & Bathing difficulty:", ["No", "Yes", "Unknown"])
 
 with col2:
     # Habits & Lifestyle
     st.header("Habits & Lifestyle")
-    physical_activities = st.selectbox("Physical activities in past 30 days:", ["No", "Yes"])  
-    alcohol_drinker = st.selectbox("Alcohol consumption in past 30 days:", ["No", "Yes", "Unknown"])  
+    physical_activities = st.selectbox("Any Physical activities in past 30 days:", ["No", "Yes"])  
+    alcohol_drinker = st.selectbox("Any Alcohol consumption in past 30 days:", ["No", "Yes", "Unknown"])  
     smoker_status = st.selectbox("Smoking status:", 
                                ["Never", "Former", "Every day smoker", "Some days smoker"])
     

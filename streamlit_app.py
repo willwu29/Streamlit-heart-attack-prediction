@@ -54,11 +54,11 @@ def load_model():
 
 model = load_model()
 
-# Create three sections with improved spacing
-col1, spacer, col2 = st.columns([1, 0.1, 1])  # Added spacer column
+# Create columns with adjusted ratios
+col1, spacer, col2 = st.columns([1.2, 0.1, 1])  # Wider left column
 
-# Personal Information Column
 with col1:
+    # Personal Information
     st.header("Personal Information")
     sex = st.selectbox("Select your sex:", ["Male", "Female"])
     race_ethnicity = st.selectbox("What is your race/ethnicity", 
@@ -66,8 +66,8 @@ with col1:
     age_category = st.selectbox("Select your age category:", 
                                 ["18-24", "25-29", "30-34", "35-39", "40-44", "45-49", 
                                 "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80+"])
-
-    # Health Condition Section
+    
+    # Health Condition
     st.markdown("<div style='height: 30px;'></div>", unsafe_allow_html=True)
     st.header("Health Condition")
     bmi_category = st.selectbox("BMI Category:", 
@@ -80,16 +80,16 @@ with col1:
     difficulty_walking = st.selectbox("Walking/climbing stairs difficulty:", ["No", "Yes", "Unknown"])  
     difficulty_dressing_bathing = st.selectbox("Dressing/bathing difficulty:", ["No", "Yes", "Unknown"])
 
-    # Habits & Lifestyle Section
-    st.markdown("<div style='height: 30px;'></div>", unsafe_allow_html=True)
+with col2:
+    # Habits & Lifestyle
     st.header("Habits & Lifestyle")
     physical_activities = st.selectbox("Physical activities in past month:", ["No", "Yes"])  
     alcohol_drinker = st.selectbox("Alcohol consumption in past 30 days:", ["No", "Yes", "Unknown"])  
     smoker_status = st.selectbox("Smoking status:", 
                                ["Never", "Former", "Every day smoker", "Some days smoker"])
-
-# Medical History Column
-with col2:
+    
+    # Medical History
+    st.markdown("<div style='height: 40px;'></div>", unsafe_allow_html=True)  # Increased spacing
     st.header("Medical History")
     had_depressive_disorder = st.selectbox("Depressive disorder diagnosis:", ["No", "Yes", "Unknown"]) 
     had_diabetes = st.selectbox("Diabetes diagnosis:", ["No", "Yes", "Pre-diabetes", "Gestational-diabetes", "Unknown"])  
@@ -102,7 +102,6 @@ with col2:
 # Spacer column remains empty
 with spacer:
     st.empty()
-
 
 # Prepare input data
 input_data = [

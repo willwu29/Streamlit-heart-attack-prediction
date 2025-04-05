@@ -25,7 +25,7 @@ sys.path.append(src_directory)
 @st.cache_resource  # Use caching to improve performance
 def load_model():
     # Load your model from the specified path
-    model = joblib.load('../model/pipeline_logreg_final.joblib')  
+    model = joblib.load('model/pipeline_logreg_final.joblib')  
     return model
 
 # Create a variable to retrieve the model

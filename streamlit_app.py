@@ -59,7 +59,7 @@ col1, spacer, col2 = st.columns([1.2, 0.3, 1.3])  # Wider left column
 
 with col1:
     # Personal Information
-    st.markdown("<h2 style='white-space: nowrap; margin-bottom: 20px;'>Personal info</h2>", 
+    st.markdown("<h2 style='white-space: nowrap; margin-bottom: 20px;'>Personal information</h2>", 
                 unsafe_allow_html=True)
     sex = st.selectbox("Gender:", ["Male", "Female"])
     race_ethnicity = st.selectbox("Race/Ethnicity:", 

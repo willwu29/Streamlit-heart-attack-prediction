@@ -8,7 +8,7 @@ from imblearn.pipeline import Pipeline
 ###################
 # Create a title
 ###################
-st.set_page_config(page_title="Heart Attack Prediction App", page_icon="💓", layout="centered")
+
 
 st.title('💓🩺 Heart Attack Prediction App 🩺💓')
 st.write('Use this app to predict your heart attack risk!')
@@ -36,6 +36,20 @@ model = load_model()
 ###############################
 # Create User Input on the App
 ################################
+
+
+# CSS to make the sidebar wider
+st.markdown(
+    """
+    <style>
+        .css-1d391kg {
+            width: 400px; /* Adjust the width as needed */
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 st.header("User Input")
 st.markdown("Please fill out the following information:")
 
@@ -78,31 +92,71 @@ st.markdown("Please fill out the following information:")
 # had_arthritis = st.selectbox("Have you ever been diagnosed with Arthritis?", 
 #                              ["No", "Yes", "Unknown"])  
 with st.sidebar:
-    sex = st.selectbox("Sex", ["Male", "Female"])
+    st.markdown("### Sex")
+    sex = st.selectbox("Select your sex:", ["Male", "Female"])
+    
+    st.markdown("### Race/Ethnicity")
     race_ethnicity = st.selectbox("What is your race/ethnicity", 
                                    ["White", "Hispanic", "Black", "Asian", "Multiracial", "Other", "Unknown"])
-    age_category = st.selectbox("Age Category", 
+    
+    st.markdown("### Age Category")
+    age_category = st.selectbox("Select your age category:", 
                                  ["18-24", "25-29", "30-34", "35-39", "40-44", "45-49", 
                                   "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80+"])
+    
+    st.markdown("### BMI Category")
     bmi_category = st.selectbox("BMI Category: (Underweight <= 18.4), (Healthy 18.5-24.9), (Overweight 25.0-29.9), (Obese >= 30.0)", 
                                 ["Underweight", "Healthy", "Overweight", "Obese"])
-    general_health = st.selectbox("General Health", ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
-    physical_activities = st.selectbox("Physical Activities", ["No", "Yes"])  
-    alcohol_drinker = st.selectbox("Alcohol Drinker", ["No", "Yes", "Unknown"])  
-    smoker_status = st.selectbox("Smoking Habit", ["Never", "Former", "Every day smoker", "Some days smoker"])
-    deaf_or_hard_of_hearing = st.selectbox("Hearing Difficulty", ["No", "Yes", "Unknown"])  
-    blind_or_vision_difficulty = st.selectbox("Vision Difficulty", ["No", "Yes", "Unknown"])  
-    difficulty_walking = st.selectbox("Difficulty Walking", ["No", "Yes", "Unknown"])  
-    difficulty_dressing_bathing = st.selectbox("Difficulty Dressing/Bathing", ["No", "Yes", "Unknown"])  
-    had_depressive_disorder = st.selectbox("Depressive Disorder", ["No", "Yes", "Unknown"]) 
-    had_diabetes = st.selectbox("Diabetes", ["No", "Yes", "Pre-diabetes", "Gestational-diabetes", "Unknown"])  
-    had_kidney_disease = st.selectbox("Kidney Disease", ["No", "Yes", "Unknown"])  
-    had_angina = st.selectbox("Angina", ["No", "Yes"])  
-    had_stroke = st.selectbox("Stroke", ["No", "Yes"])  
-    had_copd = st.selectbox("COPD", ["No", "Yes", "Unknown"])  
-    had_arthritis = st.selectbox("Arthritis", ["No", "Yes", "Unknown"])  
+    
+    st.markdown("### General Health")
+    general_health = st.selectbox("Would you say that in general your health is:", 
+                                  ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
+    
+    st.markdown("### Physical Activities")
+    physical_activities = st.selectbox("In the past month, did you engage in any physical activities or exercises?", ["No", "Yes"])  
+    
+    st.markdown("### Alcohol Drinker")
+    alcohol_drinker = st.selectbox("In the past 30 days, have you consumed at least one alcoholic drink?", 
+                                   ["No", "Yes", "Unknown"])  
+    
+    st.markdown("### Smoking Habit")
+    smoker_status = st.selectbox("Please describe your smoking habit:", 
+                                 ["Never", "Former", "Every day smoker", "Some days smoker"])
+    
+    st.markdown("### Hearing Difficulty")
+    deaf_or_hard_of_hearing = st.selectbox("Do you have serious difficulty hearing?", ["No", "Yes", "Unknown"])
+    
+    st.markdown("### Vision Difficulty")
+    blind_or_vision_difficulty = st.selectbox("Do you have serious difficulty seeing, even when wearing glasses?", ["No", "Yes", "Unknown"])
+    
+    st.markdown("### Difficulty Walking")
+    difficulty_walking = st.selectbox("Do you have serious difficulty walking or climbing stairs?", ["No", "Yes", "Unknown"])
+    
+    st.markdown("### Difficulty Dressing/Bathing")
+    difficulty_dressing_bathing = st.selectbox("Do you have difficulty dressing or bathing?", ["No", "Yes", "Unknown"])
+    
+    st.markdown("### Depressive Disorder")
+    had_depressive_disorder = st.selectbox("Have you ever been diagnosed with Depressive Disorder?", ["No", "Yes", "Unknown"])
+    
+    st.markdown("### Diabetes")
+    had_diabetes = st.selectbox("Have you ever been diagnosed with Diabetes?", ["No", "Yes", "Pre-diabetes", "Gestational-diabetes", "Unknown"])
 
+    st.markdown("### Kidney Disease")
+    had_kidney_disease = st.selectbox("Have you ever been diagnosed with Kidney Disease?", ["No", "Yes", "Unknown"])
+    
+    st.markdown("### Angina")
+    had_angina = st.selectbox("Have you ever been diagnosed with Angina?", ["No", "Yes"])
+    
+    st.markdown("### Stroke")
+    had_stroke = st.selectbox("Have you ever had a Stroke?", ["No", "Yes"])
+    
+    st.markdown("### Chronic Obstructive Pulmonary Disease (COPD)")
+    had_copd = st.selectbox("Have you ever been diagnosed with COPD?", ["No", "Yes", "Unknown"])
 
+    st.markdown("### Arthritis")
+    had_arthritis = st.selectbox("Have you ever been diagnosed with Arthritis?", ["No", "Yes", "Unknown"])
+
+    
 # Prepare input data
 input_data = [
     sex,                                # Gender

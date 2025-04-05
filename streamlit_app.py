@@ -40,7 +40,7 @@ age_category = st.selectbox("Age Category",
 bmi_category = st.selectbox("BMI Category: (Underweight <= 18.4), (Healthy 18.5-24.9), (Overweight 25.0-29.9), (Obese >= 30.0)", 
                             ["underweight","healthy", "overweight", "obese"])
 general_health = st.selectbox("Would you say that in general your health is:", ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
-physical_activities = st.selectbox("In the past month, aside from your regular job, did you engage in any physical activities or exercises for exercise?", ["0", "1"])
+physical_activities = st.selectbox("In the past month, aside from your regular job, did you engage in any physical activities or exercises for exercise?", ["Yes", "No"])
 alcohol_drinker = st.selectbox("In the past 30 days, have you consumed at least one alcoholic drink?", ["Yes", "No", "Unknown"])
 smoker_status = st.selectbox("Please describe your smoking habit:", ["Never", "Former", "Every day smoker", "Some days smoker"])
 deaf_or_hard_of_hearing = st.selectbox("Are you deaf or do you have serious difficulty hearing?", ["Yes", "No", "Unknown"])

@@ -59,7 +59,7 @@ col1, spacer, col2 = st.columns([1.2, 0.3, 1.2])  # Wider left column
 
 with col1:
     # Personal Information
-    st.header("Personal Information")
+    st.header("Personal Info")
     sex = st.selectbox("Gender:", ["Male", "Female"])
     race_ethnicity = st.selectbox("Race/Ethnicity:", 
                                 ["White", "Hispanic", "Black", "Asian", "Multiracial", "Other", "Unknown"])

@@ -1,7 +1,7 @@
 import streamlit as st
 import joblib  # Assuming you saved your model using joblib
 
-st.title('💓🩺 Heart Attack Prediction App')
+st.title('💓🩺💓🩺 Heart Attack Prediction App')
 st.write('Use this app to predict your heart attack risk!')
 
 # Create input fields for user input

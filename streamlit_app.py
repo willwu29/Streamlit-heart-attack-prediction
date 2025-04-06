@@ -6,7 +6,6 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from imblearn.pipeline import Pipeline
 
 # Custom CSS for sidebar styling
-Custom CSS for sidebar styling
 st.markdown("""
 <style>
     [data-testid="stSidebar"] {

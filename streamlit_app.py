@@ -180,21 +180,31 @@ elif st.session_state.page == 'predict':
     input_df = pd.DataFrame([input_data], columns=input_columns)
 
     # Prediction logic
+    # Styled container for the prediction button
     st.markdown("<div style='background-color: #f8f9fa; padding: 20px; border-radius: 10px; text-align: center;'>", unsafe_allow_html=True)
     if st.button('Predict Heart Attack Risk'):
         try:
-            threshold = model.named_steps['logreg'].threshold   # Retreieve the threshold
+            threshold = model.named_steps['logreg'].threshold   # Retrieve the threshold
             proba = model.predict_proba(input_df)[0][1]    # Make soft predictions
             prediction = 'High Risk' if proba >= threshold else 'Low Risk'   # Convert to hard predictions
             st.subheader('Results')
             if prediction == 'High Risk':
                 st.error("⚠️ Warning! ⚠️  \n"
-                      "Our assessment indicates you are at HIGH RISK for a heart attack.  \n"
-                      "Please consult a healthcare professional immediately for further evaluation.")
+                          "Our assessment indicates you are at HIGH RISK for a heart attack.  \n"
+                          "Please consult a healthcare professional immediately for further evaluation. ")
             else:
                 st.success("✅ Good News! ✅  \n"
-                      "Our assessment indicates you are at LOW RISK for a heart attack.  \n"
-                      "Keep up the good work and maintain a healthy lifestyle!")
+                          "Our assessment indicates you are at LOW RISK for a heart attack.  \n"
+                          "Keep up the good work and maintain a healthy lifestyle! \n"
+                          "Keep up the good work and maintain a healthy lifestyle! ")
+                
+            # Encouragement to validate results
+            st.markdown("<h5 style='margin-top: 20px;'>Feel free to go to 🧮 Additional Calculators for validation.</h5>", unsafe_allow_html=True)
+
+        
+        except Exception as e:
+            st.error(f"An error occurred while making the prediction: {str(e)}")
+    st.markdown("</div>", unsafe_allow_html=True)  
             
         
         except Exception as e:

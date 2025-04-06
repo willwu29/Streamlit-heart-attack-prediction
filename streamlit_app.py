@@ -129,9 +129,9 @@ if st.session_state.page == 'welcome':
     '>
         <h4 style='color: #d32f2f; margin-top:0;'>🚨 The Challenge</h4>
         <ul style='font-size: 14px; padding-left: 20px;'>
-            <li>Leading cause of US deaths (800k+ annually)</li>
-            <li>Existing tools exclude 18-29 age group</li>
-            <li>Blood test requirements limit access</li>
+            <li>Leading cause of death in the US with over 805,000 indidents annually—about one heart attack every 40 seconds.</li>
+            <li>Heart attack healthcare costs exceed $160 million USD each year.</li>
+            <li>Current assessment tools (🧮 Additional Calculators) overlook individuals aged 18-29 and 80+ and require blood tests, limiting accessibility.</li>
         </ul>
     </div>
     """, unsafe_allow_html=True)
@@ -144,11 +144,11 @@ if st.session_state.page == 'welcome':
         border-radius: 10px;
         margin-bottom: 20px;
     '>
-        <h4 style='color: #2e7d32; margin-top:0;'>✅ Our Solution</h4>
+        <h4 style='color: #2e7d32; margin-top:0;'>✅ My Solution</h4>
         <ul style='font-size: 14px; padding-left: 20px;'>
-            <li>No lab tests required</li>
-            <li>Available for adults 18+</li>
-            <li>Instant risk assessment</li>
+            <li>Develop an early detection system (📝 Risk Assessment) utilizing Machine Learning for timely risk assessment. </li>
+            <li>Accessible to adults aged 18 and older, ensuring broader coverage.</li>
+            <li>Provides instant risk evaluations using easily obtainable input data.</li>
         </ul>
     </div>
     """, unsafe_allow_html=True)

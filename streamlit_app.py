@@ -313,6 +313,6 @@ elif st.session_state.page == 'contact':
 
     st.markdown("""
 ### Want to know more about me?
-**CV:** [Download my CV](./src/CV.pdf)
+**CV:** [Download my CV](./src/CV - Will Wu.pdf)
 """)
 

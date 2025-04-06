@@ -184,10 +184,10 @@ elif st.session_state.page == 'predict':
             prediction = 'High Risk' if proba >= threshold else 'Low Risk'   # Convert to hard predictions
             st.subheader('Results')
             if prediction == 'High Risk':
-                st.error("⚠️ Warning! ⚠️ Our assessment indicates you are at HIGH RISK for a heart attack. " 
+                st.error("⚠️ Warning! ⚠️ \nOur assessment indicates you are at HIGH RISK for a heart attack. " 
                         "Please consult a healthcare professional immediately for further evaluation.")
             else:
-                st.success("✅ Good News! ✅ Our assessment indicates you are at LOW RISK for a heart attack. Keep up the good work and maintain a healthy lifestyle!")
+                st.success("✅ Good News! ✅ \nOur assessment indicates you are at LOW RISK for a heart attack. Keep up the good work and maintain a healthy lifestyle!")
             
         
         except Exception as e:

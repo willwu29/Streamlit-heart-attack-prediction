@@ -182,43 +182,45 @@ elif st.session_state.page == 'predict':
     # Prediction logic
     # Styled button text
     # Styled button for prediction
+    # Visible styled button
     st.markdown("""
     <style>
         .predict-button {
-            background-color: #DC143C !important;
+            background: linear-gradient(145deg, #FF4444, #CC0000);
             color: white !important;
-            border-radius: 12px !important;
-            padding: 20px 30px !important;
-            text-align: center !important;
-            cursor: pointer !important;
-            margin: 30px auto !important;
-            width: 90% !important;
-            border: none !important;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
-            transition: all 0.3s ease !important;
-            font-size: 20px !important;
-            font-weight: bold !important;
-            text-transform: uppercase !important;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
         }
         
         .predict-button:hover {
-            background-color: #B22222 !important;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3) !important;
+            transform: scale(1.02);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            background: linear-gradient(145deg, #CC0000, #FF4444);
         }
         
         .predict-button:active {
-            transform: translateY(1px);
+            transform: scale(0.98);
         }
     </style>
-    
-    <div class='predict-button' onclick="document.getElementById('predict-button').click();">
-        🚨 Click Here to Predict Heart Attack Risk 🚨
+
+    <div class="predict-button" 
+         onclick="document.getElementById('predict-button').click();"
+         onmouseover="this.style.opacity=0.9" 
+         onmouseout="this.style.opacity=1">
+        🔍 ANALYZE MY HEART HEALTH NOW 🔍
     </div>
-    <input type="submit" id="predict-button" style="display: none;" />
     """, unsafe_allow_html=True)
 
-    # Prediction logic triggered by the hidden button
+    # Prediction logic (must appear AFTER button declaration)
     if st.button('Predict Heart Attack Risk', key='hidden_predict_button'):
         try:
             threshold = model.named_steps['logreg'].threshold   # Retrieve the threshold

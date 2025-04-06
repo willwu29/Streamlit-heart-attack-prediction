@@ -188,7 +188,7 @@ elif st.session_state.page == 'predict':
               "Our assessment indicates you are at HIGH RISK for a heart attack.  \n"
               "Please consult a healthcare professional immediately for further evaluation.")
             else:
-                    st.success("✅ Good News! ✅  \n"
+                st.success("✅ Good News! ✅  \n"
                 "Our assessment indicates you are at LOW RISK for a heart attack.  \n"
                 "Keep up the good work and maintain a healthy lifestyle!")
             

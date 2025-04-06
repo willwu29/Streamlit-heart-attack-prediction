@@ -312,8 +312,8 @@ elif st.session_state.page == 'contact':
     """)
 
    st.markdown("""
-   ### Have questions or feedback?
-   **Email:** [willwu2912@gmail.com](willwu2912@gmail.com)  
-   **LinkedIn:** [Will Wu](https://www.linkedin.com/in/willwu2912/)  
-   """)
+       ### Have questions or feedback?
+       **Email:** [willwu2912@gmail.com](willwu2912@gmail.com)  
+       **LinkedIn:** [Will Wu](https://www.linkedin.com/in/willwu2912/)  
+       """)
 

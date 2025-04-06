@@ -224,7 +224,7 @@ elif st.session_state.page == 'predict':
         """, unsafe_allow_html=True)
 
     # Add centered container for button
-    col1, col2, col3 = st.columns([1, 5, 1])
+    col1, col2, col3 = st.columns([1, 7, 1])
     with col2:
         if st.button('Predict', 
                     use_container_width=True,
@@ -239,11 +239,11 @@ elif st.session_state.page == 'predict':
                 if prediction == 'High Risk':
                     st.error("""⚠️ **Critical Warning** ⚠️  
                             Our analysis shows **HIGH RISK** of heart attack.  
-                            Immediate medical consultation recommended!""")
+                            Please consult a healthcare professional immediately for further evaluation.""")
                 else:
                     st.success("""✅ **Good News** ✅  
                             Our analysis shows **LOW RISK** of heart attack.  
-                            Maintain healthy habits!""")
+                            Keep up the good work and maintain a healthy lifestyle!""")
                     
                 st.markdown("---")
                 st.info("💡 **Recommendation:** Validate results using 🧮 Additional Calculators")

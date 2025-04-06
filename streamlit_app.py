@@ -224,7 +224,7 @@ elif st.session_state.page == 'predict':
         """, unsafe_allow_html=True)
 
     # Add centered container for button
-    col1, col2, col3 = st.columns([1, 3, 1])
+    col1, col2, col3 = st.columns([1, 5, 1])
     with col2:
         if st.button('Predict', 
                     use_container_width=True,

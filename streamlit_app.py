@@ -196,47 +196,48 @@ elif st.session_state.page == 'predict':
     input_df = pd.DataFrame([input_data], columns=input_columns)
 
 
+    # Add this CSS at the top (under imports)
     st.markdown("""
     <style>
-        /* Custom styled button container */
-        .predict-container {
-            display: flex;
-            justify-content: center;
-            margin: 40px 0;
-        }
-        
-        /* Actual clickable button styling */
-        .predict-button {
+        .heart-button {
             background: linear-gradient(145deg, #ff4444, #cc0000);
             color: white !important;
             border-radius: 15px;
             padding: 25px 40px;
             text-align: center;
             cursor: pointer;
+            margin: 40px auto;
+            width: 80%;
             box-shadow: 0 6px 12px rgba(0,0,0,0.2);
             border: none;
             font-size: 22px;
             font-weight: bold;
             text-transform: uppercase;
             transition: all 0.3s ease;
-            width: 80%;
+            display: block;
         }
-
-        .predict-button:hover {
+    
+        .heart-button:hover {
             transform: scale(1.03);
             box-shadow: 0 8px 16px rgba(0,0,0,0.3);
             background: linear-gradient(145deg, #cc0000, #ff4444);
         }
     
-        .predict-button:active {
+        .heart-button:active {
             transform: scale(0.97);
         }
     </style>
     """, unsafe_allow_html=True)
-
-    # Create a hidden button for functionality
-    if st.button('', key='hidden_predict_button', help=""):
-        # Your existing prediction logic here
+    
+    # Visible styled button
+    st.markdown("""
+    <div class="heart-button" onclick="this.style.opacity=0.7; setTimeout(()=>this.style.opacity=1, 200); document.getElementById('predict-trigger').click();">
+        🔍 PREDICT HEART ATTACK RISK NOW 🔍
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Hidden functional button (no visual presence)
+    if st.button('', key='predict-trigger', help=""):
         try:
             threshold = model.named_steps['logreg'].threshold
             proba = model.predict_proba(input_df)[0][1]
@@ -256,16 +257,6 @@ elif st.session_state.page == 'predict':
     
         except Exception as e:
             st.error(f"System Alert: Prediction Error - {str(e)}")
-    
-    # Create the visible styled button that triggers the hidden button
-    st.markdown("""
-    <div class="predict-container">
-        <div class="predict-button" onclick="document.getElementById('hidden_predict_button').click();">
-            🔍 PREDICT HEART ATTACK RISK NOW 🔍
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-        
 
 
 # Add the new page handler

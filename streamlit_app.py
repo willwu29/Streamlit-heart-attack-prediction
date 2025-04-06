@@ -8,22 +8,43 @@ from imblearn.pipeline import Pipeline
 # Custom CSS for sidebar styling
 st.markdown("""
 <style>
-    [data-testid="stSidebar"] {
-        min-width: 280px !important;
-        max-width: 280px !important;
+    /* Custom styles for main prediction button */
+    div[data-testid="stVerticalBlock"] > div[data-testid="stHorizontalBlock"] > div.stButton > button {
+        background-color: #FF4444 !important;
+        color: white !important;
+        border-radius: 8px !important;
+        padding: 20px 30px !important;
+        font-size: 20px !important;
+        font-weight: bold !important;
+        border: none !important;
+        width: 100% !important;
+        margin: 20px auto !important;
+        display: block !important;
+        transition: all 0.3s ease !important;
     }
-    .stButton>button {
-        width: 100%;
-        justify-content: left;
-        padding: 0.5rem 1rem;
-        margin: 0.25rem 0;
-        background-color: transparent; /* Make the background transparent */
-        border: none; /* Remove button borders */
-        color: #333; /* Adjust button text color */
+
+    div[data-testid="stVerticalBlock"] > div[data-testid="stHorizontalBlock"] > div.stButton > button:hover {
+        background-color: #CC0000 !important;
+        transform: scale(1.05) !important;
     }
-    .stButton>button:hover {
-        background-color: #f0f2f6; /* Subtle hover effect */
-        color: #FF5733; /* Text color on hover */
+
+    /* Specific styles for sidebar buttons */
+    [data-testid="stSidebar"] .stButton>button {
+        width: 100% !important;
+        justify-content: left !important;
+        padding: 0.5rem 1rem !important;
+        margin: 0.25rem 0 !important;
+        background-color: transparent !important;
+        border: none !important;
+        color: #333 !important;
+        font-weight: normal !important;
+        box-shadow: none !important;
+    }
+
+    [data-testid="stSidebar"] .stButton>button:hover {
+        background-color: #f0f2f6 !important;
+        color: #FF5733 !important;
+        transform: none !important;
     }
 </style>
 """, unsafe_allow_html=True)

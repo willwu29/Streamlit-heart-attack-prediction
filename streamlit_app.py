@@ -42,14 +42,6 @@ if 'page' not in st.session_state:
 # Sidebar navigation
 with st.sidebar:
     st.markdown("## Navigation")
-
-# Initialize session state
-if 'page' not in st.session_state:
-    st.session_state.page = 'welcome'
-
-# Sidebar navigation
-with st.sidebar:
-    st.markdown("## Navigation")
     
     # Create navigation buttons without a container
     pages = {

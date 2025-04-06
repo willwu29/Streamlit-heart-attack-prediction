@@ -35,13 +35,13 @@ with st.sidebar:
     
     # Create navigation buttons
     pages = {
-        '🏠 Welcome': 'welcome',
-        '📊 EDA Findings': 'eda',
-        '📝 Risk Assessment': 'predict',
-        '🤖 ML Insights': 'ml',
-        '📧 Contact': 'contact'
-    }
-    
+    '🏠 Welcome': 'welcome',
+    '📊 EDA Findings': 'eda',
+    '📝 Risk Assessment': 'predict',
+    '🧮 Additional Calculators': 'calculators',  # New entry
+    '🤖 ML Insights': 'ml',
+    '📧 Contact': 'contact'
+}
     for label, page_key in pages.items():
         if st.button(label, key=page_key, 
                     use_container_width=True,
@@ -196,20 +196,26 @@ elif st.session_state.page == 'predict':
         except Exception as e:
             st.error(f"An error occurred while making the prediction: {str(e)}")
 
-
-        # Add this AFTER your existing prediction logic
-    st.markdown("---")
+# Add the new page handler
+elif st.session_state.page == 'calculators':
+    st.header("🧮 Additional Heart Health Calculators")
     st.markdown("""
-    <div style='margin-top: 40px;'>
-        <h3>Additional Cardiovascular Risk Assessment Tools</h3>
-        <p>For comprehensive risk evaluation, consider using the official American Heart Association tool:</p>
-        <a href="https://professional.heart.org/en/guidelines-and-statements/prevent-calculator" 
-           target="_blank" 
-           style='display: inline-block; padding: 12px 24px; background-color: #FF5733; color: white; 
-                  border-radius: 8px; text-decoration: none; margin-top: 15px;'>
-            🩺 AHA PREVENT™ Calculator
-        </a>
-    </div>
+    ### Reputable External Risk Assessment Tools:
+    
+    **1. American Heart Association PREVENT™ Calculator**  
+    *For cardiovascular disease risk assessment in adults 30-79 years*  
+    [Access Calculator](https://professional.heart.org/en/guidelines-and-statements/prevent-calculator){target="_blank"}
+    
+    **2. ACC ASCVD Risk Estimator Plus**  
+    *Atherosclerotic Cardiovascular Disease (ASCVD) Risk Prediction*  
+    [Access Calculator](https://tools.acc.org/ascvd-risk-estimator-plus/#!/calculate/estimate/){target="_blank"}
+    
+    ---
+    ### Important Notes:
+    - These are third-party tools hosted by reputable medical organizations
+    - Opens in new browser tab for security
+    - Results should always be discussed with a healthcare provider
+    - Our app's predictions should not replace these clinical tools
     """, unsafe_allow_html=True)
 
 
@@ -228,6 +234,7 @@ elif st.session_state.page == 'ml':
     - Diabetes History
     - Physical Activity Levels
     """)
+
 
 elif st.session_state.page == 'contact':
     st.header("📧 About Me")

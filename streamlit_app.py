@@ -312,7 +312,7 @@ elif st.session_state.page == 'contact':
     """)
 
     # Optionally, you can provide some markdown description
-    st.markdown("Click the button above to download my CV.")
+    st.markdown("""### Access to my CV:""")
 
     # Create a download button for your CV
     with open('/mount/src/streamlit-heart-attack-prediction/CV-WillWu.pdf', 'rb') as file:

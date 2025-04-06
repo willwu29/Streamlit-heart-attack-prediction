@@ -195,7 +195,6 @@ elif st.session_state.page == 'predict':
 
     input_df = pd.DataFrame([input_data], columns=input_columns)
 
-    
     # Prediction logic
     with st.container():
     st.markdown("""<div id="hidden-button-container" style="display: none;">""", unsafe_allow_html=True)
@@ -222,43 +221,43 @@ elif st.session_state.page == 'predict':
             st.error(f"An error occurred while making the prediction: {str(e)}")
     st.markdown("</div>", unsafe_allow_html=True)
 
-# Enhanced styled button with proper connection
-st.markdown("""
-<style>
-    .predict-button {
-        background: linear-gradient(145deg, #FF4444, #CC0000);
-        color: white !important;
-        border-radius: 12px;
-        padding: 20px;
-        text-align: center;
-        cursor: pointer;
-        margin: 20px 0;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        transition: all 0.3s ease;
-        border: 2px solid white;
-        font-size: 20px;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
+    # Enhanced styled button with proper connection
+    st.markdown("""
+    <style>
+        .predict-button {
+            background: linear-gradient(145deg, #FF4444, #CC0000);
+            color: white !important;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .predict-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            background: linear-gradient(145deg, #CC0000, #FF4444);
+        }
+        
+        .predict-button:active {
+            transform: scale(0.98);
+        }
+    </style>
     
-    .predict-button:hover {
-        transform: scale(1.02);
-        box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-        background: linear-gradient(145deg, #CC0000, #FF4444);
-    }
-    
-    .predict-button:active {
-        transform: scale(0.98);
-    }
-</style>
-
-<div class="predict-button" 
-     onclick="document.querySelector('#hidden-button-container button').click();"
-     onmouseover="this.style.opacity=0.9" 
-     onmouseout="this.style.opacity=1">
-    🔍 ANALYZE MY HEART HEALTH NOW 🔍
-</div>
-""", unsafe_allow_html=True)
+    <div class="predict-button" 
+         onclick="document.querySelector('#hidden-button-container button').click();"
+         onmouseover="this.style.opacity=0.9" 
+         onmouseout="this.style.opacity=1">
+        🔍 ANALYZE MY HEART HEALTH NOW 🔍
+    </div>
+    """, unsafe_allow_html=True)
             
 # Add the new page handler
 elif st.session_state.page == 'calculators':

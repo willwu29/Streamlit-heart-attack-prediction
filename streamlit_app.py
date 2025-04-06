@@ -195,9 +195,9 @@ elif st.session_state.page == 'predict':
 
     input_df = pd.DataFrame([input_data], columns=input_columns)
 
-# -- Hidden Button Container (properly indented) --
+    # -- Hidden Button Container (properly indented) --
     with st.container():  # This line starts at left margin
-    st.markdown("""<div id="hidden-button-container" style="display: none;">""", unsafe_allow_html=True)
+        st.markdown("""<div id="hidden-button-container" style="display: none;">""", unsafe_allow_html=True)
     
     # Actual Streamlit button (indented under container)
     if st.button('Predict Heart Attack Risk', key='hidden_predict_button'):

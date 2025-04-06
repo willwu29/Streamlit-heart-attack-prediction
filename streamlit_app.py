@@ -83,27 +83,36 @@ if st.session_state.page == 'welcome':
     st.markdown("""
     ## Welcome to the Heart Attack Prediction App
     
-    This application aims to assess your risk of experiencing a heart attack based on various health and lifestyle factors. 
-    By filling out the information in the Risk Assessment section, the app will use a trained machine learning model to provide a risk assessment.
-    
+    This application aims to assess your risk of experiencing a heart attack based on various health and lifestyle factors using advanced machine learning models.
+
+    ### Problem
+    1. Heart attacks are a leading cause of death in the U.S., impacting over 800,000 individuals annually
+    2. Gaps in existing cardiovascular risk calculators:
+        - Strict age restrictions (30–79 years) exclude younger/older populations
+        - Require blood-test-dependent inputs (cholesterol levels) limiting accessibility
+
+    ### Solution
+    1. **Proactive Risk Identification**:  
+       ML-powered early detection system enabling preventive actions
+    2. **Higher Accessibility**:
+        - Broad age eligibility (18+ years)
+        - Uses readily available health indicators (no lab tests required)
+
     ### How to Use:
     1. Navigate to 📝 **Risk Assessment** using the sidebar
     2. Provide your health information
     3. Get instant prediction results
-    
+
     ### Key Features:
-    - Machine learning-powered risk assessment
-    - Exploratory data analysis of health factors
-    - Detailed model explanations
-    
+    - Demographic & lifestyle factor analysis
+    - Clinical calculator integration
+    - Transparent ML explanations
+    - Multi-dimensional health assessment
+
     ### Disclaimer:
-    This application is for informational purposes only and should not replace professional medical advice.
+    This tool provides risk estimates, not medical diagnoses. Always consult a healthcare professional about cardiovascular health decisions.
     """)
 
-elif st.session_state.page == 'eda':
-    st.header("📊 Exploratory Data Analysis")
-    st.subheader("Key Insights from Health Data")
-    st.write("Coming Soon: Interactive visualizations...")
 
 elif st.session_state.page == 'predict':
     # Your original Risk Assessment code
@@ -203,7 +212,16 @@ elif st.session_state.page == 'predict':
     input_df = pd.DataFrame([input_data], columns=input_columns)
 
 
-    # Your existing prediction button code
+    # Click the button to predict
+        st.markdown("""
+        <div style="background-color: #FFF3E0; padding: 20px; border-radius: 10px; margin: 25px 0; border-left: 5px solid #FF5733;">
+            <h4 style="color: #FF5733; margin-bottom: 15px;">🚨 Ready to Check Your Risk?</h4>
+            <p style="color: #555; margin-bottom: 0;">
+            Click below to get your personalized heart attack risk assessment based on your provided health information.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
     if st.button('Predict Heart Attack Risk'):
         try:
             threshold = model.named_steps['logreg'].threshold
@@ -303,7 +321,14 @@ elif st.session_state.page == 'calculators':
     </div>
     """, unsafe_allow_html=True)
 
+# EDA Section
+elif st.session_state.page == 'eda':
+    st.header("📊 Exploratory Data Analysis")
+    st.subheader("Key Insights from Health Data")
+    st.write("Coming Soon: Interactive visualizations...")
 
+
+# ML Section
 elif st.session_state.page == 'ml':
     st.header("🤖 Machine Learning Details")
     st.markdown("""

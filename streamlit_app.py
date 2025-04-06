@@ -191,12 +191,11 @@ elif st.session_state.page == 'predict':
             if prediction == 'High Risk':
                 st.error("⚠️ Warning! ⚠️  \n"
                           "Our assessment indicates you are at HIGH RISK for a heart attack.  \n"
-                          "Please consult a healthcare professional immediately for further evaluation. ")
+                          "Please consult a healthcare professional immediately for further evaluation.")
             else:
                 st.success("✅ Good News! ✅  \n"
                           "Our assessment indicates you are at LOW RISK for a heart attack.  \n"
-                          "Keep up the good work and maintain a healthy lifestyle! \n"
-                          "Keep up the good work and maintain a healthy lifestyle! ")
+                          "Keep up the good work and maintain a healthy lifestyle!")
                 
             # Encouragement to validate results
             st.markdown("<h5 style='margin-top: 20px;'>Feel free to go to 🧮 Additional Calculators for validation.</h5>", unsafe_allow_html=True)

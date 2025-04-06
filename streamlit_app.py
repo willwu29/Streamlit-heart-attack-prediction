@@ -210,7 +210,7 @@ elif st.session_state.page == 'ml':
     """)
 
 elif st.session_state.page == 'contact':
-    st.header("📧 Contact & Support")
+    st.header("📧 About Me")
     st.markdown("""
     ### Have questions or feedback?
     **Email:** healthcare-analytics@example.com  

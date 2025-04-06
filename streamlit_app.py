@@ -311,8 +311,16 @@ elif st.session_state.page == 'contact':
     **LinkedIn:** [Will Wu](https://www.linkedin.com/in/willwu2912/)  
     """)
 
-    st.markdown("""
-### Want to know more about me?
-**CV:** [Download my CV](src/CV%20-%20Will%20Wu.pdf)
-""")
+    # Optionally, you can provide some markdown description
+    st.markdown("Click the button above to download my CV.")
+
+    # Create a download button for your CV
+    with open("my_cv.pdf", "rb") as file:
+        st.download_button(
+            label="Download CV",
+            data=file,
+            file_name="CV-WillWu.pdf",
+            mime="application/pdf"
+        )
+
 

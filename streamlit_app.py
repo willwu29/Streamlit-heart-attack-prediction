@@ -181,9 +181,18 @@ elif st.session_state.page == 'predict':
 
     # Prediction logic
     # Styled button text
-    st.markdown("<h4 style='color: #FF5733; font-weight: bold; text-align: center;'>Predict Heart Attack Risk</h4>", unsafe_allow_html=True)
+    # Styled button for prediction
+    st.markdown("""
+    <div style='background-color: #FF5733; color: white; border-radius: 8px; padding: 10px; text-align: center; cursor: pointer; margin: 20px auto; width: 80%;'>
+        <a href="javascript:void(0);" onclick="document.getElementById('predict-button').click();" style='text-decoration: none; color: white; font-weight: bold; font-size: 16px;'>
+            Predict Heart Attack Risk
+        </a>
+    </div>
+    <input type="submit" id="predict-button" style="display: none;" />
+    """, unsafe_allow_html=True)
     
-    if st.button('Predict Heart Attack Risk'):
+    # Prediction logic triggered by the hidden button
+    if st.button('Predict Heart Attack Risk', key='hidden_predict_button'):
         try:
             threshold = model.named_steps['logreg'].threshold   # Retrieve the threshold
             proba = model.predict_proba(input_df)[0][1]    # Make soft predictions

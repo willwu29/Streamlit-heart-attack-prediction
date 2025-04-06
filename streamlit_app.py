@@ -195,109 +195,77 @@ elif st.session_state.page == 'predict':
 
     input_df = pd.DataFrame([input_data], columns=input_columns)
 
-    # -- Hidden Button Container (properly indented) --
-# Add this CSS at the top of your script (under imports)
+
     st.markdown("""
     <style>
-        .heart-button {
+        /* Custom styled button container */
+        .predict-container {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        
+        /* Actual clickable button styling */
+        .predict-button {
             background: linear-gradient(145deg, #ff4444, #cc0000);
             color: white !important;
             border-radius: 15px;
             padding: 25px 40px;
             text-align: center;
             cursor: pointer;
-            margin: 30px auto;
-            width: 80%;
             box-shadow: 0 6px 12px rgba(0,0,0,0.2);
             border: none;
             font-size: 22px;
             font-weight: bold;
             text-transform: uppercase;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
+            transition: all 0.3s ease;
+            width: 80%;
         }
-    
-        .heart-button:hover {
+
+        .predict-button:hover {
             transform: scale(1.03);
             box-shadow: 0 8px 16px rgba(0,0,0,0.3);
             background: linear-gradient(145deg, #cc0000, #ff4444);
         }
     
-        .heart-button:active {
+        .predict-button:active {
             transform: scale(0.97);
-        }
-    
-        .pulse {
-            animation: pulse-animation 2s infinite;
-        }
-    
-        @keyframes pulse-animation {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
         }
     </style>
     """, unsafe_allow_html=True)
-    
-    # Then where your button should be placed (after form inputs):
-    st.markdown("""
-    <div class="heart-button pulse" onclick="handlePrediction()">
-        🔍 PREDICT HEART ATTACK RISK NOW 🔍
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # JavaScript handler
-    st.components.v1.html("""
-    <script>
-    function handlePrediction() {
-        // Trigger Streamlit button click
-        window.parent.postMessage({
-            type: 'streamlit:componentReady',
-            apiToken: Math.random().toString(36).substr(2)
-        }, '*');
-        
-        // Add temporary click effect
-        const btn = document.querySelector('.heart-button');
-        btn.style.transform = 'scale(0.95)';
-        setTimeout(() => { btn.style.transform = 'scale(1)'; }, 200);
-    }
-    </script>
-    """)
-    
-    # Your prediction logic (modified for single button)
-    if 'prediction_made' not in st.session_state:
-        st.session_state.prediction_made = False
-    
-    if not st.session_state.prediction_made:
+
+    # Create a hidden button for functionality
+    if st.button('', key='hidden_predict_button', help=""):
+        # Your existing prediction logic here
         try:
-            # Trigger when JavaScript sends message
-            if st._component_ready():
-                st.session_state.prediction_made = True
-                
-                # Your existing prediction logic
-                threshold = model.named_steps['logreg'].threshold
-                proba = model.predict_proba(input_df)[0][1]
-                prediction = 'High Risk' if proba >= threshold else 'Low Risk'
-                
-                st.subheader('Results')
-                if prediction == 'High Risk':
-                    st.error("⚠️ CRITICAL WARNING ⚠️  \n"
-                            "Immediate Heart Attack Risk Detected!  \n"
-                            "Urgent medical consultation required.")
-                else:
-                    st.success("✅ LOW RISK DETECTED ✅  \n"
-                              "Maintain healthy habits and regular checkups.")
-                
-                st.markdown("<h5 style='margin-top:20px;'>Validate with 🧮 Additional Calculators</h5>", 
-                           unsafe_allow_html=True)
+            threshold = model.named_steps['logreg'].threshold
+            proba = model.predict_proba(input_df)[0][1]
+            prediction = 'High Risk' if proba >= threshold else 'Low Risk'
+            
+            st.subheader('Results')
+            if prediction == 'High Risk':
+                st.error("⚠️ CRITICAL WARNING ⚠️  \n"
+                        "Immediate Heart Attack Risk Detected!  \n"
+                        "Urgent medical consultation required.")
+            else:
+                st.success("✅ LOW RISK DETECTED ✅  \n"
+                          "Maintain healthy habits and regular checkups.")
+            
+            st.markdown("<h5 style='margin-top:20px;'>Validate with 🧮 Additional Calculators</h5>", 
+                       unsafe_allow_html=True)
     
         except Exception as e:
             st.error(f"System Alert: Prediction Error - {str(e)}")
-            st.session_state.prediction_made = False
     
+    # Create the visible styled button that triggers the hidden button
+    st.markdown("""
+    <div class="predict-container">
+        <div class="predict-button" onclick="document.getElementById('hidden_predict_button').click();">
+            🔍 PREDICT HEART ATTACK RISK NOW 🔍
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+        
 
 
 # Add the new page handler

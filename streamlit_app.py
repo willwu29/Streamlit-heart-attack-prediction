@@ -285,6 +285,11 @@ elif st.session_state.page == 'ml':
     - Smoking Status
     - Diabetes History
     - Physical Activity Levels
+
+    ### Data Privacy
+    - No personal data is stored
+    - All predictions are transient
+    - Anonymous usage statistics only
     """)
 
 
@@ -292,11 +297,8 @@ elif st.session_state.page == 'contact':
     st.header("📧 About Me")
     st.markdown("""
     ### Have questions or feedback?
-    **Email:** healthcare-analytics@example.com  
-    **Support Hours:** Mon-Fri 9AM-5PM EST  
+    **Email:** [willwu2912@gmail.com](willwu2912@gmail.com)  
+    **LinkedIn:** [Will Wu](https://www.linkedin.com/in/willwu2912/)  
     
-    ### Data Privacy
-    - No personal data is stored
-    - All predictions are transient
-    - Anonymous usage statistics only
+
     """)

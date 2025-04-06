@@ -213,6 +213,7 @@ elif st.session_state.page == 'predict':
 
 
     # Click the button to predict
+       # Click the button to predict
     st.markdown("""
         <div style="background-color: #FFF3E0; padding: 20px; border-radius: 10px; margin: 25px 0; border-left: 5px solid #FF5733;">
             <h4 style="color: #FF5733; margin-bottom: 15px;">🚨 Ready to Check Your Risk?</h4>
@@ -222,30 +223,34 @@ elif st.session_state.page == 'predict':
         </div>
         """, unsafe_allow_html=True)
 
-    if st.button('Predict'):
-        try:
-            threshold = model.named_steps['logreg'].threshold
-            proba = model.predict_proba(input_df)[0][1]
-            prediction = 'High Risk' if proba >= threshold else 'Low Risk'
-            
-            st.subheader('Results')
-            if prediction == 'High Risk':
-                st.error("""⚠️ **Critical Warning** ⚠️  
-                        Our analysis shows **HIGH RISK** of heart attack.  
-                        Immediate medical consultation recommended!""")
-            else:
-                st.success("""✅ **Good News** ✅  
-                          Our analysis shows **LOW RISK** of heart attack.  
-                          Maintain healthy habits!""")
+    # Add centered container for button
+    col1, col2, col3 = st.columns([1, 3, 1])
+    with col2:
+        if st.button('Predict', 
+                    use_container_width=True,
+                    help="Analyze your risk factors",
+                    type="primary"):
+            try:
+                threshold = model.named_steps['logreg'].threshold
+                proba = model.predict_proba(input_df)[0][1]
+                prediction = 'High Risk' if proba >= threshold else 'Low Risk'
                 
-            st.markdown("---")
-            st.info("💡 **Recommendation:** Validate results using 🧮 Additional Calculators")
-    
-        except Exception as e:
-            st.error(f"System error: {str(e)}")
-
-    
-
+                st.subheader('Results')
+                if prediction == 'High Risk':
+                    st.error("""⚠️ **Critical Warning** ⚠️  
+                            Our analysis shows **HIGH RISK** of heart attack.  
+                            Immediate medical consultation recommended!""")
+                else:
+                    st.success("""✅ **Good News** ✅  
+                            Our analysis shows **LOW RISK** of heart attack.  
+                            Maintain healthy habits!""")
+                    
+                st.markdown("---")
+                st.info("💡 **Recommendation:** Validate results using 🧮 Additional Calculators")
+        
+            except Exception as e:
+                st.error(f"System error: {str(e)}")
+                
 
 # Add the new page handler
 elif st.session_state.page == 'calculators':

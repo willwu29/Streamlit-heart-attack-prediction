@@ -17,27 +17,28 @@ st.markdown("""
         justify-content: left;
         padding: 0.5rem 1rem;
         margin: 0.25rem 0;
-        background-color: transparent; /* Make the background transparent */
-        border: none; /* Remove button borders */
-        color: #333; /* Adjust button text color */
     }
     .stButton>button:hover {
-        background-color: #f0f2f6; /* Subtle hover effect */
-        color: #FF5733; /* Text color on hover */
+        background-color: #f0f2f6;
+        color: #FF5733;
     }
 </style>
 """, unsafe_allow_html=True)
 
+# Initialize session state
+if 'page' not in st.session_state:
+    st.session_state.page = 'welcome'
+
 # Sidebar navigation
 with st.sidebar:
     st.markdown("## Navigation")
-
+    
     # Create navigation buttons without a container
     pages = {
         '🏠 Welcome': 'welcome',
         '📝 Risk Assessment': 'predict',
         '🧮 Additional Calculators': 'calculators', 
-        '📊 Data Visualization and Analysis': 'eda',  
+        '📊 Data Visualization and Analysis': 'eda',  # Renamed and rearranged
         '🤖 ML Insights': 'ml',
         '📧 Contact': 'contact'
     }

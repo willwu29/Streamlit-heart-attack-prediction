@@ -296,11 +296,20 @@ elif st.session_state.page == 'ml':
 elif st.session_state.page == 'contact':
     st.header("📧 About Me")
     st.markdown("""
-    Hello there! I'm Will Wu. I’m passionate about harnessing the power of data to tackle problems. My journey started as a trader at Morgan Stanley, where I made numerous trade execution decisions based on data—this is where my love for data analytics, machine learning, and automation truly took off! To further hone my skills, I enrolled in a data science bootcamp at BrainStation. Now, I’m equipped to blend machine learning with my problem-solving, collaboration, and research abilities to tackle complex challenges and create meaningful data-driven solutions. My top skills are Python, SQL, Tableau, and Spark. \nExcited to connect and share insights!""")
+    Hello there! I'm Will Wu. I’m passionate about harnessing the power of data to tackle problems. My journey started as a trader at Morgan Stanley, where I made numerous trade execution decisions based on data—this is where my love for data analytics, machine learning, and automation truly took off! 
+    
+    To further hone my skills, I enrolled in a data science bootcamp at BrainStation. Now, I’m equipped to blend machine learning with my problem-solving, collaboration, and research abilities to tackle complex challenges and create meaningful data-driven solutions. 
+    
+    My top skills are Python, SQL, Tableau, and Spark. Excited to connect and share insights!
+    """)
+    
     st.markdown("""
     ### Have questions or feedback?
     **Email:** [willwu2912@gmail.com](willwu2912@gmail.com)  
     **LinkedIn:** [Will Wu](https://www.linkedin.com/in/willwu2912/)  
-    
+    """)
 
+   st.markdown("""
+    ### Want to know more about me?
+    **CV:** [Download my CV](src/CV - Will Wu.pdf)
     """)

@@ -75,7 +75,9 @@ def load_model():
     
 model = load_model()
 
-# Page content handling
+
+
+# Welcome Page
 if st.session_state.page == 'welcome':
     # Title Section
     st.markdown("<h1 style='font-size: 48px; text-align: center; color: #FF5733;'>❤️ Heart Attack Risk Assessor</h1>", unsafe_allow_html=True)
@@ -85,92 +87,86 @@ if st.session_state.page == 'welcome':
     st.markdown("## 🚀 How It Works")
     with st.container():
         cols = st.columns(4)
-        with cols[0]:
-            st.markdown("""
-            <div style='padding: 15px; border-radius: 10px; background-color: #f8f9fa; min-height: 180px;'>
-                <h3 style='color: #FF5733; margin-top:0;'>1. Assess</h3>
-                <p style='font-size: 14px;'>📝 <strong>Risk Assessment</strong><br>
-                Evaluate your heart attack risk using our ML model</p>
-            </div>
-            """, unsafe_allow_html=True)
-        with cols[1]:
-            st.markdown("""
-            <div style='padding: 15px; border-radius: 10px; background-color: #f8f9fa; min-height: 180px;'>
-                <h3 style='color: #FF5733; margin-top:0;'>2. Validate</h3>
-                <p style='font-size: 14px;'>🧮 <strong>Calculators</strong><br>
-                Cross-check results with clinical tools</p>
-            </div>
-            """, unsafe_allow_html=True)
-        with cols[2]:
-            st.markdown("""
-            <div style='padding: 15px; border-radius: 10px; background-color: #f8f9fa; min-height: 180px;'>
-                <h3 style='color: #FF5733; margin-top:0;'>3. Explore</h3>
-                <p style='font-size: 14px;'>📊 <strong>Data Analysis</strong><br>
-                Understand heart attack statistics</p>
-            </div>
-            """, unsafe_allow_html=True)
-        with cols[3]:
-            st.markdown("""
-            <div style='padding: 15px; border-radius: 10px; background-color: #f8f9fa; min-height: 180px;'>
-                <h3 style='color: #FF5733; margin-top:0;'>4. Learn</h3>
-                <p style='font-size: 14px;'>🤖 <strong>ML Insights</strong><br>
-                Discover our prediction model</p>
-            </div>
-            """, unsafe_allow_html=True)
+        box_style = """
+            padding: 15px; 
+            border-radius: 10px; 
+            background-color: #f8f9fa; 
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        """
+        
+        step_content = [
+            ("1. Assess", "📝 Risk Assessment", "Evaluate heart attack risk using our ML model"),
+            ("2. Validate", "🧮 Calculators", "Cross-check with clinical tools"),
+            ("3. Explore", "📊 Data Analysis", "Understand heart attack statistics"),
+            ("4. Learn", "🤖 ML Insights", "Discover our prediction model")
+        ]
 
-    # Problem & Solution Section
+        for i, (step_num, title, text) in enumerate(step_content):
+            with cols[i]:
+                st.markdown(f"""
+                <div style='{box_style}'>
+                    <div>
+                        <h3 style='color: #FF5733; margin:0; font-size: 24px;'>{step_num}</h3>
+                        <p style='font-size: 32px; margin: 10px 0;'>{title.split()[0]}</p>
+                    </div>
+                    <p style='font-size: 14px; margin:0; line-height: 1.4;'>{text}</p>
+                </div>
+                """, unsafe_allow_html=True)
+
+    # Problem & Solution Section - Vertical Layout
     st.markdown("## 📌 Why This Matters")
-    col_prob, col_sol = st.columns(2)
-    with col_prob:
-        st.markdown("""
-        <div style='padding: 20px; background-color: #fff3e0; border-radius: 10px;'>
-            <h4 style='color: #d32f2f; margin-top:0;'>🚨 The Challenge</h4>
-            <ul style='font-size: 14px;'>
-                <li>Leading cause of US deaths (800k+ annually)</li>
-                <li>Existing tools exclude 18-29 age group</li>
-                <li>Blood test requirements limit access</li>
-            </ul>
-        </div>
-        """, unsafe_allow_html=True)
-    with col_sol:
-        st.markdown("""
-        <div style='padding: 20px; background-color: #e8f5e9; border-radius: 10px;'>
-            <h4 style='color: #2e7d32; margin-top:0;'>✅ Our Solution</h4>
-            <ul style='font-size: 14px;'>
-                <li>No lab tests required</li>
-                <li>Available for adults 18+</li>
-                <li>Instant risk assessment</li>
-            </ul>
-        </div>
-        """, unsafe_allow_html=True)
-
-    # Key Features Grid
-    st.markdown("## 🔑 Key Features")
-    features = [
-        ("📈", "Demographic Analysis", "Age, lifestyle & health factors"),
-        ("🩺", "Clinical Integration", "Medical calculator validation"),
-        ("🤖", "Transparent AI", "ML model explanations"),
-        ("📊", "Health Insights", "Multi-dimensional analysis")
-    ]
-    cols = st.columns(4)
-    for i, (emoji, title, text) in enumerate(features):
-        with cols[i]:
-            st.markdown(f"""
-            <div style='padding: 15px; text-align: center; border: 1px solid #eee; border-radius: 10px; margin: 5px;'>
-                <div style='font-size: 32px;'>{emoji}</div>
-                <h4 style='margin: 10px 0; color: #FF5733;'>{title}</h4>
-                <p style='font-size: 14px; color: #666;'>{text}</p>
-            </div>
-            """, unsafe_allow_html=True)
-
-    # Disclaimer
+    
+    # Challenge Section
     st.markdown("""
-    <div style='background-color: #fff3e0; padding: 15px; border-radius: 10px; border-left: 5px solid #ff5733; margin: 20px 0;'>
-        <p style='color: #333; margin: 0;'>⚠️ <strong>Disclaimer:</strong> This tool provides risk estimates, not medical diagnoses. Always consult a healthcare professional.</p>
+    <div style='
+        padding: 20px; 
+        background-color: #fff3e0; 
+        border-radius: 10px;
+        margin-bottom: 20px;
+    '>
+        <h4 style='color: #d32f2f; margin-top:0;'>🚨 The Challenge</h4>
+        <ul style='font-size: 14px; padding-left: 20px;'>
+            <li>Leading cause of US deaths (800k+ annually)</li>
+            <li>Existing tools exclude 18-29 age group</li>
+            <li>Blood test requirements limit access</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Solution Section
+    st.markdown("""
+    <div style='
+        padding: 20px; 
+        background-color: #e8f5e9; 
+        border-radius: 10px;
+        margin-bottom: 20px;
+    '>
+        <h4 style='color: #2e7d32; margin-top:0;'>✅ Our Solution</h4>
+        <ul style='font-size: 14px; padding-left: 20px;'>
+            <li>No lab tests required</li>
+            <li>Available for adults 18+</li>
+            <li>Instant risk assessment</li>
+        </ul>
     </div>
     """, unsafe_allow_html=True)
 
-
+    # Disclaimer
+    st.markdown("""
+    <div style='
+        background-color: #fff3e0; 
+        padding: 15px; 
+        border-radius: 10px; 
+        border-left: 5px solid #ff5733; 
+        margin: 20px 0;
+    '>
+        <p style='color: #333; margin: 0;'>
+            ⚠️ <strong>Disclaimer:</strong> This tool provides risk estimates, not medical diagnoses. Always consult a healthcare professional.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
 # Risk Assessment page
 elif st.session_state.page == 'predict':

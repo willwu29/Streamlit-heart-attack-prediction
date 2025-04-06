@@ -179,7 +179,7 @@ elif st.session_state.page == 'predict':
     # Prediction logic
     if st.button('Predict Heart Attack Risk'):
         try:
-            threshold = model.threshold
+            threshold = model.name_steps['logreg']
             st.write(f'{threshold}')
             proba = model.predict_proba(input_df)[0][1]
             prediction = 'High Risk' if proba >= threshold else 'Low Risk'

@@ -153,20 +153,7 @@ if st.session_state.page == 'welcome':
     </div>
     """, unsafe_allow_html=True)
 
-    # Disclaimer
-    st.markdown("""
-    <div style='
-        background-color: #fff3e0; 
-        padding: 15px; 
-        border-radius: 10px; 
-        border-left: 5px solid #ff5733; 
-        margin: 20px 0;
-    '>
-        <p style='color: #333; margin: 0;'>
-            ⚠️ <strong>Disclaimer:</strong> This tool provides risk estimates, not medical diagnoses. Always consult a healthcare professional.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+
 
 # Risk Assessment page
 elif st.session_state.page == 'predict':

@@ -15,15 +15,22 @@ st.markdown("""
     .stButton>button {
         width: 100%;
         justify-content: left;
-        padding: 0.5rem 1rem;
-        margin: 0.25rem 0;
-        background-color: transparent; /* Make the background transparent */
-        border: none; /* Remove button borders */
-        color: #333; /* Adjust button text color */
+        padding: 0.4rem 1rem !important;  /* Reduced vertical padding */
+        margin: 0.1rem 0 !important;      /* Reduced vertical margin */
+        background-color: #f0f2f6 !important;  /* Match sidebar color */
+        border: none !important;
+        color: #333 !important;
+        border-radius: 4px !important;
+        transition: all 0.2s !important;
     }
     .stButton>button:hover {
-        background-color: #f0f2f6; /* Subtle hover effect */
-        color: #FF5733; /* Text color on hover */
+        background-color: #e6e8ec !important;  /* Slightly darker hover */
+        color: #FF5733 !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    }
+    /* Remove space between buttons */
+    [data-testid="stVerticalBlock"] > [style*="flex-direction: column"] > [data-testid="stVerticalBlock"] {
+        gap: 0rem !important;
     }
 </style>
 """, unsafe_allow_html=True)

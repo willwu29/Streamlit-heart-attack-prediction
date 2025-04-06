@@ -41,7 +41,7 @@ with st.sidebar:
         '🏠 Welcome': 'welcome',
         '📝 Risk Assessment': 'predict',
         '🧮 Additional Calculators': 'calculators', 
-        '📊 Data Visualization and Analysis': 'eda',  # Renamed and rearranged
+        '📊 Data Analysis': 'eda',  # Renamed and rearranged
         '🤖 ML Insights': 'ml',
         '📧 Contact': 'contact'
     }

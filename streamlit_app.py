@@ -33,21 +33,22 @@ if 'page' not in st.session_state:
 with st.sidebar:
     st.markdown("## Navigation")
     
-    # Create navigation buttons
+    # Create navigation buttons without a container
     pages = {
-    '🏠 Welcome': 'welcome',
-    '📊 EDA Findings': 'eda',
-    '📝 Risk Assessment': 'predict',
-    '🧮 Additional Calculators': 'calculators',  # New entry
-    '🤖 ML Insights': 'ml',
-    '📧 Contact': 'contact'
-}
+        '🏠 Welcome': 'welcome',
+        '📝 Risk Assessment': 'predict',
+        '🧮 Additional Calculators': 'calculators', 
+        '📊 Data Visualization and Analysis': 'eda',  # Renamed and rearranged
+        '🤖 ML Insights': 'ml',
+        '📧 Contact': 'contact'
+    }
     for label, page_key in pages.items():
         if st.button(label, key=page_key, 
                     use_container_width=True,
                     type="primary" if st.session_state.page == page_key else "secondary"):
             st.session_state.page = page_key
             st.rerun()
+
 
 # Load Model (keep your original model loading code)
 @st.cache_resource

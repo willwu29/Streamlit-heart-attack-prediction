@@ -77,43 +77,102 @@ model = load_model()
 
 # Page content handling
 if st.session_state.page == 'welcome':
-    st.markdown("<h1 style='font-size: 36px; text-align: center; color: #FF5733;'>💓🩺 Heart Attack Prediction App 🩺💓</h1>", unsafe_allow_html=True)
-    st.write("<h4 style='text-align: center; color: #555;'>Use this app to predict your heart attack risk!</h4>", unsafe_allow_html=True)
+    # Title Section
+    st.markdown("<h1 style='font-size: 48px; text-align: center; color: #FF5733;'>❤️ Heart Attack Risk Assessor</h1>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center; color: #555;'>Predict Your Risk in Minutes</h3>", unsafe_allow_html=True)
     
+    # How It Works - Visual Guide
+    st.markdown("## 🚀 How It Works")
+    with st.container():
+        cols = st.columns(4)
+        with cols[0]:
+            st.markdown("""
+            <div style='padding: 15px; border-radius: 10px; background-color: #f8f9fa; min-height: 180px;'>
+                <h3 style='color: #FF5733; margin-top:0;'>1. Assess</h3>
+                <p style='font-size: 14px;'>📝 <strong>Risk Assessment</strong><br>
+                Evaluate your heart attack risk using our ML model</p>
+            </div>
+            """, unsafe_allow_html=True)
+        with cols[1]:
+            st.markdown("""
+            <div style='padding: 15px; border-radius: 10px; background-color: #f8f9fa; min-height: 180px;'>
+                <h3 style='color: #FF5733; margin-top:0;'>2. Validate</h3>
+                <p style='font-size: 14px;'>🧮 <strong>Calculators</strong><br>
+                Cross-check results with clinical tools</p>
+            </div>
+            """, unsafe_allow_html=True)
+        with cols[2]:
+            st.markdown("""
+            <div style='padding: 15px; border-radius: 10px; background-color: #f8f9fa; min-height: 180px;'>
+                <h3 style='color: #FF5733; margin-top:0;'>3. Explore</h3>
+                <p style='font-size: 14px;'>📊 <strong>Data Analysis</strong><br>
+                Understand heart attack statistics</p>
+            </div>
+            """, unsafe_allow_html=True)
+        with cols[3]:
+            st.markdown("""
+            <div style='padding: 15px; border-radius: 10px; background-color: #f8f9fa; min-height: 180px;'>
+                <h3 style='color: #FF5733; margin-top:0;'>4. Learn</h3>
+                <p style='font-size: 14px;'>🤖 <strong>ML Insights</strong><br>
+                Discover our prediction model</p>
+            </div>
+            """, unsafe_allow_html=True)
+
+    # Problem & Solution Section
+    st.markdown("## 📌 Why This Matters")
+    col_prob, col_sol = st.columns(2)
+    with col_prob:
+        st.markdown("""
+        <div style='padding: 20px; background-color: #fff3e0; border-radius: 10px;'>
+            <h4 style='color: #d32f2f; margin-top:0;'>🚨 The Challenge</h4>
+            <ul style='font-size: 14px;'>
+                <li>Leading cause of US deaths (800k+ annually)</li>
+                <li>Existing tools exclude 18-29 age group</li>
+                <li>Blood test requirements limit access</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+    with col_sol:
+        st.markdown("""
+        <div style='padding: 20px; background-color: #e8f5e9; border-radius: 10px;'>
+            <h4 style='color: #2e7d32; margin-top:0;'>✅ Our Solution</h4>
+            <ul style='font-size: 14px;'>
+                <li>No lab tests required</li>
+                <li>Available for adults 18+</li>
+                <li>Instant risk assessment</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+
+    # Key Features Grid
+    st.markdown("## 🔑 Key Features")
+    features = [
+        ("📈", "Demographic Analysis", "Age, lifestyle & health factors"),
+        ("🩺", "Clinical Integration", "Medical calculator validation"),
+        ("🤖", "Transparent AI", "ML model explanations"),
+        ("📊", "Health Insights", "Multi-dimensional analysis")
+    ]
+    cols = st.columns(4)
+    for i, (emoji, title, text) in enumerate(features):
+        with cols[i]:
+            st.markdown(f"""
+            <div style='padding: 15px; text-align: center; border: 1px solid #eee; border-radius: 10px; margin: 5px;'>
+                <div style='font-size: 32px;'>{emoji}</div>
+                <h4 style='margin: 10px 0; color: #FF5733;'>{title}</h4>
+                <p style='font-size: 14px; color: #666;'>{text}</p>
+            </div>
+            """, unsafe_allow_html=True)
+
+    # Disclaimer
     st.markdown("""
-    ## Welcome to the Heart Attack Prediction App
-    
-    This application aims to assess your risk of experiencing a heart attack based on various health and lifestyle factors using advanced machine learning models.
-
-    ### Problem
-    1. Heart attacks are a leading cause of death in the U.S., impacting over 800,000 individuals annually
-    2. Gaps in existing cardiovascular risk calculators:
-        - Strict age restrictions (30–79 years) exclude younger/older populations
-        - Require blood-test-dependent inputs (cholesterol levels) limiting accessibility
-
-    ### Solution
-    1. **Proactive Risk Identification**:  
-       ML-powered early detection system enabling preventive actions
-    2. **Higher Accessibility**:
-        - Broad age eligibility (18+ years)
-        - Uses readily available health indicators (no lab tests required)
-
-    ### How to Use:
-    1. Navigate to 📝 **Risk Assessment** using the sidebar
-    2. Provide your health information
-    3. Get instant prediction results
-
-    ### Key Features:
-    - Demographic & lifestyle factor analysis
-    - Clinical calculator integration
-    - Transparent ML explanations
-    - Multi-dimensional health assessment
-
-    ### Disclaimer:
-    This tool provides risk estimates, not medical diagnoses. Always consult a healthcare professional about cardiovascular health decisions.
-    """)
+    <div style='background-color: #fff3e0; padding: 15px; border-radius: 10px; border-left: 5px solid #ff5733; margin: 20px 0;'>
+        <p style='color: #333; margin: 0;'>⚠️ <strong>Disclaimer:</strong> This tool provides risk estimates, not medical diagnoses. Always consult a healthcare professional.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 
+
+# Risk Assessment page
 elif st.session_state.page == 'predict':
     # Your original Risk Assessment code
     col1, spacer, col2 = st.columns([1.2, 0.3, 1.2])

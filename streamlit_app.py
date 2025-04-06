@@ -100,7 +100,7 @@ if st.session_state.page == 'welcome':
         step_content = [
             ("1. Assess", "📝 Risk Assessment", "Assess heart attack risk using my ML model"),
             ("2. Validate", "🧮 Calculators", "Cross-check your risk with external clinical tools"),
-            ("3. Explore", "📊 Data Analysis", "Learn more about heart attack statistics through data"),
+            ("3. Explore", "📊 Data Analysis", "Learn more about heart attack through data analysis"),
             ("4. Learn", "🤖 ML Insights", "Discover detailed insights about my machine learning model")
         ]
 

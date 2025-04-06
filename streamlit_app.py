@@ -34,20 +34,20 @@ with st.sidebar:
 
     # Create navigation buttons without a container
     pages = {
-        '🏠 Welcome',
-        '📝 Risk Assessment',
-        '🧮 Additional Calculators', 
-        '📊 Data Analysis',  
-        '🤖 ML Insights',
-        '📧 About Me'
+        '🏠 Welcome': 'welcome',
+        '📝 Risk Assessment': 'predict',
+        '🧮 Additional Calculators': 'calculators', 
+        '📊 Data Visualization and Analysis': 'eda',  
+        '🤖 ML Insights': 'ml',
+        '📧 Contact': 'contact'
     }
-for label, page_key in pages.items():
-    if st.button(label, key=page_key, 
-                use_container_width=True,
-                type="primary" if st.session_state.page == page_key else "secondary"):
-        st.session_state.page = page_key
-        st.rerun()
-
+    for label, page_key in pages.items():
+        if st.button(label, key=page_key, 
+                    use_container_width=True,
+                    type="primary" if st.session_state.page == page_key else "secondary"):
+            st.session_state.page = page_key
+            st.rerun()
+                        
 # Load Model (keep your original model loading code)
 @st.cache_resource
 def load_model():

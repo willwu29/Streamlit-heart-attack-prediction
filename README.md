@@ -4,7 +4,7 @@ This is a heart attack prediction app
 
 ## Demo App
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://dp-heartattackprediction.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://https://app-heart-attack-prediction.streamlit.app/)
 
 ## GitHub Codespaces
 

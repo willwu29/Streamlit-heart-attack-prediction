@@ -217,12 +217,11 @@ elif st.session_state.page == 'predict':
         <div style="background-color: #FFF3E0; padding: 20px; border-radius: 10px; margin: 25px 0; border-left: 5px solid #FF5733;">
             <h4 style="color: #FF5733; margin-bottom: 15px;">🚨 Ready to Check Your Risk?</h4>
             <p style="color: #555; margin-bottom: 0;">
-            Click below to get your personalized heart attack risk assessment based on your provided health information.
             </p>
         </div>
         """, unsafe_allow_html=True)
 
-    if st.button('Predict Heart Attack Risk'):
+    if st.button('Click to Predict'):
         try:
             threshold = model.named_steps['logreg'].threshold
             proba = model.predict_proba(input_df)[0][1]

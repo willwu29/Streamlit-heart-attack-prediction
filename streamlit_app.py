@@ -246,28 +246,28 @@ elif st.session_state.page == 'calculators':
         </div>
         """, unsafe_allow_html=True)
 
-with col2:
-    st.markdown("""
-    <div class="calculator-box">
-        <h3 style='color: #FF5733; margin-top: 0;'>ACC ASCVD Risk Estimator Plus</h3>
-        <p style='color: #666; font-size: 14px;'>American College of Cardiology</p>
-        <a href="https://tools.acc.org/ascvd-risk-estimator-plus/#!/calculate/estimate/" 
-           target="_blank" 
-           class="calculator-button">
-           Access Calculator ➡️
-        </a>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    st.markdown("""
-    ---
-    <div style='background-color: #f8f9fa; padding: 15px; border-radius: 10px; margin-top: 20px;'>
-        <p style='color: #6c757d; font-size: 14px; margin-bottom: 0;'>
-        🔄 Use these clinical tools alongside our app's predictions to cross-validate your cardiovascular risk assessment<br>
-        💡 Discuss combined results with a healthcare professional - neither tool replaces medical advice
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+    with col2:
+        st.markdown("""
+        <div class="calculator-box">
+            <h3 style='color: #FF5733; margin-top: 0;'>ACC ASCVD Risk Estimator Plus</h3>
+            <p style='color: #666; font-size: 14px;'>American College of Cardiology</p>
+            <a href="https://tools.acc.org/ascvd-risk-estimator-plus/#!/calculate/estimate/" 
+               target="_blank" 
+               class="calculator-button">
+               Access Calculator ➡️
+            </a>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        ---
+        <div style='background-color: #f8f9fa; padding: 15px; border-radius: 10px; margin-top: 20px;'>
+            <p style='color: #6c757d; font-size: 14px; margin-bottom: 0;'>
+            🔄 Use these clinical tools alongside our app's predictions to cross-validate your cardiovascular risk assessment<br>
+            💡 Discuss combined results with a healthcare professional - neither tool replaces medical advice
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
 
 
 elif st.session_state.page == 'ml':

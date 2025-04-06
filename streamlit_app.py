@@ -182,6 +182,7 @@ elif st.session_state.page == 'predict':
     # Prediction logic
     # Styled container for the prediction button
     st.markdown("<div style='background-color: #f8f9fa; padding: 20px; border-radius: 10px; text-align: center;'>", unsafe_allow_html=True)
+    
     if st.button('Predict Heart Attack Risk'):
         try:
             threshold = model.named_steps['logreg'].threshold   # Retrieve the threshold
@@ -196,18 +197,14 @@ elif st.session_state.page == 'predict':
                 st.success("✅ Good News! ✅  \n"
                           "Our assessment indicates you are at LOW RISK for a heart attack.  \n"
                           "Keep up the good work and maintain a healthy lifestyle!")
-                
+            
             # Encouragement to validate results
             st.markdown("<h5 style='margin-top: 20px;'>Feel free to go to 🧮 Additional Calculators for validation.</h5>", unsafe_allow_html=True)
-
-        
-        except Exception as e:
-            st.error(f"An error occurred while making the prediction: {str(e)}")
-    st.markdown("</div>", unsafe_allow_html=True)  
             
-        
         except Exception as e:
             st.error(f"An error occurred while making the prediction: {str(e)}")
+    
+    st.markdown("</div>", unsafe_allow_html=True)  # End of the styled container
 
 # Add the new page handler
 elif st.session_state.page == 'calculators':

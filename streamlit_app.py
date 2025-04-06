@@ -196,67 +196,60 @@ elif st.session_state.page == 'predict':
     input_df = pd.DataFrame([input_data], columns=input_columns)
 
 
-    # Add this CSS at the top (under imports)
+
     st.markdown("""
     <style>
-        .heart-button {
-            background: linear-gradient(145deg, #ff4444, #cc0000);
+        /* Mandatory CSS for working button */
+        .predict-button {
+            background: #ff4444;
             color: white !important;
-            border-radius: 15px;
-            padding: 25px 40px;
+            border-radius: 10px;
+            padding: 20px;
             text-align: center;
             cursor: pointer;
-            margin: 40px auto;
+            margin: 30px auto;
             width: 80%;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-            border: none;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: bold;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            display: block;
+            transition: 0.3s;
+            border: 2px solid #cc0000;
         }
-    
-        .heart-button:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-            background: linear-gradient(145deg, #cc0000, #ff4444);
-        }
-    
-        .heart-button:active {
-            transform: scale(0.97);
+        
+        .predict-button:hover {
+            background: #cc0000;
+            transform: scale(1.02);
         }
     </style>
     """, unsafe_allow_html=True)
     
-    # Visible styled button
+    # Create a container for the hidden button FIRST
+    with st.container():
+        st.markdown('<div id="button-container">', unsafe_allow_html=True)
+        # This is the REAL functional button
+        if st.button('Predict Heart Attack Risk', key='real_predict_button'):
+            try:
+                # YOUR PREDICTION LOGIC
+                threshold = model.named_steps['logreg'].threshold
+                proba = model.predict_proba(input_df)[0][1]
+                prediction = 'High Risk' if proba >= threshold else 'Low Risk'
+                
+                st.subheader('Results')
+                if prediction == 'High Risk':
+                    st.error("⚠️ HIGH RISK WARNING!  \nPlease consult a doctor immediately.")
+                else:
+                    st.success("✅ LOW RISK  \nMaintain healthy habits.")
+                    
+            except Exception as e:
+                st.error(f"Error: {str(e)}")
+        st.markdown('</div>', unsafe_allow_html=True)
+    
+    # Visible button that triggers the hidden button
     st.markdown("""
-    <div class="heart-button" onclick="this.style.opacity=0.7; setTimeout(()=>this.style.opacity=1, 200); document.getElementById('predict-trigger').click();">
+    <div class="predict-button" 
+         onclick="document.querySelector('#button-container button').click();">
         🔍 PREDICT HEART ATTACK RISK NOW 🔍
     </div>
     """, unsafe_allow_html=True)
-    
-    # Hidden functional button (no visual presence)
-    if st.button('', key='predict-trigger', help=""):
-        try:
-            threshold = model.named_steps['logreg'].threshold
-            proba = model.predict_proba(input_df)[0][1]
-            prediction = 'High Risk' if proba >= threshold else 'Low Risk'
-            
-            st.subheader('Results')
-            if prediction == 'High Risk':
-                st.error("⚠️ CRITICAL WARNING ⚠️  \n"
-                        "Immediate Heart Attack Risk Detected!  \n"
-                        "Urgent medical consultation required.")
-            else:
-                st.success("✅ LOW RISK DETECTED ✅  \n"
-                          "Maintain healthy habits and regular checkups.")
-            
-            st.markdown("<h5 style='margin-top:20px;'>Validate with 🧮 Additional Calculators</h5>", 
-                       unsafe_allow_html=True)
-    
-        except Exception as e:
-            st.error(f"System Alert: Prediction Error - {str(e)}")
 
 
 # Add the new page handler

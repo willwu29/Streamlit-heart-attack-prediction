@@ -196,6 +196,23 @@ elif st.session_state.page == 'predict':
         except Exception as e:
             st.error(f"An error occurred while making the prediction: {str(e)}")
 
+
+        # Add this AFTER your existing prediction logic
+    st.markdown("---")
+    st.markdown("""
+    <div style='margin-top: 40px;'>
+        <h3>Additional Cardiovascular Risk Assessment Tools</h3>
+        <p>For comprehensive risk evaluation, consider using the official American Heart Association tool:</p>
+        <a href="https://professional.heart.org/en/guidelines-and-statements/prevent-calculator" 
+           target="_blank" 
+           style='display: inline-block; padding: 12px 24px; background-color: #FF5733; color: white; 
+                  border-radius: 8px; text-decoration: none; margin-top: 15px;'>
+            🩺 AHA PREVENT™ Calculator
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
+
+
 elif st.session_state.page == 'ml':
     st.header("🤖 Machine Learning Details")
     st.markdown("""

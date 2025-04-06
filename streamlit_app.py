@@ -120,10 +120,18 @@ elif st.session_state.page == 'predict':
                                     help="Underweight ≤18.4, Healthy 18.5-24.9, Overweight 25.0-29.9, Obese ≥30.0")
         general_health = st.selectbox("How would you rate your Health Condition:", 
                                     ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
-        deaf_or_hard_of_hearing = st.selectbox("Hearing Difficulty:", ["No", "Yes", "Unknown"])  
-        blind_or_vision_difficulty = st.selectbox("Vision Difficulty (Even when wearing glasses):", ["No", "Yes", "Unknown"])  
-        difficulty_walking = st.selectbox("Walking & Climbing stairs Difficulty:", ["No", "Yes", "Unknown"])  
-        difficulty_dressing_bathing = st.selectbox("Dressing & Bathing Difficulty:", ["No", "Yes", "Unknown"])
+        deaf_or_hard_of_hearing = st.selectbox("Hearing Difficulty:", 
+                                               ["No", "Yes", "Unknown"],
+                                                help="Are you deaf or do you have serious difficulty hearing?")  
+        blind_or_vision_difficulty = st.selectbox("Vision Difficulty:", 
+                                                  ["No", "Yes", "Unknown"],
+                                                  help="Are you blind or do you have serious difficulty seeing, even when wearing glasses?")  
+        difficulty_walking = st.selectbox("Walking & Climbing stairs Difficulty:", 
+                                          ["No", "Yes", "Unknown"],
+                                          help="Do you have serious difficulty walking or climbing stairs?")  
+        difficulty_dressing_bathing = st.selectbox("Dressing & Bathing Difficulty:", 
+                                                   ["No", "Yes", "Unknown"],
+                                                   help="Do you have difficulty dressing or bathing?")
 
     with col2:
         # Habits & Lifestyle
@@ -138,11 +146,19 @@ elif st.session_state.page == 'predict':
         st.header("Medical History")
         had_depressive_disorder = st.selectbox("Depressive disorder diagnosis:", ["No", "Yes", "Unknown"]) 
         had_diabetes = st.selectbox("Diabetes diagnosis:", ["No", "Yes", "Pre-diabetes", "Gestational-diabetes", "Unknown"])  
-        had_kidney_disease = st.selectbox("Kidney disease diagnosis:", ["No", "Yes", "Unknown"])  
-        had_angina = st.selectbox("Angina diagnosis:", ["No", "Yes"])  
+        had_kidney_disease = st.selectbox("Kidney disease diagnosis:", 
+                                          ["No", "Yes", "Unknown"],
+                                         help="Not including kidney stones, bladder infection or incontinence")  
+        had_angina = st.selectbox("Angina diagnosis:", 
+                                  ["No", "Yes"],
+                                 help="Angina is chest pain or discomfort caused by reduced blood flow to the heart muscle, often triggered by physical exertion or stress.")  
         had_stroke = st.selectbox("Stroke history:", ["No", "Yes"]) 
-        had_copd = st.selectbox("COPD diagnosis:", ["No", "Yes", "Unknown"])  
-        had_arthritis = st.selectbox("Arthritis diagnosis:", ["No", "Yes", "Unknown"])
+        had_copd = st.selectbox("COPD (Chronic Obstructive Pulmonary Disease) diagnosis:", 
+                                ["No", "Yes", "Unknown"],
+                               help=" COPD is a progressive lung disease characterized by airflow limitation, making it difficult to breathe.")  
+        had_arthritis = st.selectbox("Arthritis diagnosis:", 
+                                     ["No", "Yes", "Unknown"],
+                                     help="Arthritis is a chronic inflammation of the joints that leads to pain, stiffness, swelling, and reduced mobility, commonly affecting the hands, knees, and hips")
 
     # Prepare input data
     input_data = [
@@ -179,53 +195,17 @@ elif st.session_state.page == 'predict':
 
     input_df = pd.DataFrame([input_data], columns=input_columns)
 
+    
     # Prediction logic
-    # Styled button text
-    # Styled button for prediction
-    # Visible styled button
-    st.markdown("""
-    <style>
-        .predict-button {
-            background: linear-gradient(145deg, #FF4444, #CC0000);
-            color: white !important;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            margin: 20px 0;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            border: 2px solid white;
-            font-size: 20px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        
-        .predict-button:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-            background: linear-gradient(145deg, #CC0000, #FF4444);
-        }
-        
-        .predict-button:active {
-            transform: scale(0.98);
-        }
-    </style>
-
-    <div class="predict-button" 
-         onclick="document.getElementById('predict-button').click();"
-         onmouseover="this.style.opacity=0.9" 
-         onmouseout="this.style.opacity=1">
-        🔍 ANALYZE MY HEART HEALTH NOW 🔍
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Prediction logic (must appear AFTER button declaration)
+    with st.container():
+    st.markdown("""<div id="hidden-button-container" style="display: none;">""", unsafe_allow_html=True)
+    # This is the actual Streamlit button that triggers predictions
     if st.button('Predict Heart Attack Risk', key='hidden_predict_button'):
         try:
-            threshold = model.named_steps['logreg'].threshold   # Retrieve the threshold
-            proba = model.predict_proba(input_df)[0][1]    # Make soft predictions
-            prediction = 'High Risk' if proba >= threshold else 'Low Risk'   # Convert to hard predictions
+            threshold = model.named_steps['logreg'].threshold
+            proba = model.predict_proba(input_df)[0][1]
+            prediction = 'High Risk' if proba >= threshold else 'Low Risk'
+            
             st.subheader('Results')
             if prediction == 'High Risk':
                 st.error("⚠️ Warning! ⚠️  \n"
@@ -236,11 +216,49 @@ elif st.session_state.page == 'predict':
                           "Our assessment indicates you are at LOW RISK for a heart attack.  \n"
                           "Keep up the good work and maintain a healthy lifestyle!")
     
-            # Encouragement to validate results
             st.markdown("<h5 style='margin-top: 20px;'>Feel free to go to 🧮 Additional Calculators for validation.</h5>", unsafe_allow_html=True)
     
         except Exception as e:
             st.error(f"An error occurred while making the prediction: {str(e)}")
+    st.markdown("</div>", unsafe_allow_html=True)
+
+# Enhanced styled button with proper connection
+st.markdown("""
+<style>
+    .predict-button {
+        background: linear-gradient(145deg, #FF4444, #CC0000);
+        color: white !important;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+        margin: 20px 0;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+        border: 2px solid white;
+        font-size: 20px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    
+    .predict-button:hover {
+        transform: scale(1.02);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        background: linear-gradient(145deg, #CC0000, #FF4444);
+    }
+    
+    .predict-button:active {
+        transform: scale(0.98);
+    }
+</style>
+
+<div class="predict-button" 
+     onclick="document.querySelector('#hidden-button-container button').click();"
+     onmouseover="this.style.opacity=0.9" 
+     onmouseout="this.style.opacity=1">
+    🔍 ANALYZE MY HEART HEALTH NOW 🔍
+</div>
+""", unsafe_allow_html=True)
             
 # Add the new page handler
 elif st.session_state.page == 'calculators':

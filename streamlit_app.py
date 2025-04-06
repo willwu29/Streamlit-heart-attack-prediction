@@ -183,10 +183,6 @@ elif st.session_state.page == 'predict':
     st.markdown("<div style='background-color: #f8f9fa; padding: 20px; border-radius: 10px; text-align: center;'>", unsafe_allow_html=True)
     if st.button('Predict Heart Attack Risk'):
         try:
-            threshold = model.named_steps['logreg'].threshold   # Retrieve the threshold
-            proba = model.predict_proba(input_df)[0][1]    # Make soft predictions
-    if st.button('Predict Heart Attack Risk'):
-        try:
             threshold = model.named_steps['logreg'].threshold   # Retreieve the threshold
             proba = model.predict_proba(input_df)[0][1]    # Make soft predictions
             prediction = 'High Risk' if proba >= threshold else 'Low Risk'   # Convert to hard predictions

@@ -258,25 +258,17 @@ elif st.session_state.page == 'calculators':
             </a>
         </div>
         """, unsafe_allow_html=True)
-
-    st.markdown("""
-    ---
-    <div style='background-color: #fff3e6; padding: 15px; border-radius: 10px; margin-top: 20px; border-left: 4px solid #FF5733;'>
-    <div style='display: flex; align-items: center; margin-bottom: 10px;'>
-        <div style='background-color: #FF5733; border-radius: 50%; padding: 8px; margin-right: 10px;'>
-            🔄
+        
+        st.markdown("""
+        ---
+        <div style='background-color: #f8f9fa; padding: 15px; border-radius: 10px; margin-top: 20px;'>
+            <p style='color: #6c757d; font-size: 14px; margin-bottom: 0;'>
+            🔄 Use these clinical tools alongside our app's predictions to cross-validate your cardiovascular risk assessment<br>
+            💡 Discuss combined results with a healthcare professional - neither tool replaces medical advice
+            </p>
         </div>
-        <h4 style='color: #2c3e50; margin: 0;'>Cross-Validation Recommendation</h4>
-    </div>
-    <p style='color: #6c757d; font-size: 14px; margin-bottom: 10px;'>
-    <span style='color: #FF5733; font-weight: bold;'>→</span> Compare our AI predictions with these established clinical calculators<br>
-    <span style='color: #FF5733; font-weight: bold;'>→</span> Use both tools for comprehensive risk assessment
-    </p>
-    <p style='color: #6c757d; font-size: 14px; margin-bottom: 0;'>
-    💡 Always consult a healthcare provider about <u>all</u> assessment results
-    </p>
-    </div>
-    """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
+
 
 elif st.session_state.page == 'ml':
     st.header("🤖 Machine Learning Details")

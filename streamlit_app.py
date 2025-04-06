@@ -210,34 +210,7 @@ elif st.session_state.page == 'predict':
 
     input_df = pd.DataFrame([input_data], columns=input_columns)
 
-    st.markdown("""
-    <style>
-        /* Custom primary button styling */
-        div.stButton > button:first-child {
-            background-color: #FF4444 !important;
-            color: white !important;
-            border-radius: 8px !important;
-            padding: 20px 30px !important;
-            font-size: 20px !important;
-            font-weight: bold !important;
-            border: none !important;
-            width: 100% !important;
-            margin: 20px auto !important;
-            display: block !important;
-            transition: all 0.3s ease !important;
-        }
-    
-        div.stButton > button:first-child:hover {
-            background-color: #CC0000 !important;
-            transform: scale(1.05) !important;
-        }
-    
-        div.stButton > button:first-child:active {
-            transform: scale(0.95) !important;
-        }
-    </style>
-    """, unsafe_allow_html=True)
-    
+
     # Your existing prediction button code
     if st.button('Predict Heart Attack Risk'):
         try:

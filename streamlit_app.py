@@ -100,8 +100,8 @@ if st.session_state.page == 'welcome':
         step_content = [
             ("1. Assess", "📝 Risk Assessment", "Assess heart attack risk using my ML model"),
             ("2. Validate", "🧮 Calculators", "Cross-check your risk with external clinical tools"),
-            ("3. Explore", "📊 Data Analysis", "Learn more about heart attack statistics"),
-            ("4. Learn", "🤖 ML Insights", "Discover my machine learning model")
+            ("3. Explore", "📊 Data Analysis", "Learn more about heart attack statistics through data"),
+            ("4. Learn", "🤖 ML Insights", "Discover detailed insights about my machine learning model")
         ]
 
         for i, (step_num, title, text) in enumerate(step_content):

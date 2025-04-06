@@ -168,7 +168,9 @@ elif st.session_state.page == 'predict':
         had_angina = st.selectbox("Angina diagnosis:", 
                                   ["No", "Yes"],
                                  help="Angina is chest pain or discomfort caused by reduced blood flow to the heart muscle, often triggered by physical exertion or stress.")  
-        had_stroke = st.selectbox("Stroke history:", ["No", "Yes"]) 
+        had_stroke = st.selectbox("Stroke history:", 
+                                  ["No", "Yes"],
+                                 help="Stroke is a medical emergency that occurs when blood flow to the brain is interrupted, causing brain damage and potentially leading to loss of function such as speech, movement, or memory.") 
         had_copd = st.selectbox("COPD (Chronic Obstructive Pulmonary Disease) diagnosis:", 
                                 ["No", "Yes", "Unknown"],
                                help=" COPD is a progressive lung disease characterized by airflow limitation, making it difficult to breathe.")  
@@ -224,7 +226,7 @@ elif st.session_state.page == 'predict':
         """, unsafe_allow_html=True)
 
     # Add centered container for button
-    col1, col2, col3 = st.columns([1, 7, 1])
+    col1, col2, col3 = st.columns([1, 10, 1])
     with col2:
         if st.button('Predict', 
                     use_container_width=True,

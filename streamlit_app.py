@@ -80,7 +80,7 @@ model = load_model()
 # Welcome Page
 if st.session_state.page == 'welcome':
     # Title Section
-    st.markdown("<h1 style='font-size: 48px; text-align: center; color: #FF5733;'>❤️ Heart Attack Risk Assessor</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='font-size: 48px; text-align: center; color: #FF5733;'>❤️ Heart Attack Risk Prediction</h1>", unsafe_allow_html=True)
     st.markdown("<h3 style='text-align: center; color: #555;'>Predict Your Risk in Minutes</h3>", unsafe_allow_html=True)
     
     # How It Works - Visual Guide

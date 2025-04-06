@@ -309,7 +309,3 @@ elif st.session_state.page == 'contact':
     **LinkedIn:** [Will Wu](https://www.linkedin.com/in/willwu2912/)  
     """)
 
-   st.markdown("""
-    ### Want to know more about me?
-    **CV:** [Download my CV](src/CV - Will Wu.pdf)
-    """)

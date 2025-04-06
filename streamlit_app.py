@@ -180,7 +180,7 @@ elif st.session_state.page == 'predict':
     if st.button('Predict Heart Attack Risk'):
         try:
             threshold = model.threshold
-            st.write(threshold)
+            st.write(f'{threshold}')
             proba = model.predict_proba(input_df)[0][1]
             prediction = 'High Risk' if proba >= threshold else 'Low Risk'
             

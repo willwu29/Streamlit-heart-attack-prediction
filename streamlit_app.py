@@ -213,7 +213,7 @@ elif st.session_state.page == 'predict':
 
 
     # Click the button to predict
-        st.markdown("""
+    st.markdown("""
         <div style="background-color: #FFF3E0; padding: 20px; border-radius: 10px; margin: 25px 0; border-left: 5px solid #FF5733;">
             <h4 style="color: #FF5733; margin-bottom: 15px;">🚨 Ready to Check Your Risk?</h4>
             <p style="color: #555; margin-bottom: 0;">

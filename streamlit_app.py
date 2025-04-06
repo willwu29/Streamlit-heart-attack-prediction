@@ -183,14 +183,41 @@ elif st.session_state.page == 'predict':
     # Styled button text
     # Styled button for prediction
     st.markdown("""
-    <div style='background-color: #FF5733; color: white; border-radius: 8px; padding: 10px; text-align: center; cursor: pointer; margin: 20px auto; width: 80%;'>
-        <a href="javascript:void(0);" onclick="document.getElementById('predict-button').click();" style='text-decoration: none; color: white; font-weight: bold; font-size: 16px;'>
-            Predict Heart Attack Risk
-        </a>
+    <style>
+        .predict-button {
+            background-color: #DC143C !important;
+            color: white !important;
+            border-radius: 12px !important;
+            padding: 20px 30px !important;
+            text-align: center !important;
+            cursor: pointer !important;
+            margin: 30px auto !important;
+            width: 90% !important;
+            border: none !important;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
+            transition: all 0.3s ease !important;
+            font-size: 20px !important;
+            font-weight: bold !important;
+            text-transform: uppercase !important;
+        }
+        
+        .predict-button:hover {
+            background-color: #B22222 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3) !important;
+        }
+        
+        .predict-button:active {
+            transform: translateY(1px);
+        }
+    </style>
+    
+    <div class='predict-button' onclick="document.getElementById('predict-button').click();">
+        🚨 Click Here to Predict Heart Attack Risk 🚨
     </div>
     <input type="submit" id="predict-button" style="display: none;" />
     """, unsafe_allow_html=True)
-    
+
     # Prediction logic triggered by the hidden button
     if st.button('Predict Heart Attack Risk', key='hidden_predict_button'):
         try:

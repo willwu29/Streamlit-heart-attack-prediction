@@ -315,8 +315,6 @@ elif st.session_state.page == 'contact':
     st.markdown("Click the button above to download my CV.")
 
     # Create a download button for your CV
-    st.write("Current Working Directory:", os.getcwd())
-    st.cache()
     with open('/mount/src/streamlit-heart-attack-prediction/CV-WillWu.pdf', 'rb') as file:
         st.download_button(
             label="Download CV",

@@ -17,10 +17,13 @@ st.markdown("""
         justify-content: left;
         padding: 0.5rem 1rem;
         margin: 0.25rem 0;
+        background-color: transparent; /* Make the background transparent */
+        border: none; /* Remove button borders */
+        color: #333; /* Adjust button text color */
     }
     .stButton>button:hover {
-        background-color: #f0f2f6;
-        color: #FF5733;
+        background-color: #f0f2f6; /* Subtle hover effect */
+        color: #FF5733; /* Text color on hover */
     }
 </style>
 """, unsafe_allow_html=True)

@@ -200,24 +200,83 @@ elif st.session_state.page == 'predict':
 elif st.session_state.page == 'calculators':
     st.header("🧮 Additional Heart Health Calculators")
     st.markdown("""
-    ### Reputable External Risk Assessment Tools:
-    
-    **1. American Heart Association PREVENT™ Calculator**  
-    *For cardiovascular disease risk assessment in adults 30-79 years*  
-    [Access Calculator](https://professional.heart.org/en/guidelines-and-statements/prevent-calculator){target="_blank"}
-    
-    **2. ACC ASCVD Risk Estimator Plus**  
-    *Atherosclerotic Cardiovascular Disease (ASCVD) Risk Prediction*  
-    [Access Calculator](https://tools.acc.org/ascvd-risk-estimator-plus/#!/calculate/estimate/){target="_blank"}
-    
-    ---
-    ### Important Notes:
-    - These are third-party tools hosted by reputable medical organizations
-    - Opens in new browser tab for security
-    - Results should always be discussed with a healthcare provider
-    - Our app's predictions should not replace these clinical tools
+    <style>
+        .calculator-box {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: transform 0.2s;
+        }
+        .calculator-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .calculator-button {
+            background-color: #FF5733 !important;
+            color: white !important;
+            padding: 12px 25px !important;
+            border-radius: 25px !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+            margin-top: 10px !important;
+            transition: all 0.3s !important;
+            border: none !important;
+        }
+        .calculator-button:hover {
+            background-color: #E54A2E !important;
+            transform: scale(1.05);
+            color: white !important;
+        }
+    </style>
     """, unsafe_allow_html=True)
 
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("""
+        <div class="calculator-box">
+            <h3 style='color: #FF5733; margin-top: 0;'>AHA PREVENT™ Calculator</h3>
+            <p style='color: #666; font-size: 14px;'>30-79 year olds cardiovascular risk assessment</p>
+            <a href="https://professional.heart.org/en/guidelines-and-statements/prevent-calculator" 
+               target="_blank" 
+               class="calculator-button">
+               Access Calculator ➡️
+            </a>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col2:
+        st.markdown("""
+        <div class="calculator-box">
+            <h3 style='color: #FF5733; margin-top: 0;'>ACC ASCVD Estimator</h3>
+            <p style='color: #666; font-size: 14px;'>Atherosclerotic cardiovascular disease risk prediction</p>
+            <a href="https://tools.acc.org/ascvd-risk-estimator-plus/#!/calculate/estimate/" 
+               target="_blank" 
+               class="calculator-button">
+               Access Calculator ➡️
+            </a>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown("""
+    ---
+    <div style='background-color: #fff3e6; padding: 15px; border-radius: 10px; margin-top: 20px; border-left: 4px solid #FF5733;'>
+    <div style='display: flex; align-items: center; margin-bottom: 10px;'>
+        <div style='background-color: #FF5733; border-radius: 50%; padding: 8px; margin-right: 10px;'>
+            🔄
+        </div>
+        <h4 style='color: #2c3e50; margin: 0;'>Cross-Validation Recommendation</h4>
+    </div>
+    <p style='color: #6c757d; font-size: 14px; margin-bottom: 10px;'>
+    <span style='color: #FF5733; font-weight: bold;'>→</span> Compare our AI predictions with these established clinical calculators<br>
+    <span style='color: #FF5733; font-weight: bold;'>→</span> Use both tools for comprehensive risk assessment
+    </p>
+    <p style='color: #6c757d; font-size: 14px; margin-bottom: 0;'>
+    💡 Always consult a healthcare provider about <u>all</u> assessment results
+    </p>
+    </div>
+    """, unsafe_allow_html=True)
 
 elif st.session_state.page == 'ml':
     st.header("🤖 Machine Learning Details")

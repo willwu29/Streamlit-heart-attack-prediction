@@ -195,70 +195,75 @@ elif st.session_state.page == 'predict':
 
     input_df = pd.DataFrame([input_data], columns=input_columns)
 
-# Prediction logic
-with st.container():
-st.markdown("""<div id="hidden-button-container" style="display: none;">""", unsafe_allow_html=True)
-# This is the actual Streamlit button that triggers predictions
-if st.button('Predict Heart Attack Risk', key='hidden_predict_button'):
-    try:
-        threshold = model.named_steps['logreg'].threshold
-        proba = model.predict_proba(input_df)[0][1]
-        prediction = 'High Risk' if proba >= threshold else 'Low Risk'
-        
-        st.subheader('Results')
-        if prediction == 'High Risk':
-            st.error("⚠️ Warning! ⚠️  \n"
-                      "Our assessment indicates you are at HIGH RISK for a heart attack.  \n"
-                      "Please consult a healthcare professional immediately for further evaluation.")
-        else:
-            st.success("✅ Good News! ✅  \n"
-                      "Our assessment indicates you are at LOW RISK for a heart attack.  \n"
-                      "Keep up the good work and maintain a healthy lifestyle!")
-
-        st.markdown("<h5 style='margin-top: 20px;'>Feel free to go to 🧮 Additional Calculators for validation.</h5>", unsafe_allow_html=True)
-
-    except Exception as e:
-        st.error(f"An error occurred while making the prediction: {str(e)}")
-st.markdown("</div>", unsafe_allow_html=True)
-
-# Enhanced styled button with proper connection
-st.markdown("""
-<style>
-    .predict-button {
-        background: linear-gradient(145deg, #FF4444, #CC0000);
-        color: white !important;
-        border-radius: 12px;
-        padding: 20px;
-        text-align: center;
-        cursor: pointer;
-        margin: 20px 0;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        transition: all 0.3s ease;
-        border: 2px solid white;
-        font-size: 20px;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
+# -- Hidden Button Container (properly indented) --
+    with st.container():  # This line starts at left margin
+    st.markdown("""<div id="hidden-button-container" style="display: none;">""", unsafe_allow_html=True)
     
-    .predict-button:hover {
-        transform: scale(1.02);
-        box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-        background: linear-gradient(145deg, #CC0000, #FF4444);
-    }
-    
-    .predict-button:active {
-        transform: scale(0.98);
-    }
-</style>
-
-<div class="predict-button" 
-     onclick="document.querySelector('#hidden-button-container button').click();"
-     onmouseover="this.style.opacity=0.9" 
-     onmouseout="this.style.opacity=1">
-    🔍 ANALYZE MY HEART HEALTH NOW 🔍
-</div>
-""", unsafe_allow_html=True)
+    # Actual Streamlit button (indented under container)
+    if st.button('Predict Heart Attack Risk', key='hidden_predict_button'):
+        try:
+            threshold = model.named_steps['logreg'].threshold
+            proba = model.predict_proba(input_df)[0][1]
+            prediction = 'High Risk' if proba >= threshold else 'Low Risk'
             
+            st.subheader('Results')
+            if prediction == 'High Risk':
+                st.error("⚠️ Warning! ⚠️  \n"
+                        "Our assessment indicates you are at HIGH RISK for a heart attack.  \n"
+                        "Please consult a healthcare professional immediately for further evaluation.")
+            else:
+                st.success("✅ Good News! ✅  \n"
+                          "Our assessment indicates you are at LOW RISK for a heart attack.  \n"
+                          "Keep up the good work and maintain a healthy lifestyle!")
+    
+            st.markdown("<h5 style='margin-top: 20px;'>Feel free to go to 🧮 Additional Calculators for validation.</h5>", unsafe_allow_html=True)
+    
+        except Exception as e:
+            st.error(f"An error occurred while making the prediction: {str(e)}")
+    
+    # Close the hidden container div (indented under container)
+    st.markdown("</div>", unsafe_allow_html=True)
+
+# -- Styled Button (at root level) --
+    st.markdown("""
+    <style>
+        .predict-button {
+            background: linear-gradient(145deg, #FF4444, #CC0000);
+            color: white !important;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .predict-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            background: linear-gradient(145deg, #CC0000, #FF4444);
+        }
+        
+        .predict-button:active {
+            transform: scale(0.98);
+        }
+    </style>
+    
+    <div class="predict-button" 
+         onclick="document.querySelector('#hidden-button-container button').click();"
+         onmouseover="this.style.opacity=0.9" 
+         onmouseout="this.style.opacity=1">
+        🔍 ANALYZE MY HEART HEALTH NOW 🔍
+    </div>
+    """, unsafe_allow_html=True)
+
+
+
 # Add the new page handler
 elif st.session_state.page == 'calculators':
     st.header("🧮 Additional Heart Health Calculators")

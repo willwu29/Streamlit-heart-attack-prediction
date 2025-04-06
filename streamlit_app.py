@@ -179,15 +179,16 @@ elif st.session_state.page == 'predict':
     # Prediction logic
     if st.button('Predict Heart Attack Risk'):
         try:
+            threshold = model.threshold
             proba = model.predict_proba(input_df)[0][1]
-            prediction = 'High Risk' if proba >= 0.5 else 'Low Risk'
+            prediction = 'High Risk' if proba >= threshold else 'Low Risk'
             
             st.subheader('Results')
             if prediction == 'High Risk':
-                st.error("⚠️ Warning! Our assessment indicates you are at high risk for a heart attack. " 
-                        "It is crucial that you consult a healthcare professional immediately for further evaluation.")
+                st.error("⚠️ Warning! Our assessment indicates you are at HIGH RISK for a heart attack. " 
+                        "Please consult a healthcare professional immediately for further evaluation.")
             else:
-                st.success("✅ Good News! Our assessment indicates you are at low risk for a heart attack. Keep up the good work and maintain a healthy lifestyle!")
+                st.success("✅ Good News! Our assessment indicates you are at LOW RISK for a heart attack. Keep up the good work and maintain a healthy lifestyle!")
             
             st.write(f"Risk Probability: {proba:.1%}")
 

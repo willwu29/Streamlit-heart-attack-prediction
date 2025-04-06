@@ -195,61 +195,58 @@ elif st.session_state.page == 'predict':
 
     input_df = pd.DataFrame([input_data], columns=input_columns)
 
-
-
     st.markdown("""
     <style>
-        /* Mandatory CSS for working button */
-        .predict-button {
-            background: #ff4444;
+        /* Custom primary button styling */
+        div.stButton > button:first-child {
+            background-color: #FF4444 !important;
             color: white !important;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            margin: 30px auto;
-            width: 80%;
-            font-size: 20px;
-            font-weight: bold;
-            transition: 0.3s;
-            border: 2px solid #cc0000;
+            border-radius: 8px !important;
+            padding: 20px 30px !important;
+            font-size: 20px !important;
+            font-weight: bold !important;
+            border: none !important;
+            width: 100% !important;
+            margin: 20px auto !important;
+            display: block !important;
+            transition: all 0.3s ease !important;
         }
-        
-        .predict-button:hover {
-            background: #cc0000;
-            transform: scale(1.02);
+    
+        div.stButton > button:first-child:hover {
+            background-color: #CC0000 !important;
+            transform: scale(1.05) !important;
+        }
+    
+        div.stButton > button:first-child:active {
+            transform: scale(0.95) !important;
         }
     </style>
     """, unsafe_allow_html=True)
     
-    # Create a container for the hidden button FIRST
-    with st.container():
-        st.markdown('<div id="button-container">', unsafe_allow_html=True)
-        # This is the REAL functional button
-        if st.button('Predict Heart Attack Risk', key='real_predict_button'):
-            try:
-                # YOUR PREDICTION LOGIC
-                threshold = model.named_steps['logreg'].threshold
-                proba = model.predict_proba(input_df)[0][1]
-                prediction = 'High Risk' if proba >= threshold else 'Low Risk'
+    # Your existing prediction button code
+    if st.button('Predict Heart Attack Risk'):
+        try:
+            threshold = model.named_steps['logreg'].threshold
+            proba = model.predict_proba(input_df)[0][1]
+            prediction = 'High Risk' if proba >= threshold else 'Low Risk'
+            
+            st.subheader('Results')
+            if prediction == 'High Risk':
+                st.error("""⚠️ **Critical Warning** ⚠️  
+                        Our analysis shows **HIGH RISK** of heart attack.  
+                        Immediate medical consultation recommended!""")
+            else:
+                st.success("""✅ **Good News** ✅  
+                          Our analysis shows **LOW RISK** of heart attack.  
+                          Maintain healthy habits!""")
                 
-                st.subheader('Results')
-                if prediction == 'High Risk':
-                    st.error("⚠️ HIGH RISK WARNING!  \nPlease consult a doctor immediately.")
-                else:
-                    st.success("✅ LOW RISK  \nMaintain healthy habits.")
-                    
-            except Exception as e:
-                st.error(f"Error: {str(e)}")
-        st.markdown('</div>', unsafe_allow_html=True)
+            st.markdown("---")
+            st.info("💡 **Recommendation:** Validate results using 🧮 Additional Calculators")
     
-    # Visible button that triggers the hidden button
-    st.markdown("""
-    <div class="predict-button" 
-         onclick="document.querySelector('#button-container button').click();">
-        🔍 PREDICT HEART ATTACK RISK NOW 🔍
-    </div>
-    """, unsafe_allow_html=True)
+        except Exception as e:
+            st.error(f"System error: {str(e)}")
+
+    
 
 
 # Add the new page handler

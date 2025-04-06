@@ -317,7 +317,7 @@ elif st.session_state.page == 'contact':
     # Create a download button for your CV
     st.write("Current Working Directory:", os.getcwd())
     st.cache()
-    with open("CV-WillWu.pdf", "rb") as file:
+    with open('/mount/src/streamlit-heart-attack-prediction/CV-WillWu.pdf', 'rb') as file:
         st.download_button(
             label="Download CV",
             data=file,

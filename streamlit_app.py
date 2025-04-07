@@ -8,53 +8,32 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from imblearn.pipeline import Pipeline
 
 # Custom CSS for sidebar styling
-# Custom CSS to eliminate all container effects
+# Custom CSS for sidebar styling
 st.markdown("""
 <style>
     [data-testid="stSidebar"] {
         min-width: 280px !important;
         max-width: 280px !important;
     }
-
-    /* Remove all container styling */
-    [data-testid="stSidebar"] > div > div > div > div > div > div {
-        background: transparent !important;
-        border: none !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        gap: 0 !important;
-        box-shadow: none !important;
-    }
-
-    /* Button styling */
     .stButton>button {
         width: 100%;
-        text-align: left;
-        padding: 0.5rem 1rem !important;
-        margin: 2px 0 !important;
-        background: #f0f2f6 !important;
+        justify-content: left;
+        padding: 0.4rem 1rem !important;  /* Reduced vertical padding */
+        margin: 0.1rem 0 !important;      /* Reduced vertical margin */
+        background-color: #f0f2f6 !important;  /* Match sidebar color */
         border: none !important;
+        color: #333 !important;
         border-radius: 4px !important;
         transition: all 0.2s !important;
     }
-
-    /* Hover effect */
     .stButton>button:hover {
-        background: #e6e8ec !important;
+        background-color: #e6e8ec !important;  /* Slightly darker hover */
         color: #FF5733 !important;
-        transform: translateX(4px);
-        box-shadow: none !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
     }
-
-    /* Remove all spacing between elements */
-    [data-testid="stVerticalBlock"] {
-        gap: 0 !important;
-    }
-
-    /* Target Streamlit's internal containers */
-    div[data-testid="stVerticalBlock"] > div[style*="flex-direction: column"] {
-        padding: 0 !important;
-        margin: 0 !important;
+    /* Remove space between buttons */
+    [data-testid="stVerticalBlock"] > [style*="flex-direction: column"] > [data-testid="stVerticalBlock"] {
+        gap: 0rem !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -63,28 +42,25 @@ st.markdown("""
 if 'page' not in st.session_state:
     st.session_state.page = 'welcome'
 
-# Clean sidebar implementation
+# Sidebar navigation
 with st.sidebar:
     st.markdown("## Navigation")
     
+    # Create navigation buttons without a container
     pages = {
         '🏠 Welcome': 'welcome',
         '📝 Risk Assessment': 'predict',
-        '🧮 Additional Tools': 'calculators',
-        '📊 Data Insights': 'eda',
+        '🧮 Additional Tools': 'calculators', 
+        '📊 Data Insights': 'eda',  # Renamed and rearranged
         '🤖 ML Model': 'ml',
         '📧 Contact': 'contact'
     }
-    
     for label, page_key in pages.items():
-        st.button(
-            label,
-            key=page_key,
-            use_container_width=True,
-            type="primary" if st.session_state.page == page_key else "secondary",
-            on_click=lambda p=page_key: setattr(st.session_state, 'page', p)
-            
-        
+        if st.button(label, key=page_key, 
+                    use_container_width=True,
+                    type="primary" if st.session_state.page == page_key else "secondary"):
+            st.session_state.page = page_key
+            st.rerun()
                         
 # Load Model (keep your original model loading code)
 @st.cache_resource
@@ -101,6 +77,7 @@ def load_model():
         st.stop()
     
 model = load_model()
+        
 
 
 

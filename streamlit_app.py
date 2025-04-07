@@ -587,7 +587,7 @@ elif st.session_state.page == 'ml':
     🌟 **Clinical Early Detection System**  
     This section showcases how machine learning can effectively assess the risk of imminent heart attacks, achieving an identification rate of 80% through a risk assessment questionnaire. It also details the processes involved in training and evaluating the models.
 
-    👩💻 **Want to learn more about the models?**  
+    💻 **Want to learn more about the models?**  
     [![GitHub](https://img.shields.io/badge/GitHub-Repo_Deep_Dive-blue?logo=github)](https://github.com/willwu29/heart-attack-prediction-model)  
     Explore the complete implementation, which includes data collection, preprocessing, exploratory data analysis (EDA), feature engineering, modeling, hyperparameter tuning, model evaluation, and insights into interpretation and limitations.
     """)
@@ -691,18 +691,15 @@ elif st.session_state.page == 'ml':
     st.markdown("""
     ### 📉 Clinical Benefits
     <ul>
-        <li>Identifies 79.9% of high-risk patients (4/5 cases)</li>
-        <li>Prevents 650,000+ cardiac events annually at scale</li>
-        <li>$12M emergency cost savings per 100,000 screenings</li>
-        <li>83% alignment with clinical guidelines</li>
+        <li>The model effectively identifies almost 80% of users exposed to High Risk for heart attacks. </li>
+        <li>If all heart attack patients in U.S gained access to this risk assessment tool, over 650,000 individuals could be identified and take preventive actions annually.</li>
+
     </ul>
     
     ### ⚠️ Limitations
     <ul>
-        <li>20.3% false positive rate (1:5 false alarms)</li>
-        <li>$500k wasted costs per 100k screenings</li>
-        <li>Requires ML-trained clinical staff</li>
-        <li>17% earlier detection than traditional methods still misses acute cases</li>
+        <li>20% of Low Risk users receive a false Risk heart attack alert.</li>
+        <li>There is unnecessary expenditure and time spent on checkups and examinations for users who are falsely alarmed</li>
     </ul>
     """, unsafe_allow_html=True)
 

@@ -554,16 +554,45 @@ elif st.session_state.page == 'ml':
     - **Accuracy Pitfall**: The target variable distribution is highly imbalanced, with 94.7% negative cases versus 5.3% positive cases. A naive 'all-negative' classifier would achieve an accuracy of 94.7% but deliver 0% true positive detection.
     - **Primary Focus**: Prioritize maximizing Recall (True Positive Rate, TPR) to enhance early risk detection of heart attacks. Recall evaluates the model's effectiveness in identifying individuals who are genuinely at high risk for heart attacks.
     - **Secondary Control**: Keep the False Positive Rate (FPR) as low as possible to avoid unnecessary interventions. The FPR measures the proportion of false 'High Risk' alerts issued to users who are actually at low risk for heart attacks.
-    
-    ### Total Models Trained & Final Selection
-    - **Evaluated Algorithms**: Logistic Regression, Naive Bayes, Decision Tree, Random Forest, XGBoost, Neural Network  
-    - **Optimal Performer**: Logistic Regression  
-    - **Unseen Test Performance**:  
-        ▸ Recall: 79.9% (Identifies 4/5 true at-risk cases)  
-        ▸ False Positive Rate: 20.3%  
-        ▸ Accuracy: 92%  
-        ▸ AUC-ROC: 0.94  
+    """)
 
+    st.markdown("""
+    ### Total Models Trained & Final Selection
+    - **Total models trained**: Logistic Regression, Naive Bayes, Decision Tree, Random Forest, XGBoost, Neural Network  
+    - **Best Performer & Final Model**: Logistic Regression  
+    """)
+    
+    # Add some space
+    st.markdown("<br>", unsafe_allow_html=True)  # Two line breaks
+
+    # Recall Score
+    st.markdown("#### Recall Score / True Positive Rate on Test Data")
+    try:
+        st.image("src/recall_scores.png", width=1000)
+    except FileNotFoundError:
+        st.error("Recall Scores image not found at src/recall_scores.png")
+    
+    # Analysis text for Recall
+    st.markdown("""
+    <style>
+    .analysis-text {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+    </style>
+    
+    <div class="analysis-text">
+    🔍 <strong>Analysis:</strong> Angina:
+    <ul>
+        <li>Threshold Adjustment: Various models had their thresholds adjusted to achieve a target recall score of 0.8 on the training data.</li>
+        <li>Recall on Test Data: Following the threshold adjustments, recall scores on the test data were calculated to evaluate the model's ability to identify heart attacks in unseen data.</li>
+        <li>Model Comparison: Logistic Regression and Naive Bayes emerged as the top performers, with test recall scores nearing 0.8. </li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    
     ### Interpretations of Results
     1. **Recall Analysis**:  
        ▸ Target vs Achieved: 80% Goal → 79.9% Actual  

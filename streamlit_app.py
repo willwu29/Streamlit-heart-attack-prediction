@@ -428,6 +428,10 @@ elif st.session_state.page == 'eda':
     🔍 <strong>Analysis:</strong> Only 5.3% of respondents experienced a heart attack.
     </div>
     """, unsafe_allow_html=True)
+
+        # Add some space
+    st.markdown("<br><br>", unsafe_allow_html=True)  # Two line breaks
+
     
     # Second image Age group
     st.markdown("#### Heart Attack Likelihood By Age")
@@ -436,9 +440,6 @@ elif st.session_state.page == 'eda':
                  width=1000)
     except FileNotFoundError:
         st.error("Age group distribution image not found at src/heart_attack_age_group.png")
-
-    # Add some space
-    st.markdown("<br><br>", unsafe_allow_html=True)  # Two line breaks
 
     
     # Second analysis text with bullet points

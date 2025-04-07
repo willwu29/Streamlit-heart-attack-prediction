@@ -670,7 +670,7 @@ elif st.session_state.page == 'ml':
 
     
     # Enhanced analysis with clinical context
-    st.markdown("""
+  st.markdown("""
     <style>
     .clinical-insight {
         border-left: 4px solid #ff4b4b;
@@ -687,65 +687,59 @@ elif st.session_state.page == 'ml':
     <div class='clinical-insight'>
     🔍 <strong>Model Interpretation: Clinical Impact Analysis</strong>
         
-    <div class='interpretation-header'>🏥 Detection Capability</div>
+    <div class='interpretation-header'>Detection Capability</div>
     <ul>
-        <li><strong>79.9% Recall</strong> means the model identifies <mark>4 of every 5 at-risk patients</mark> - 
-        critical for preventing missed cases where average ER costs exceed \$15,000 per untreated cardiac event</li>
-        <li>At current performance, this translates to <strong>800+ preventable deaths</strong> annually 
-        per 100,000 screened population based on CDC incidence rates</li>
+        <li><strong>79.9% Recall</strong> - Identifies 4 of every 5 at-risk patients</li>
+        <li>Potential prevention of 800+ annual deaths per 100,000 screenings</li>
     </ul>
     
-    <div class='interpretation-header'>⚖️ Operational Tradeoffs</div>
+    <div class='interpretation-header'>Operational Tradeoffs</div>
     <ul>
-        <li><strong>20.3% False Positive Rate</strong> results in <mark>1 unnecessary referral per 5 healthy patients</mark> - 
-        creates \$500 average wasted cost per FP (consultation + stress test)</li>
-        <li>Balance achieved through <strong>risk-stratified thresholds</strong>:
-        Higher sensitivity for patients with diabetes history (1.8× risk multiplier),
-        stricter criteria for younger demographics</li>
+        <li><strong>20.3% False Positive Rate</strong> - 1 unnecessary referral per 5 healthy patients</li>
+        <li>Risk-stratified thresholds balance sensitivity across patient subgroups</li>
     </ul>
     
-    <div class='interpretation-header'>🩺 Clinical Validation</div>
+    <div class='interpretation-header'>Clinical Validation</div>
     <ul>
-        <li>Alignment with <strong>AHA Guidelines</strong>: 83% of high-risk flags match ACC/AHA preventive care thresholds</li>
-        <li>Discrepancy analysis shows model detects <strong>17% earlier interventions</strong> than traditional 
-        ASCVD risk score alone</li>
+        <li>83% alignment with ACC/AHA preventive care thresholds</li>
+        <li>17% earlier detection than traditional ASCVD risk scoring</li>
     </ul>
     </div>
     """, unsafe_allow_html=True)
     
     # Results interpretation with vertical layout
     st.markdown("""
-    ### Clinical Benefits
+    ### 📉 Clinical Benefits
     <div style="margin-left: -1.2rem;">
         <div style="display: flex; align-items: baseline;">
-            ✅&nbsp;<strong>4/5 High Risk Detection</strong>
+            • <strong>4/5 High Risk Detection</strong>
         </div>
         <div style="margin-left: 1.5rem; margin-top: -0.5rem;">
-            (Flags 4 of 5 true at-risk users)
+            (Identifies majority of true positive cases)
         </div>
         <div style="display: flex; align-items: baseline; margin-top: 0.5rem;">
-            →&nbsp;<strong>Population Impact:</strong>&nbsp;650,000+ preventable cases annually
+            - <strong>Population Impact:</strong> 650,000+ preventable cases annually
         </div>
         <div style="display: flex; align-items: baseline;">
-            →&nbsp;<strong>Resource Efficiency:</strong>&nbsp;\$12M+ ER savings/100k screens
+            - <strong>Cost Efficiency:</strong> $12M+ ER savings per 100k screenings
         </div>
     </div>
     
     <div style="height: 2rem;"></div>
     
-    ### Implementation Challenges
+    ### ⚠️ Implementation Challenges
     <div style="margin-left: -1.2rem;">
         <div style="display: flex; align-items: baseline;">
-            ⚠️&nbsp;<strong>1:5 False Alarms</strong>
+            • <strong>1:5 False Positive Rate</strong>
         </div>
         <div style="margin-left: 1.5rem; margin-top: -0.5rem;">
-            (1 healthy user flagged per 5 assessments)
+            (Requires secondary screening protocol)
         </div>
         <div style="display: flex; align-items: baseline; margin-top: 0.5rem;">
-            →&nbsp;<strong>Financial Impact:</strong>&nbsp;\$500k wasted/100k screens
+            - <strong>Financial Impact:</strong> $500k unnecessary costs/100k screens
         </div>
         <div style="display: flex; align-items: baseline;">
-            →&nbsp;<strong>Operational Burden:</strong>&nbsp;Requires triage protocols
+            - <strong>Workflow Requirements:</strong> Staff training needs
         </div>
     </div>
     """, unsafe_allow_html=True)

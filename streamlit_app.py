@@ -72,7 +72,7 @@ with st.sidebar:
     pages = {
         '🏠 Welcome': 'welcome',
         '📝 Risk Assessment': 'predict',
-        '🧮 Additional Assessment Tools': 'calculators', 
+        '🧮 Additional Tools': 'calculators', 
         '📊 Data Insights': 'eda',  # Renamed and rearranged
         '🤖 ML Model': 'ml',
         '📧 Contact': 'contact'

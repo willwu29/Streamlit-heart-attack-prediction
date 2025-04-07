@@ -725,11 +725,21 @@ elif st.session_state.page == 'ml':
     with cols[1]:
         st.markdown("""
         ### Implementation Challenges
-        - ⚠️ **1:5 False Alarms**  
-           (Requires triage protocols)
-        - → **Operational Impact**: \$500k wasted/100k screens
-        - → **Staff Training**: Needs ML-literate nurses
-        """)
+        <div style="margin-left: -1.2rem;">
+        <div style="display: flex; align-items: baseline;">
+            ⚠️&nbsp;<strong>1:5 False Alarms</strong>
+        </div>
+        <div style="margin-left: 1.5rem; margin-top: -0.5rem;">
+            (Requires triage protocols)
+        </div>
+        <div style="display: flex; align-items: baseline; margin-top: 0.5rem;">
+            →&nbsp;<strong>Operational Impact:</strong>&nbsp;\$500k wasted/100k screens
+        </div>
+        <div style="display: flex; align-items: baseline;">
+            →&nbsp;<strong>Staff Training:</strong>&nbsp;Needs ML-literate nurses
+        </div>
+        </div>
+        """, unsafe_allow_html=True)
 
     st.markdown("""
     ### Critical Risk Multipliers

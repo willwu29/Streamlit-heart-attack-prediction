@@ -551,11 +551,10 @@ elif st.session_state.page == 'ml':
     st.header("🤖 Machine Learning Model")
     st.markdown("""
     ### Metrics of Success
-    - **Imbalanced Data Challenge**: Target variable distribution shows 94.7% negative vs 5.3% positive cases  
-    - **Accuracy Pitfall**: Naive 'all-negative' classifier would achieve 94.7% accuracy but 0% true positive detection  
-    - **Primary Focus**: Maximize recall (true positive rate) for early risk detection  
-    - **Secondary Control**: Maintain false positive rate <20% to prevent system overload from unnecessary interventions
-
+    - **Accuracy Pitfall**: The target variable distribution is highly imbalanced, with 94.7% negative cases versus 5.3% positive cases. A naive 'all-negative' classifier would achieve an accuracy of 94.7% but deliver 0% true positive detection.
+    - **Primary Focus**: Prioritize maximizing Recall (True Positive Rate, TPR) to enhance early risk detection of heart attacks. Recall evaluates the model's effectiveness in identifying individuals who are genuinely at high risk for heart attacks.
+    - **Secondary Control**: Keep the False Positive Rate (FPR) as low as possible to avoid unnecessary interventions. The FPR measures the proportion of false 'High Risk' alerts issued to users who are actually at low risk for heart attacks.
+    
     ### Total Models Trained & Final Selection
     - **Evaluated Algorithms**: Logistic Regression, Naive Bayes, Decision Tree, Random Forest, XGBoost, Neural Network  
     - **Optimal Performer**: Logistic Regression  
@@ -602,7 +601,7 @@ elif st.session_state.page == 'ml':
 elif st.session_state.page == 'contact':
     st.header("📧 About Me")
     st.markdown("""
-    Hello there! I'm Will Wu. I’m passionate about harnessing the power of data to tackle problems. My journey started as a trader at Morgan Stanley, where I made numerous trade execution decisions based on data—this is where my love for data analytics, machine learning, and automation truly took off! 
+    Hello there! I'm Will Wu. I’m passionate about harnessing the power of data to tackle problems. My journey started as a trader at Morgan Stanley, where I made countless trade execution decisions based on data—this is where my love for data analytics, machine learning, and automation truly took off! 
     
     To further hone my skills, I enrolled in a data science bootcamp at BrainStation. Now, I’m equipped to blend machine learning with my problem-solving, collaboration, and research abilities to tackle complex challenges and create meaningful data-driven solutions. 
     

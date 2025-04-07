@@ -412,6 +412,9 @@ elif st.session_state.page == 'eda':
     
         # Get target column (last column)
         target_col = df.columns[-1]
+
+        # Transform the target column: Replace 0 with 'No' and 1 with 'Yes'
+        df[target_col] = df[target_col].replace({0: 'No', 1: 'Yes'})
     
         # Check the unique values in the target column
         st.write("Unique values in target column:")

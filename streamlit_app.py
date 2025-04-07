@@ -550,10 +550,10 @@ elif st.session_state.page == 'eda':
 elif st.session_state.page == 'ml':
     st.header("🤖 Machine Learning Engine")
     st.markdown("""
-    ### Success Metrics & Clinical Priorities
-    - **Accuracy Trap**: While overall accuracy reaches 94.7% (predicting all negatives), this metric is deceptive for our imbalanced dataset (5.3% positive cases). Pure accuracy fails to capture critical heart attack risks.
-    - **Primary Objective**: Maximize Recall (Sensitivity) to identify ≥80% of true high-risk patients. Each missed case carries 300x greater financial/health cost than a false alert.
-    - **Secondary Control**: Maintain False Positive Rate <20% to prevent system overload from unnecessary interventions.
+    ### Success Metrics
+    - **Accuracy Paradox**: Accuracy metric is deceptive for our imbalanced dataset (5.3% positive cases). A classifier predicting all negatives would achieve 94.7% accuracy but wouldn't identify any positive cases.
+    - **Primary Objective**: Maximize Recall (Sensitivity) to identify ≥80% of true high-risk patients. Recall measures the model's ability to identify true positives, crucial for timely intervention.
+    - **Secondary Control**: Maintain False Positive Rate as low as possible to prevent system from excessive false positive alarms.  High recall can lead to excessive false positives, incorrectly flagging low-risk individuals as high-risk, resulting in unnecessary consultations and resource waste, ultimately undermining the model's
     """)
 
     st.markdown("""
@@ -566,10 +566,9 @@ elif st.session_state.page == 'ml':
     st.markdown("<div style='height:30px'></div>", unsafe_allow_html=True)
 
     # Recall Visualization
-    st.markdown("#### Recall Performance on Test Cohort")
+    st.markdown("#### Recall Performance on Test Data")
     try:
-        st.image("src/recall_scores.png", width=1000, 
-                 caption="Threshold-optimized recall comparison across models")
+        st.image("src/recall_scores.png", width=900)
     except FileNotFoundError:
         st.error("Critical visualization missing: Please ensure 'recall_scores.png' exists in /src directory")
         st.stop()  # Halt execution if key visual missing
@@ -585,11 +584,44 @@ elif st.session_state.page == 'ml':
     </style>
     
     <div class='clinical-insight'>
-    🔍 <strong>Model Threshold Optimization:</strong>
+    🔍 <strong>Recall Score Comparison:</strong>
     <ul>
-        <li>Adjusted decision thresholds to achieve 80% recall target on training data</li>
-        <li>Real-world test performance: 79.9% recall (1:400 risk of missed critical case)</li>
-        <li>Logistic Regression preferred over Naive Bayes due to 12% better FPR control</li>
+        <li>Adjusted decision thresholds to achieve 80% recall score target on training data</li>
+        <li>Following the threshold adjustments, recall scores on the test data were calculated to evaluate the model's ability to identify heart attacks in unseen data.</li>
+        <li>Logistic Regression and Naive Bayes emerged as the top performers, with test recall scores nearing 0.8. </li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+
+
+    
+    # Visual spacing
+    st.markdown("<div style='height:30px'></div>", unsafe_allow_html=True)
+
+    # Recall Visualization
+    st.markdown("#### False Positive Rate on Test Data")
+    try:
+        st.image("src/false_positive_rate.png", width=900)
+    except FileNotFoundError:
+        st.error("Critical visualization missing: Please ensure 'recall_scores.png' exists in /src directory")
+        st.stop()  # Halt execution if key visual missing
+    
+    # Enhanced analysis with clinical context
+    st.markdown("""
+    <style>
+    .clinical-insight {
+        border-left: 4px solid #ff4b4b;
+        padding-left: 1rem;
+        margin: 1.5rem 0;
+    }
+    </style>
+    
+    <div class='clinical-insight'>
+    🔍 <strong>False Positive Rate Comparison:</strong>
+    <ul>
+        <li>False Positive Rate (FPR) quantifies the percentage of users classified as High Risk by the model despite actually being Low Risk. A high FPR can lead to increased time and costs due to unnecessary checkups.</li>
+        <li>XGBoost and Neural Networks are among the top performers; however, they compromise on recall scores.</li>
+        <li>While Naive Bayes achieves the highest recall metric, it has a significantly higher FPR, causing an excessive number of false positive alerts.</li>
     </ul>
     </div>
     """, unsafe_allow_html=True)

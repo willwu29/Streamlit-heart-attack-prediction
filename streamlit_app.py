@@ -725,7 +725,7 @@ elif st.session_state.page == 'ml':
 
     # Clinical (coefficient)interpretation
     st.markdown("""
-        ### ⚠️ Top Risk Factors: <small>Increase the odds of high risk, indicated by red bars</small>
+        #### ⚠️ Top Risk Factors: <small>Increase the odds of high risk, indicated by red bars</small>
         <ul>
             <li><strong>Angina Presence:</strong> (8.94x odds increase)</li>
             <li><strong>Stroke Presence:</strong> (2.94x odds increase)</li>
@@ -733,7 +733,7 @@ elif st.session_state.page == 'ml':
             <li><strong>Smoker Status:</strong> Everyday Smoker (1.44x odds increase)</li>
         </ul>
     
-        ### ✅ Protective Factors: <small>Decrease the odds of high risk, indicated by blue bars.</small>
+        #### ✅ Protective Factors: <small>Decrease the odds of high risk, indicated by blue bars.</small>
         <ul>
             <li><strong>Age within 18-24:</strong> (0.23x odds reduction)</li>
             <li><strong>Gender is Female:</strong> (0.55x odds reduction)</li>

@@ -11,31 +11,31 @@ from imblearn.pipeline import Pipeline
 st.markdown("""
 <style>
     [data-testid="stSidebar"] {
-        min-width: 280px !important;
-        max-width: 280px !important;
+        min-width: 350px !important;  # Increased width
+        max-width: 350px !important;  # Increased width
     }
     .stButton>button {
         width: 100%;
         justify-content: left;
-        padding: 0.4rem 1rem !important;  /* Reduced vertical padding */
-        margin: 0.1rem 0 !important;      /* Reduced vertical margin */
-        background-color: #f0f2f6 !important;  /* Match sidebar color */
+        padding: 0.4rem 1rem !important;
+        margin: 0.1rem 0 !important;
+        background-color: #f0f2f6 !important;
         border: none !important;
         color: #333 !important;
         border-radius: 4px !important;
         transition: all 0.2s !important;
     }
     .stButton>button:hover {
-        background-color: #e6e8ec !important;  /* Slightly darker hover */
+        background-color: #e6e8ec !important;
         color: #FF5733 !important;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
     }
-    /* Remove space between buttons */
     [data-testid="stVerticalBlock"] > [style*="flex-direction: column"] > [data-testid="stVerticalBlock"] {
         gap: 0rem !important;
     }
 </style>
 """, unsafe_allow_html=True)
+
 
 # Initialize session state
 if 'page' not in st.session_state:

@@ -550,25 +550,25 @@ elif st.session_state.page == 'eda':
 elif st.session_state.page == 'ml':
     st.header("🤖 Machine Learning Details")
     st.markdown("""
-    ### Model Architecture
-    **Algorithms Evaluated**: Logistic Regression, Naive Bayes, Decision Tree, Random Forest, XGBoost, Neural Networks  
-    **Final Selection**: Logistic Regression (achieved optimal balance of recall & false positive rate)  
-    **Test Performance**:
-    - Recall: 79.9% (Identifies 4 out of 5 true at-risk individuals)
-    - False Positive Rate: 20.3%
-    - Accuracy: 92% 
-    - AUC-ROC: 0.94
-
     ### Metrics of Success
+    - Given the highly imbalanced distribution of the target variable (94.7% negative vs. 5.3% positive), **accuracy is not a suitable metric**. A simple classifier that predicts all targets as negative would achieve an impressive accuracy of 94.7%, yet it would fail to identify any positive cases. Therefore, alternative metrics that better capture the model's performance on the minority class should be considered.
+    - **Total Models Trained**: Six models were evaluated, ranging from Logistic Regression to Neural Networks.  
+    - **Final Model Selection**: Logistic Regression (achieved optimal balance of recall & false positive rate)  
+    - **Test Performance on Unseen Data**:  
+        - Recall: 79.9% (Identifies 4 out of 5 true at-risk individuals)  
+        - False Positive Rate: 20.3%  
+        - Accuracy: 92%  
+        - AUC-ROC: 0.94  
+
     1. **Primary Objective (Recall)**:  
-    ▸ Target: >80% recall  
-    ▸ Achieved: 79.9%  
-    ▸ *Rationale*: Prioritizes early intervention for actual at-risk cases - critical for preventing adverse outcomes
+       ▸ Target: >80% recall  
+       ▸ Achieved: 79.9%  
+       ▸ *Rationale*: Prioritizes early intervention for actual at-risk cases - critical for preventing adverse outcomes. With 79.9% recall, the model correctly flags nearly 80% of true positives, enabling timely medical attention for those most vulnerable.  
 
     2. **Secondary Objective (FPR)**:  
-    ▸ Target: <20% FPR  
-    ▸ Achieved: 20.3%  
-    ▸ *Rationale*: Reduces unnecessary costs from false alarms (average $500+ per unnecessary clinical evaluation)
+       ▸ Target: <20% FPR  
+       ▸ Achieved: 20.3%  
+       ▸ *Rationale*: A false positive rate of 20.3% means 1 in 5 healthy individuals receive unnecessary alerts. While this creates some resource strain (average $500+ per clinical evaluation), it maintains system credibility by avoiding excessive over-prediction.  
 
     ### Key Risk Factors Identified
     - ⚠️ **2.4x Risk Multiplier**: Presence of angina

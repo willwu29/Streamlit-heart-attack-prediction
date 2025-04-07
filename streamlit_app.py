@@ -8,39 +8,51 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from imblearn.pipeline import Pipeline
 
 # Custom CSS for sidebar styling
+# Custom CSS to eliminate all container effects
 st.markdown("""
 <style>
     [data-testid="stSidebar"] {
-        min-width: 260px !important;
-        max-width: 260px !important;
+        min-width: 280px !important;
+        max-width: 280px !important;
     }
-    /* Remove button containers */
-    [data-testid="stVerticalBlock"] > [style*="flex-direction: column"] > [data-testid="stVerticalBlock"] {
+
+    /* Remove all container styling */
+    [data-testid="stSidebar"] > div > div > div > div > div > div {
         background: transparent !important;
         border: none !important;
         padding: 0 !important;
         margin: 0 !important;
         gap: 0 !important;
+        box-shadow: none !important;
     }
+
     /* Button styling */
     .stButton>button {
         width: 100%;
-        justify-content: left;
+        text-align: left;
         padding: 0.5rem 1rem !important;
         margin: 2px 0 !important;
-        background-color: #f0f2f6 !important;
+        background: #f0f2f6 !important;
         border: none !important;
         border-radius: 4px !important;
-        box-shadow: none !important;
         transition: all 0.2s !important;
     }
+
+    /* Hover effect */
     .stButton>button:hover {
-        background-color: #e6e8ec !important;
+        background: #e6e8ec !important;
         color: #FF5733 !important;
         transform: translateX(4px);
+        box-shadow: none !important;
     }
-    /* Remove section container */
-    [data-testid="stSidebarNav"] {
+
+    /* Remove all spacing between elements */
+    [data-testid="stVerticalBlock"] {
+        gap: 0 !important;
+    }
+
+    /* Target Streamlit's internal containers */
+    div[data-testid="stVerticalBlock"] > div[style*="flex-direction: column"] {
         padding: 0 !important;
         margin: 0 !important;
     }

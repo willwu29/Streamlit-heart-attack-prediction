@@ -548,27 +548,33 @@ elif st.session_state.page == 'eda':
 
 # ML Section
 elif st.session_state.page == 'ml':
-    st.header("🤖 Machine Learning Details")
+    st.header("🤖 Machine Learning Model")
     st.markdown("""
     ### Metrics of Success
-    - Given the highly imbalanced distribution of the target variable (94.7% negative vs. 5.3% positive), **accuracy is not a suitable metric**. A simple classifier that predicts all targets as negative would achieve an impressive accuracy of 94.7%, yet it would fail to identify any positive cases. Therefore, alternative metrics that better capture the model's performance on the minority class should be considered.
-    - **Total Models Trained**: Six models were evaluated, ranging from Logistic Regression to Neural Networks.  
-    - **Final Model Selection**: Logistic Regression (achieved optimal balance of recall & false positive rate)  
-    - **Test Performance on Unseen Data**:  
-        - Recall: 79.9% (Identifies 4 out of 5 true at-risk individuals)  
-        - False Positive Rate: 20.3%  
-        - Accuracy: 92%  
-        - AUC-ROC: 0.94  
+    - **Imbalanced Data Challenge**: Target variable distribution shows 94.7% negative vs 5.3% positive cases  
+    - **Accuracy Pitfall**: Naive 'all-negative' classifier would achieve 94.7% accuracy but 0% true positive detection  
+    - **Primary Focus**: Maximize recall (true positive rate) for early risk detection  
+    - **Secondary Control**: Maintain false positive rate <20% to prevent system overload from unnecessary interventions
 
-    1. **Primary Objective (Recall)**:  
-       ▸ Target: >80% recall  
-       ▸ Achieved: 79.9%  
-       ▸ *Rationale*: Prioritizes early intervention for actual at-risk cases - critical for preventing adverse outcomes. With 79.9% recall, the model correctly flags nearly 80% of true positives, enabling timely medical attention for those most vulnerable.  
+    ### Total Models Trained & Final Selection
+    - **Evaluated Algorithms**: Logistic Regression, Naive Bayes, Decision Tree, Random Forest, XGBoost, Neural Network  
+    - **Optimal Performer**: Logistic Regression  
+    - **Unseen Test Performance**:  
+        ▸ Recall: 79.9% (Identifies 4/5 true at-risk cases)  
+        ▸ False Positive Rate: 20.3%  
+        ▸ Accuracy: 92%  
+        ▸ AUC-ROC: 0.94  
 
-    2. **Secondary Objective (FPR)**:  
-       ▸ Target: <20% FPR  
-       ▸ Achieved: 20.3%  
-       ▸ *Rationale*: A false positive rate of 20.3% means 1 in 5 healthy individuals receive unnecessary alerts. While this creates some resource strain (average $500+ per clinical evaluation), it maintains system credibility by avoiding excessive over-prediction.  
+    ### Interpretations of Results
+    1. **Recall Analysis**:  
+       ▸ Target vs Achieved: 80% Goal → 79.9% Actual  
+       ▸ Clinical Impact: Enables preventive care for 79.9% of vulnerable patients  
+       ▸ Gap Consideration: Misses 20.1% high-risk cases - mitigated through regular screening reminders
+
+    2. **False Positive Reality Check**:  
+       ▸ Target vs Achieved: <20% Goal → 20.3% Actual  
+       ▸ Operational Impact: 1 unnecessary referral per 5 healthy individuals  
+       ▸ Cost Containment: $500 average waste per FP vs $15,000+ acute care cost per missed case
 
     ### Key Risk Factors Identified
     - ⚠️ **2.4x Risk Multiplier**: Presence of angina

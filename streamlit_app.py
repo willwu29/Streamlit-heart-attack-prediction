@@ -51,7 +51,7 @@ with st.sidebar:
         '📝 Risk Assessment': 'predict',
         '🧮 Additional Calculators': 'calculators', 
         '📊 Data Analysis': 'eda',  # Renamed and rearranged
-        '🤖 ML Insights': 'ml',
+        '🤖 ML Model': 'ml',
         '📧 Contact': 'contact'
     }
     for label, page_key in pages.items():
@@ -548,7 +548,7 @@ elif st.session_state.page == 'eda':
 
 # ML Section
 elif st.session_state.page == 'ml':
-    st.header("🤖 Machine Learning Engine")
+    st.header("🤖 Machine Learning Model Behind the Scene.")
     
     # Project Flowchart
     st.markdown("### End-to-End Project Workflow")
@@ -560,22 +560,25 @@ elif st.session_state.page == 'ml':
         st.error("Critical workflow diagram missing: Please ensure 'project_flowchart.png' exists in /src directory")
         st.stop()
 
+    # Visual spacing
+    st.markdown("<div style='height:30px'></div>", unsafe_allow_html=True)
+    
     st.markdown("""
     ### Success Metrics
     - **🚨 Accuracy Paradox**: Accuracy metric is deceptive for our imbalanced dataset (5.3% positive cases). A classifier predicting all negatives would achieve 94.7% accuracy but wouldn't identify any positive cases.
     - **🎯 Primary Objective**: Maximize Recall (Sensitivity) to identify ≥80% of true high-risk patients. Recall measures the model's ability to identify true positives, crucial for timely intervention.
     - **⚖️ Secondary Control**: Maintain False Positive Rate as low as possible to prevent system from excessive false positive alarms.  High recall can lead to excessive false positives, incorrectly flagging low-risk individuals as high-risk, resulting in unnecessary consultations and resource waste, ultimately undermining the model's
     """)
-    
-    
 
+    # Visual spacing
+    st.markdown("<div style='height:30px'></div>", unsafe_allow_html=True)
+    
     st.markdown("""
-    ### Model Selection Process
-    <div style='background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;'>
-    - 🔍 **Evaluated Algorithms**: Logistic Regression, Naive Bayes, Decision Tree, Random Forest, XGBoost, Neural Network
-    - ✅ **Final Selection**: Logistic Regression (Superior recall-FPR balance + clinical interpretability)
-    </div>
-    """, unsafe_allow_html=True)
+    ### Success Metrics
+    - **🔍 Trained Models**: Logistic Regression, Naive Bayes, Decision Tree, Random Forest, XGBoost, Neural Network
+    - **✅ Final Selection**: Logistic Regression (Superior recall-FPR balance + clinical interpretability)
+    """)
+
     
     # Visual spacing
     st.markdown("<div style='height:30px'></div>", unsafe_allow_html=True)

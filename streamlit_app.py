@@ -603,9 +603,9 @@ elif st.session_state.page == 'ml':
     st.markdown("<div style='height:30px'></div>", unsafe_allow_html=True)
     
     st.markdown("""
-    ### Models Trained 
+    ### Modeling 
     - **🔍 Trained Models**: Logistic Regression, Naive Bayes, Decision Tree, Random Forest, XGBoost, Neural Network
-    - **✅ Final Selection**: Logistic Regression (Superior recall-FPR balance + clinical interpretability)
+    - **✅ Final Model**: Logistic Regression (Superior recall-FPR balance + clinical interpretability)
     """)
 
     

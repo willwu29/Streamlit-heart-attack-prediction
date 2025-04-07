@@ -437,6 +437,10 @@ elif st.session_state.page == 'eda':
     except FileNotFoundError:
         st.error("Age group distribution image not found at src/heart_attack_age_group.png")
 
+    # Add some space
+    st.markdown("<br><br>", unsafe_allow_html=True)  # Two line breaks
+
+    
     # Second analysis text with bullet points
     st.markdown("""
     <style>
@@ -458,6 +462,8 @@ elif st.session_state.page == 'eda':
     """, unsafe_allow_html=True)
 
 
+    # Add some space
+    st.markdown("<br><br>", unsafe_allow_html=True)  # Two line breaks
 
     # Third plot
     st.markdown("#### Heart Attack Likelihood By Smoking Status")

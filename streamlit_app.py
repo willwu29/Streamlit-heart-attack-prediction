@@ -404,6 +404,8 @@ elif st.session_state.page == 'eda':
     
 
     # Customize plot
+
+    # First Plot
     st.markdown("#### Heart Attack Occurrence Distribution")
     try:
         st.image("src/Heart_Attack_Occurrence_Distribution.png", 
@@ -458,7 +460,27 @@ elif st.session_state.page == 'eda':
 
 
     # Third plot
-
+    st.markdown("#### Heart Attack Likelihood By Smoking Status")
+    try:
+        st.image("src/heart_attack_smoker_status.png", width=1000)
+    except FileNotFoundError:
+        st.error("Heart attack by smoker status image not found at src/heart_attack_smoker_status.png")
+    
+    # Analysis text for smoking status
+    st.markdown("""
+    <style>
+    .analysis-text {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+    </style>
+    
+    <div class="analysis-text">
+    🔍 <strong>Analysis:</strong> Smoking frequency is positively correlated with heart attack likelihood, with 'Every Day Smoker' at highest and 'Never' at lowest.
+    </div>
+    """, unsafe_allow_html=True)
 
 # ML Section
 elif st.session_state.page == 'ml':

@@ -8,48 +8,34 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from imblearn.pipeline import Pipeline
 
 # Custom CSS for sidebar styling with narrower width
+# Custom CSS with text optimization
 st.markdown("""
 <style>
     [data-testid="stSidebar"] {
-        width: 350px !important;
-        min-width: 350px !important;
-        max-width: 350px !important;
+        width: 260px !important;
+        min-width: 260px !important;
+        max-width: 260px !important;
     }
-    [data-testid="stSidebar"] > div:first-child {
-        width: 240px !important;
+    /* Button text styling */
+    .stButton>button div p {
+        white-space: nowrap !important;
+        overflow: visible !important;
+        font-size: 0.9rem !important;
+        margin: 0 !important;
     }
-    [data-testid="stSidebar"] > div:first-child > div:first-child {
-        width: 240px !important;
-        left: -240px !important;  /* Negative offset to match width */
-    }
-    [data-testid="stSidebar"] > div:first-child > div:first-child > div:first-child {
-        min-width: 240px !important;
-        max-width: 240px !important;
-    }
-    
-    /* Original button styles preserved */
+    /* Button container adjustments */
     .stButton>button {
-        width: 100%;
-        justify-content: left;
-        padding: 0.4rem 1rem !important;
-        margin: 0.1rem 0 !important;
-        background-color: #f0f2f6 !important;
-        border: none !important;
-        color: #333 !important;
-        border-radius: 4px !important;
-        transition: all 0.2s !important;
+        padding: 0.35rem 0.8rem !important;  /* Reduced padding */
+        text-overflow: ellipsis !important;
     }
+    /* Original button hover effects preserved */
     .stButton>button:hover {
         background-color: #e6e8ec !important;
         color: #FF5733 !important;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
     }
-    [data-testid="stVerticalBlock"] > [style*="flex-direction: column"] > [data-testid="stVerticalBlock"] {
-        gap: 0rem !important;
-    }
 </style>
 """, unsafe_allow_html=True)
-
 # Initialize session state
 if 'page' not in st.session_state:
     st.session_state.page = 'welcome'

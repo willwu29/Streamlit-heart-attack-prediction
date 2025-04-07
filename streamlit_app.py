@@ -402,23 +402,6 @@ elif st.session_state.page == 'eda':
     
     df = load_data()
     
-    # Get target column (last column)
-    target_col = df.columns[-1]
-
-
-    # Calculate value counts and percentages for the plot
-    counts = df[target_col].value_counts()
-    percentages = counts / counts.sum() * 100
-
-    # Create the countplot
-    fig, ax = plt.subplots(figsize=(8, 4))
-
-    sns.barplot(
-        x=percentages.index,
-        y=percentages.values,
-        palette=['#2E86C1', '#B01818'],
-        ax=ax
-    )
 
     # Customize plot
     st.markdown("#### Heart Attack Occurrence Distribution")
@@ -426,15 +409,50 @@ elif st.session_state.page == 'eda':
         st.image("src/Heart_Attack_Occurrence_Distribution.png", 
                  width=600)
     except FileNotFoundError:
-        st.error("Age group distribution image not found at src/heart_attack_age_group.png")
+        st.error("Heart attack distribution image not found at src/Heart_Attack_Occurrence_Distribution.png")  # Fixed error message
 
+    # First analysis text
+    st.markdown("""
+    <style>
+    .analysis-text {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+    </style>
+    
+    <div class="analysis-text">
+    🔍 <strong>Analysis:</strong> Only 5.3% of respondents experienced a heart attack.
+    </div>
+    """, unsafe_allow_html=True)
     
     st.markdown("#### Age Group Distribution of Heart Attacks")
     try:
         st.image("src/heart_attack_age_group.png", 
-                 width=1200)  # Increased from 600 to 900 pixels
+                 width=1200)
     except FileNotFoundError:
         st.error("Age group distribution image not found at src/heart_attack_age_group.png")
+
+    # Second analysis text with bullet points
+    st.markdown("""
+    <style>
+    .bullet-points {
+        font-size: 16px;
+        line-height: 1.8;
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+    </style>
+    
+    <div class="bullet-points">
+    🔍 <strong>Key Insights:</strong>
+    <ul>
+        <li>Heart attack risk increases exponentially after age 45</li>
+        <li>Existing models (Additional Models) exclude individuals aged 80+, leaving this high-risk group inaccessible to existing early detection tools</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
 
 # ML Section
 elif st.session_state.page == 'ml':

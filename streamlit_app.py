@@ -13,7 +13,7 @@ st.markdown("""
     [data-testid="stSidebar"] {
         width: 300px !important;
         min-width: 300px !important;
-        max-width: 300px !important;
+        max-width: 350px !important;
     }
     [data-testid="stSidebar"] > div:first-child {
         width: 240px !important;

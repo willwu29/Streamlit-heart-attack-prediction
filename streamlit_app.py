@@ -130,9 +130,9 @@ if st.session_state.page == 'welcome':
         <h4 style='color: #d32f2f; margin-top:0;'>🚨 The Challenge</h4>
         <ul style='font-size: 14px; padding-left: 20px;'>
             <li>Leading cause of death in the US with over 800k incidents annually -> one heart attack every 40 seconds.</li>
-            <li>Heart attack healthcare costs exceed $160 billion USD each year.</li>
+            <li>Heart attack healthcare costs exceed $160 million USD each year.</li>
             <li>Current assessment tools (🧮 Additional Calculators) overlook individuals aged 18-29 and 80+.</li>
-            <li>Current assessment tools (🧮 Additional Calculators) require blood test inputs, limiting accessibility.</li>
+            <li>Current assessment tools also require blood test inputs, limiting accessibility.</li>
         </ul>
     </div>
     """, unsafe_allow_html=True)

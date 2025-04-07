@@ -385,8 +385,6 @@ elif st.session_state.page == 'calculators':
 # EDA Section
 elif st.session_state.page == 'eda':
     st.header("📊 Exploratory Data Analysis")
-    st.subheader("Key Insights from Health Data")
-    st.subheader("Heart Attack Occurrence Distribution")
 
     # Load data with caching and error handling
     @st.cache_data
@@ -404,51 +402,44 @@ elif st.session_state.page == 'eda':
     
     df = load_data()
     
-    if df is not None:
-        # Display the first few rows of the DataFrame for debugging
-        st.write("Data Preview:")
-        st.write(df.head())
-    
-        # Get target column (last column)
-        target_col = df.columns[-1]
-    
-        
-        # Create normalized countplot
-        st.markdown("#### Distribution of Heart Attack History")
-        
-        # Check if the target column contains expected values
-        if set(['Yes', 'No']).issubset(df[target_col].unique()):
-            fig, ax = plt.subplots(figsize=(8, 4))
-            
-            # Create normalized countplot using percentages
-            sns.countplot(
-                x=target_col,
-                data=df,
-                stat='percent',  # Normalize the count
-                order=['Yes', 'No'],  # Ensure the order is correct
-                palette=['#B01818', '#2E86C1'],  # Color palette
-                ax=ax
-            )
-    
-            # Customize plot
-            ax.set_xlabel("Had Heart Attack", fontsize=12)
-            ax.set_ylabel("Percentage", fontsize=12)
-            ax.set_title("Normalized Distribution of Heart Attack Occurrence", fontsize=14, pad=20)
-    
-            # Add percentage labels to bars
-            for p in ax.patches:
-                percentage = f'{p.get_height():.1f}%'
-                ax.annotate(percentage, 
-                            (p.get_x() + p.get_width() / 2., p.get_height()), 
-                            ha='center', va='bottom', 
-                            xytext=(0, 5), 
-                            textcoords='offset points',
-                            fontsize=10)
-    
-            # Show the plot in Streamlit
-            st.pyplot(fig)
-        else:
-            st.warning("The target column does not contain the expected values 'Yes' and 'No'.")
+    # Get target column (last column)
+    target_col = df.columns[-1]
+
+    # Create normalized countplot
+    st.markdown("#### Heart Attack Occurrence Distribution")
+
+    # Calculate value counts and percentages for the plot
+    counts = df[target_col].value_counts()
+    percentages = counts / counts.sum() * 100
+
+    # Create the countplot
+    st.markdown("#### Distribution of Heart Attack History")
+    fig, ax = plt.subplots(figsize=(8, 4))
+
+    sns.barplot(
+        x=percentages.index,
+        y=percentages.values,
+        palette=['#B01818', '#2E86C1'],
+        ax=ax
+    )
+
+    # Customize plot
+    ax.set_xlabel("Had Heart Attack", fontsize=12)
+    ax.set_ylabel("Percentage", fontsize=12)
+    ax.set_title("Heart Attack Possibility", fontsize=14, pad=20)
+
+    # Add percentage labels to bars
+    for i in range(len(percentages)):
+        percentage = f'{percentages.values[i]:.1f}%'
+        ax.annotate(percentage,
+                    (i, percentages.values[i]), 
+                    ha='center', va='bottom', 
+                    xytext=(0, 5), 
+                    textcoords='offset points',
+                    fontsize=10)
+
+    # Show the plot in Streamlit
+    st.pyplot(fig)
 
 # ML Section
 elif st.session_state.page == 'ml':

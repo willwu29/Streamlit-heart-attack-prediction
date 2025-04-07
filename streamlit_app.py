@@ -421,29 +421,9 @@ elif st.session_state.page == 'eda':
     )
 
     # Customize plot
-   # Customize plot
-    ax.set_xlabel("Had Heart Attack", fontsize=12)
-    ax.set_ylabel("Percentage", fontsize=12)
-    ax.set_title("Heart Attack Occurrence Distribution", fontsize=12)
-    ax.set_ylim(0, 100)  # Fixes annotation overflow issue
+
+
     
-
-    # Add percentage labels to bars
-    for i in range(len(percentages)):
-        percentage = f'{percentages.values[i]:.1f}%'
-        ax.annotate(percentage,
-                    (i, percentages.values[i]), 
-                    ha='center', va='bottom', 
-                    xytext=(0, 5), 
-                    textcoords='offset points',
-                    fontsize=8)
-
-    # Show the plot in Streamlit
-    st.pyplot(fig)
-
-    # Add analysis text  
-    st.markdown(f"####**Analysis:** In the overall dataset, only {percentages.iloc[1]:.1f}% of people had experienced heart attack.")
-
     st.markdown("#### Age Group Distribution of Heart Attacks")
     try:
         st.image("src/heart_attack_age_group.png", 

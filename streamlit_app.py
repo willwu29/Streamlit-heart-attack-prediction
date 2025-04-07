@@ -301,7 +301,7 @@ elif st.session_state.page == 'predict':
                             Keep up the good work and maintain a healthy lifestyle!""")
                     
                 st.markdown("---")
-                st.info("💡 **Recommendation:** Validate results using 🧮 Additional Assessment Tools")
+                st.info("💡 **Recommendation:** Validate results using 🧮 Additional Tools")
         
             except Exception as e:
                 st.error(f"System error: {str(e)}")
@@ -309,7 +309,7 @@ elif st.session_state.page == 'predict':
 
 # Add the new page handler
 elif st.session_state.page == 'calculators':
-    st.header("🧮 Additional Heart Health Assessment Tools")
+    st.header("🧮 Additional  Tools")
     st.markdown("""
     <style>
         .calculator-box {
@@ -399,7 +399,7 @@ elif st.session_state.page == 'eda':
     </style>
     
     <div class="intro-text">
-    This analysis explores key cardiovascular risk patterns from a health survey dataset of <strong>~400k adults by CDC Behavioral Risk Factor Surveillance System (BFRSS) in 2022 annd 2023 </strong>. 
+    This analysis examines heart attack risk patterns using a health survey dataset of 800,000 adults from the CDC Behavioral Risk Factor Surveillance System (BRFSS) for the years 2022 and 2023.
     Below you'll find visualizations showing:
     <ul>
         <li>Prevalence of heart attacks in the population</li>
@@ -485,7 +485,7 @@ elif st.session_state.page == 'eda':
     🔍 <strong>Key Insights:</strong>
     <ul>
         <li>Heart attack risk increases exponentially after age 45</li>
-        <li>Existing models (🧮 Additional Heart Attack Assessment Tools) exclude individuals aged 80+, leaving this high-risk group inaccessible to existing early detection tools</li>
+        <li>Existing models (🧮 Additional Tools) exclude individuals aged 80+, leaving this high-risk group inaccessible to existing early detection tools</li>
     </ul>
     </div>
     """, unsafe_allow_html=True)

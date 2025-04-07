@@ -11,8 +11,8 @@ from imblearn.pipeline import Pipeline
 st.markdown("""
 <style>
     [data-testid="stSidebar"] {
-        width: 300px !important;
-        min-width: 300px !important;
+        width: 350px !important;
+        min-width: 350px !important;
         max-width: 350px !important;
     }
     [data-testid="stSidebar"] > div:first-child {

@@ -489,6 +489,33 @@ elif st.session_state.page == 'eda':
     </div>
     """, unsafe_allow_html=True)
 
+    # Add some space
+    st.markdown("<br><br>", unsafe_allow_html=True)  # Two line breaks
+
+    # Fourth plot
+    st.markdown("#### Heart Attack Likelihood By BMI Category")
+    try:
+        st.image("src/heart_attack_bmi_category.png", width=1000)
+    except FileNotFoundError:
+        st.error("Heart attack by BMI category image not found at src/heart_attack_bmi_category.png")
+    
+    # Analysis text for BMI categories
+    st.markdown("""
+    <style>
+    .analysis-text {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+    </style>
+    
+    <div class="analysis-text">
+    🔍 <strong>Analysis:</strong> The likelihood of having a heart attack differs across various BMI categories. The Healthy group shows a notably lower likelihood of experiencing a heart attack, while the Obese group exhibits a higher likelihood.
+    </div>
+    """, unsafe_allow_html=True)
+
+
 # ML Section
 elif st.session_state.page == 'ml':
     st.header("🤖 Machine Learning Details")

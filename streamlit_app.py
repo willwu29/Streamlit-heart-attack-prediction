@@ -670,79 +670,79 @@ elif st.session_state.page == 'ml':
 
     
     # Enhanced analysis with clinical context
-  st.markdown("""
-    <style>
-    .clinical-insight {
-        border-left: 4px solid #ff4b4b;
-        padding-left: 1rem;
-        margin: 1.5rem 0;
-    }
-    .interpretation-header {
-        color: #2e7d32;
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-    }
-    </style>
-    
-    <div class='clinical-insight'>
-    🔍 <strong>Model Interpretation: Clinical Impact Analysis</strong>
+      st.markdown("""
+        <style>
+        .clinical-insight {
+            border-left: 4px solid #ff4b4b;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+        }
+        .interpretation-header {
+            color: #2e7d32;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        </style>
         
-    <div class='interpretation-header'>Detection Capability</div>
-    <ul>
-        <li><strong>79.9% Recall</strong> - Identifies 4 of every 5 at-risk patients</li>
-        <li>Potential prevention of 800+ annual deaths per 100,000 screenings</li>
-    </ul>
-    
-    <div class='interpretation-header'>Operational Tradeoffs</div>
-    <ul>
-        <li><strong>20.3% False Positive Rate</strong> - 1 unnecessary referral per 5 healthy patients</li>
-        <li>Risk-stratified thresholds balance sensitivity across patient subgroups</li>
-    </ul>
-    
-    <div class='interpretation-header'>Clinical Validation</div>
-    <ul>
-        <li>83% alignment with ACC/AHA preventive care thresholds</li>
-        <li>17% earlier detection than traditional ASCVD risk scoring</li>
-    </ul>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Results interpretation with vertical layout
-    st.markdown("""
-    ### 📉 Clinical Benefits
-    <div style="margin-left: -1.2rem;">
-        <div style="display: flex; align-items: baseline;">
-            • <strong>4/5 High Risk Detection</strong>
+        <div class='clinical-insight'>
+        🔍 <strong>Model Interpretation: Clinical Impact Analysis</strong>
+            
+        <div class='interpretation-header'>Detection Capability</div>
+        <ul>
+            <li><strong>79.9% Recall</strong> - Identifies 4 of every 5 at-risk patients</li>
+            <li>Potential prevention of 800+ annual deaths per 100,000 screenings</li>
+        </ul>
+        
+        <div class='interpretation-header'>Operational Tradeoffs</div>
+        <ul>
+            <li><strong>20.3% False Positive Rate</strong> - 1 unnecessary referral per 5 healthy patients</li>
+            <li>Risk-stratified thresholds balance sensitivity across patient subgroups</li>
+        </ul>
+        
+        <div class='interpretation-header'>Clinical Validation</div>
+        <ul>
+            <li>83% alignment with ACC/AHA preventive care thresholds</li>
+            <li>17% earlier detection than traditional ASCVD risk scoring</li>
+        </ul>
         </div>
-        <div style="margin-left: 1.5rem; margin-top: -0.5rem;">
-            (Identifies majority of true positive cases)
+        """, unsafe_allow_html=True)
+        
+        # Results interpretation with vertical layout
+        st.markdown("""
+        ### 📉 Clinical Benefits
+        <div style="margin-left: -1.2rem;">
+            <div style="display: flex; align-items: baseline;">
+                • <strong>4/5 High Risk Detection</strong>
+            </div>
+            <div style="margin-left: 1.5rem; margin-top: -0.5rem;">
+                (Identifies majority of true positive cases)
+            </div>
+            <div style="display: flex; align-items: baseline; margin-top: 0.5rem;">
+                - <strong>Population Impact:</strong> 650,000+ preventable cases annually
+            </div>
+            <div style="display: flex; align-items: baseline;">
+                - <strong>Cost Efficiency:</strong> $12M+ ER savings per 100k screenings
+            </div>
         </div>
-        <div style="display: flex; align-items: baseline; margin-top: 0.5rem;">
-            - <strong>Population Impact:</strong> 650,000+ preventable cases annually
+        
+        <div style="height: 2rem;"></div>
+        
+        ### ⚠️ Implementation Challenges
+        <div style="margin-left: -1.2rem;">
+            <div style="display: flex; align-items: baseline;">
+                • <strong>1:5 False Positive Rate</strong>
+            </div>
+            <div style="margin-left: 1.5rem; margin-top: -0.5rem;">
+                (Requires secondary screening protocol)
+            </div>
+            <div style="display: flex; align-items: baseline; margin-top: 0.5rem;">
+                - <strong>Financial Impact:</strong> $500k unnecessary costs/100k screens
+            </div>
+            <div style="display: flex; align-items: baseline;">
+                - <strong>Workflow Requirements:</strong> Staff training needs
+            </div>
         </div>
-        <div style="display: flex; align-items: baseline;">
-            - <strong>Cost Efficiency:</strong> $12M+ ER savings per 100k screenings
-        </div>
-    </div>
-    
-    <div style="height: 2rem;"></div>
-    
-    ### ⚠️ Implementation Challenges
-    <div style="margin-left: -1.2rem;">
-        <div style="display: flex; align-items: baseline;">
-            • <strong>1:5 False Positive Rate</strong>
-        </div>
-        <div style="margin-left: 1.5rem; margin-top: -0.5rem;">
-            (Requires secondary screening protocol)
-        </div>
-        <div style="display: flex; align-items: baseline; margin-top: 0.5rem;">
-            - <strong>Financial Impact:</strong> $500k unnecessary costs/100k screens
-        </div>
-        <div style="display: flex; align-items: baseline;">
-            - <strong>Workflow Requirements:</strong> Staff training needs
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
 
     
     st.markdown("""

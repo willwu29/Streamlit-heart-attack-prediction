@@ -712,32 +712,41 @@ elif st.session_state.page == 'ml':
     """, unsafe_allow_html=True)
     
     # Results interpretation with balanced perspective
-    cols = st.columns(2)
     with cols[0]:
         st.markdown("""
         ### Clinical Benefits
-        - ✅ **4/5 True Risks Caught**  
-           (Meets WHO NCD prevention targets)
-        - → **Lives Saved**: 800+ avertable deaths/100k
-        - → **Cost Avoidance**: \$12M+ ER savings annually
-        """)
-        
+        <div style="margin-left: -1.2rem;">
+            <div style="display: flex; align-items: baseline;">
+                ✅&nbsp;<strong>4/5 High Risk Detection</strong>
+            </div>
+            <div style="margin-left: 1.5rem; margin-top: -0.5rem;">
+                (Flags 4 of 5 true at-risk users)
+            </div>
+            <div style="display: flex; align-items: baseline; margin-top: 0.5rem;">
+                →&nbsp;<strong>Population Impact:</strong>&nbsp;650,000+ preventable cases annually
+            </div>
+            <div style="display: flex; align-items: baseline;">
+                →&nbsp;<strong>Resource Efficiency:</strong>&nbsp;\$12M+ ER savings/100k screens
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
     with cols[1]:
         st.markdown("""
         ### Implementation Challenges
         <div style="margin-left: -1.2rem;">
-        <div style="display: flex; align-items: baseline;">
-            ⚠️&nbsp;<strong>1:5 False Alarms</strong>
-        </div>
-        <div style="margin-left: 1.5rem; margin-top: -0.5rem;">
-            (Requires triage protocols)
-        </div>
-        <div style="display: flex; align-items: baseline; margin-top: 0.5rem;">
-            →&nbsp;<strong>Operational Impact:</strong>&nbsp;\$500k wasted/100k screens
-        </div>
-        <div style="display: flex; align-items: baseline;">
-            →&nbsp;<strong>Staff Training:</strong>&nbsp;Needs ML-literate nurses
-        </div>
+            <div style="display: flex; align-items: baseline;">
+                ⚠️&nbsp;<strong>1:5 False Alarms</strong>
+            </div>
+            <div style="margin-left: 1.5rem; margin-top: -0.5rem;">
+                (1 healthy user flagged per 5 assessments)
+            </div>
+            <div style="display: flex; align-items: baseline; margin-top: 0.5rem;">
+                →&nbsp;<strong>Financial Impact:</strong>&nbsp;\$500k wasted/100k screens
+            </div>
+            <div style="display: flex; align-items: baseline;">
+                →&nbsp;<strong>Operational Burden:</strong>&nbsp;Requires triage protocols
+            </div>
         </div>
         """, unsafe_allow_html=True)
 

@@ -407,7 +407,7 @@ elif st.session_state.page == 'eda':
     st.markdown("#### Heart Attack Occurrence Distribution")
     try:
         st.image("src/Heart_Attack_Occurrence_Distribution.png", 
-                 width=600)
+                 width=500)
     except FileNotFoundError:
         st.error("Heart attack distribution image not found at src/Heart_Attack_Occurrence_Distribution.png")  # Fixed error message
 
@@ -427,10 +427,11 @@ elif st.session_state.page == 'eda':
     </div>
     """, unsafe_allow_html=True)
     
-    st.markdown("#### Age Group Distribution of Heart Attacks")
+    # Second image Age group
+    st.markdown("#### Heart Attack Likelihood By Age")
     try:
         st.image("src/heart_attack_age_group.png", 
-                 width=1200)
+                 width=1000)
     except FileNotFoundError:
         st.error("Age group distribution image not found at src/heart_attack_age_group.png")
 
@@ -449,10 +450,15 @@ elif st.session_state.page == 'eda':
     🔍 <strong>Key Insights:</strong>
     <ul>
         <li>Heart attack risk increases exponentially after age 45</li>
-        <li>Existing models (Additional Models) exclude individuals aged 80+, leaving this high-risk group inaccessible to existing early detection tools</li>
+        <li>Existing models (🧮 Additional Heart Health Calculators) exclude individuals aged 80+, leaving this high-risk group inaccessible to existing early detection tools</li>
     </ul>
     </div>
     """, unsafe_allow_html=True)
+
+
+
+    # Third plot
+
 
 # ML Section
 elif st.session_state.page == 'ml':

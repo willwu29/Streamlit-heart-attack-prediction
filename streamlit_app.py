@@ -478,7 +478,7 @@ elif st.session_state.page == 'eda':
     </style>
     
     <div class="analysis-text">
-    🔍 <strong>Analysis:</strong> Smoking frequency is positively correlated with heart attack likelihood, with 'Every Day Smoker' at highest and 'Never' at lowest.
+    🔍 <strong>Analysis:</strong> Smoking frequency is positively correlated with heart attack likelihood, with 'Every Day Smoker' at highest,  'Never' at lowest.
     </div>
     """, unsafe_allow_html=True)
 

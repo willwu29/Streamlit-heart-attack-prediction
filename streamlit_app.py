@@ -412,9 +412,6 @@ elif st.session_state.page == 'eda':
         # Get target column (last column)
         target_col = df.columns[-1]
     
-        # Check the unique values in the target column
-        st.write("Unique values in target column:")
-        st.write(df[target_col].unique())
         
         # Create normalized countplot
         st.markdown("#### Distribution of Heart Attack History")
@@ -429,7 +426,7 @@ elif st.session_state.page == 'eda':
                 data=df,
                 stat='percent',  # Normalize the count
                 order=['Yes', 'No'],  # Ensure the order is correct
-                palette=['#FF5733', '#2E86C1'],  # Color palette
+                palette=['#B01818', '#2E86C1'],  # Color palette
                 ax=ax
             )
     

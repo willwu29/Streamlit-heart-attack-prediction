@@ -7,12 +7,12 @@ import os
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from imblearn.pipeline import Pipeline
 
-# Custom CSS for sidebar styling
+# Custom CSS for sidebar styling with narrower width
 st.markdown("""
 <style>
     [data-testid="stSidebar"] {
-        min-width: 100px !important;  # Increased width
-        max-width: 100px !important;  # Increased width
+        min-width: 260px !important;  # Reduced width
+        max-width: 260px !important;  # Reduced width
     }
     .stButton>button {
         width: 100%;

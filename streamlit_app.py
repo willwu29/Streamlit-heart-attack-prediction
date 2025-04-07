@@ -389,9 +389,10 @@ elif st.session_state.page == 'eda':
     st.subheader("Heart Attack Occurrence Distribution")
 
     # Load data with caching and error handling
+    # Load data with caching and error handling
     @st.cache_data
     def load_data():
-        file_path = 'data/df.csv'
+        file_path = 'data/df.csv'  # Ensure this path is correct
         try:
             df = pd.read_csv(file_path)
             return df
@@ -401,9 +402,9 @@ elif st.session_state.page == 'eda':
         except Exception as e:
             st.error(f"Error loading data: {str(e)}")
             return None
-
+    
     df = load_data()
-
+    
     if df is not None:
         # Get target column (last column)
         target_col = df.columns[-1]
@@ -412,13 +413,13 @@ elif st.session_state.page == 'eda':
         st.markdown("#### Distribution of Heart Attack History")
         fig, ax = plt.subplots(figsize=(8, 4))
     
-        # Create normalized countplot
+        # Create normalized countplot using percentages
         sns.countplot(
             x=target_col,
             data=df,
-            stat='percent',
-            order=['Yes', 'No'],
-            palette=['#FF5733', '#2E86C1'],
+            stat='percent',  # Normalize the count
+            order=['Yes', 'No'],  # Ensure the order is correct
+            palette=['#FF5733', '#2E86C1'],  # Color palette
             ax=ax
         )
     
@@ -427,7 +428,7 @@ elif st.session_state.page == 'eda':
         ax.set_ylabel("Percentage", fontsize=12)
         ax.set_title("Normalized Distribution of Heart Attack Occurrence", fontsize=14, pad=20)
     
-        # Add percentage labels
+        # Add percentage labels to bars
         for p in ax.patches:
             percentage = f'{p.get_height():.1f}%'
             ax.annotate(percentage, 
@@ -436,7 +437,9 @@ elif st.session_state.page == 'eda':
                         xytext=(0, 5), 
                         textcoords='offset points',
                         fontsize=10)
-
+    
+        # Show the plot in Streamlit
+        st.pyplot(fig)
 
 # ML Section
 elif st.session_state.page == 'ml':

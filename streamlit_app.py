@@ -724,39 +724,25 @@ elif st.session_state.page == 'ml':
         st.stop()
 
     # Clinical interpretation
+    # Clinical benefits and limitations   
     st.markdown("""
-    <style>
-    .clinical-insight {
-        border-left: 4px solid #ff4b4b;
-        padding-left: 1rem;
-        margin: 1.5rem 0;
-    }
-    </style>
-    
-    <div class='clinical-insight'>
-    🔍 <strong>Key Feature Analysis:</strong>
+    ### ⚠️ Top Risk Factors 
     <ul>
-        <li> ⚠️ <strong>Top Risk Factors:</strong><br>
-        - Angina Presense:  (8.94x odds increase)<br>
-        - Stroke Presense (2.94x odds increase)<br>
-        - Age 80+ (2.15x odds increase)</li>
-        - Smoker Status: Everyday Smoker (1.44x odds increase)</li>
-        
-        <li> ✅ <strong>Protective Factors:</strong><br>
-        - Age within 18-24 (0.23x odds reduction)<br>
-        - Gender is Female  (0.55x odds reduction)<br>
-        - Excellent general health condition (0.56x odds reduction)</li>
-        - Race/Ethnicity is Asian (0.74x odds reduction)</li>
+        <li><strong>Angina Presense:  (8.94x odds increase)</li>
+        <li><strong>Stroke Presense (2.94x odds increase)</li>
+        <li><strong>Age 80+ (2.15x odds increase)</li>
+        <li><strong>Smoker Status: Everyday Smoker (1.44x odds increase)</li>
     </ul>
-    
-    💡 <strong>Clinical Relevance:</strong><br>
-    The model aligns with established medical knowledge - chest pain characteristics and ECG abnormalities are well-known cardiac risk indicators. 
-    Interestingly, it identified ST depression (often associated with myocardial ischemia) as a stronger predictor than traditional factors like cholesterol levels.
-    </div>
-    """, unsafe_allow_html=True)
 
-    # Visual spacing
-    st.markdown("<div style='height:30px'></div>", unsafe_allow_html=True)
+    ### ✅ Protective Factors
+    <ul>
+        <li><strong>Age within 18-24 (0.23x odds reduction)</li>
+        <li><strong>Gender is Female  (0.55x odds reduction)</li>
+        <li><strong>Excellent general health condition (0.56x odds reduction)</li>
+        <li><strong>Race/Ethnicity is Asian (0.74x odds reduction)</li>
+    </ul>
+    """, unsafe_allow_html=True)
+    
 
 
 elif st.session_state.page == 'contact':
@@ -775,7 +761,7 @@ elif st.session_state.page == 'contact':
     ### Have questions or feedback?
     **Email:** [willwu2912@gmail.com](willwu2912@gmail.com)  
     **LinkedIn:** [Will Wu](https://www.linkedin.com/in/willwu2912/)  
-    **GitHub: **[![GitHub](https://img.shields.io/badge/GitHub-blue?logo=github)](https://github.com/willwu29)
+    **GitHub:** [![GitHub](https://img.shields.io/badge/GitHub-blue?logo=github)](https://github.com/willwu29)
     """)
 
     # Optionally, you can provide some markdown description

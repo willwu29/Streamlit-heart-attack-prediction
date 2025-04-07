@@ -691,7 +691,6 @@ elif st.session_state.page == 'ml':
     st.markdown("""
     <style>
     .clinical-insight {
-        border-left: 4px solid #ff4b4b;
         padding-left: 1rem;
         margin: 1.5rem 0;
     }
@@ -729,8 +728,6 @@ elif st.session_state.page == 'ml':
     </ul>
     </div>
     """, unsafe_allow_html=True)
-    
-
 
     
     st.markdown("""

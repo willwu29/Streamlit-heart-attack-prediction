@@ -11,9 +11,23 @@ from imblearn.pipeline import Pipeline
 st.markdown("""
 <style>
     [data-testid="stSidebar"] {
-        min-width: 260px !important;  # Reduced width
-        max-width: 260px !important;  # Reduced width
+        width: 240px !important;
+        min-width: 240px !important;
+        max-width: 240px !important;
     }
+    [data-testid="stSidebar"] > div:first-child {
+        width: 240px !important;
+    }
+    [data-testid="stSidebar"] > div:first-child > div:first-child {
+        width: 240px !important;
+        left: -240px !important;  /* Negative offset to match width */
+    }
+    [data-testid="stSidebar"] > div:first-child > div:first-child > div:first-child {
+        min-width: 240px !important;
+        max-width: 240px !important;
+    }
+    
+    /* Original button styles preserved */
     .stButton>button {
         width: 100%;
         justify-content: left;
@@ -35,7 +49,6 @@ st.markdown("""
     }
 </style>
 """, unsafe_allow_html=True)
-
 
 # Initialize session state
 if 'page' not in st.session_state:

@@ -177,7 +177,7 @@ elif st.session_state.page == 'predict':
         st.markdown("<div style='height: 30px;'></div>", unsafe_allow_html=True)
         st.header("Health Status")
         bmi_category = st.selectbox("BMI Category:", 
-                                    ["Underweight", "Healthy", "Overweight", "Obese"],
+                                    ["Underweight", "Healthy", "Overweight", "Obese", "Unknown"],
                                     help="Underweight ≤18.4, Healthy 18.5-24.9, Overweight 25.0-29.9, Obese ≥30.0")
         general_health = st.selectbox("How would you rate your Health Condition:", 
                                     ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
@@ -197,7 +197,7 @@ elif st.session_state.page == 'predict':
     with col2:
         # Habits & Lifestyle
         st.header("Habits & Lifestyle")
-        physical_activities = st.selectbox("Any Physical activities in past 30 days:", ["No", "Yes"])  
+        physical_activities = st.selectbox("Any Physical activities in past 30 days:", ["No", "Yes", "Unknown"])  
         alcohol_drinker = st.selectbox("Any Alcohol consumption in past 30 days:", ["No", "Yes", "Unknown"])  
         smoker_status = st.selectbox("Smoking status:", 
                                    ["Never", "Former", "Every day smoker", "Some days smoker"])
@@ -211,10 +211,10 @@ elif st.session_state.page == 'predict':
                                           ["No", "Yes", "Unknown"],
                                          help="Not including kidney stones, bladder infection or incontinence")  
         had_angina = st.selectbox("Angina diagnosis:", 
-                                  ["No", "Yes"],
+                                  ["No", "Yes", "Unknown"],
                                  help="Angina is chest pain or discomfort caused by reduced blood flow to the heart muscle, often triggered by physical exertion or stress.")  
         had_stroke = st.selectbox("Stroke history:", 
-                                  ["No", "Yes"],
+                                  ["No", "Yes", "Unknown"],
                                  help="Stroke is a medical emergency that occurs when blood flow to the brain is interrupted, causing brain damage and potentially leading to loss of function such as speech, movement, or memory.") 
         had_copd = st.selectbox("COPD (Chronic Obstructive Pulmonary Disease) diagnosis:", 
                                 ["No", "Yes", "Unknown"],
@@ -222,6 +222,12 @@ elif st.session_state.page == 'predict':
         had_arthritis = st.selectbox("Arthritis diagnosis:", 
                                      ["No", "Yes", "Unknown"],
                                      help="Arthritis is a chronic inflammation of the joints that leads to pain, stiffness, swelling, and reduced mobility, commonly affecting the hands, knees, and hips")
+
+    # Handle Unknown values
+    bmi_category = "Healthy" if bmi_category == "Unknown" else bmi_category
+    physical_activities = "No" if physical_activities == "Unknown" else physical_activities
+    had_angina = "No" if had_angina == "Unknown" else had_angina
+    had_stroke = "No" if had_stroke == "Unknown" else had_stroke
 
     # Prepare input data
     input_data = [

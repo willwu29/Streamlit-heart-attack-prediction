@@ -444,7 +444,7 @@ elif st.session_state.page == 'eda':
     # Add analysis text  
     st.markdown(f"####**Analysis:** In the overall dataset, only {percentages.iloc[1]:.1f}% of people had experienced heart attack.")
 
-        st.markdown("#### Age Group Distribution of Heart Attacks")
+    st.markdown("#### Age Group Distribution of Heart Attacks")
     try:
         st.image("src/heart_attack_age_group.png", 
                  width=600,  # Adjust width as needed

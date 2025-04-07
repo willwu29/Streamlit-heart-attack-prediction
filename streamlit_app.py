@@ -677,73 +677,38 @@ elif st.session_state.page == 'ml':
         padding-left: 1rem;
         margin: 1.5rem 0;
     }
-    .interpretation-header {
-        color: #2e7d32;
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-    }
     </style>
     
     <div class='clinical-insight'>
-    🔍 <strong>Model Interpretation: Clinical Impact Analysis</strong>
-        
-    <div class='interpretation-header'>Detection Capability</div>
+    <h4>Model Performance Analysis</h4>
     <ul>
-        <li><strong>79.9% Recall</strong> - Identifies 4 of every 5 at-risk patients</li>
-        <li>Potential prevention of 800+ annual deaths per 100,000 screenings</li>
+        <li>Adjusted decision thresholds to achieve 80% recall target on training data</li>
+        <li>Evaluated test recall scores post-adjustment to verify real-world detection capability</li>
+        <li>Logistic Regression and Naive Bayes demonstrated optimal recall-FPR balance</li>
     </ul>
     
-    <div class='interpretation-header'>Operational Tradeoffs</div>
+    <h4>Clinical Impact</h4>
     <ul>
-        <li><strong>20.3% False Positive Rate</strong> - 1 unnecessary referral per 5 healthy patients</li>
-        <li>Risk-stratified thresholds balance sensitivity across patient subgroups</li>
-    </ul>
-    
-    <div class='interpretation-header'>Clinical Validation</div>
-    <ul>
-        <li>83% alignment with ACC/AHA preventive care thresholds</li>
-        <li>17% earlier detection than traditional ASCVD risk scoring</li>
+        <li>79.9% recall enables identification of 4/5 true at-risk patients</li>
+        <li>20.3% false positive rate necessitates secondary screening protocols</li>
+        <li>Model alignment with 83% of AHA preventive care thresholds</li>
     </ul>
     </div>
+    
+    ### Key Outcomes
+    <ul>
+        <li>650,000+ preventable cases identified annually at scale</li>
+        <li>$12M ER cost avoidance per 100,000 screenings</li>
+        <li>17% earlier detection than traditional risk scoring methods</li>
+    </ul>
+    
+    ### Operational Considerations
+    <ul>
+        <li>$500k unnecessary costs per 100k screenings from false positives</li>
+        <li>Required implementation of ML-literate clinical staff</li>
+        <li>Need for automated triage protocols to manage alert volume</li>
+    </ul>
     """, unsafe_allow_html=True)
-    
-    # Results interpretation with vertical layout
-    st.markdown("""
-    ### 📉 Clinical Benefits
-    <div style="margin-left: -1.2rem;">
-        <div style="display: flex; align-items: baseline;">
-            • <strong>4/5 High Risk Detection</strong>
-        </div>
-        <div style="margin-left: 1.5rem; margin-top: -0.5rem;">
-            (Identifies majority of true positive cases)
-        </div>
-        <div style="display: flex; align-items: baseline; margin-top: 0.5rem;">
-            - <strong>Population Impact:</strong> 650,000+ preventable cases annually
-        </div>
-        <div style="display: flex; align-items: baseline;">
-            - <strong>Cost Efficiency:</strong> $12M+ ER savings per 100k screenings
-        </div>
-    </div>
-    
-    <div style="height: 2rem;"></div>
-    
-    ### ⚠️ Implementation Challenges
-    <div style="margin-left: -1.2rem;">
-        <div style="display: flex; align-items: baseline;">
-            • <strong>1:5 False Positive Rate</strong>
-        </div>
-        <div style="margin-left: 1.5rem; margin-top: -0.5rem;">
-            (Requires secondary screening protocol)
-        </div>
-        <div style="display: flex; align-items: baseline; margin-top: 0.5rem;">
-            - <strong>Financial Impact:</strong> $500k unnecessary costs/100k screens
-        </div>
-        <div style="display: flex; align-items: baseline;">
-            - <strong>Workflow Requirements:</strong> Staff training needs
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
     
     st.markdown("""
     ### Critical Risk Multipliers

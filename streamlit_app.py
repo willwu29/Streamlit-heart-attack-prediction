@@ -766,6 +766,7 @@ elif st.session_state.page == 'contact':
     ### Have questions or feedback?
     **Email:** [willwu2912@gmail.com](willwu2912@gmail.com)  
     **LinkedIn:** [Will Wu](https://www.linkedin.com/in/willwu2912/)  
+    **GitHub: **[![GitHub](https://img.shields.io/badge/GitHub-Repo_Deep_Dive-blue?logo=github)](https://github.com/willwu29)  
     """)
 
     # Optionally, you can provide some markdown description

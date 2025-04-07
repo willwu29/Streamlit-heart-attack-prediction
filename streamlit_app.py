@@ -389,7 +389,6 @@ elif st.session_state.page == 'eda':
     st.subheader("Heart Attack Occurrence Distribution")
 
     # Load data with caching and error handling
-    # Load data with caching and error handling
     @st.cache_data
     def load_data():
         file_path = 'data/df.csv'  # Ensure this path is correct

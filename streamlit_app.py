@@ -560,7 +560,7 @@ elif st.session_state.page == 'ml':
         st.error("Critical workflow diagram missing: Please ensure 'project_flowchart.png' exists in /src directory")
         st.stop()
 
-   st.markdown("""
+    st.markdown("""
     ### Success Metrics
     <div style='margin:1rem 0 2rem 0; padding-left:1rem; border-left:3px solid #e63946;'>
     <ul style='list-style-type: none; padding-left: 0; margin: 0.8rem 0;'>

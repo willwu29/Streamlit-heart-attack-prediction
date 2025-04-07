@@ -712,6 +712,7 @@ elif st.session_state.page == 'ml':
     """, unsafe_allow_html=True)
     
     # Results interpretation with balanced perspective
+    cols = st.columns(2)
     with cols[0]:
         st.markdown("""
         ### Clinical Benefits

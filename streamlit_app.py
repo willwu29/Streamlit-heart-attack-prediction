@@ -413,20 +413,19 @@ elif st.session_state.page == 'eda':
     percentages = counts / counts.sum() * 100
 
     # Create the countplot
-    st.markdown("#### Distribution of Heart Attack History")
     fig, ax = plt.subplots(figsize=(8, 4))
 
     sns.barplot(
         x=percentages.index,
         y=percentages.values,
-        palette=['#B01818', '#2E86C1'],
+        palette=['#2E86C1', '#B01818'],
         ax=ax
     )
 
     # Customize plot
     ax.set_xlabel("Had Heart Attack", fontsize=12)
     ax.set_ylabel("Percentage", fontsize=12)
-    ax.set_title("Heart Attack Possibility", fontsize=14, pad=20)
+
 
     # Add percentage labels to bars
     for i in range(len(percentages)):

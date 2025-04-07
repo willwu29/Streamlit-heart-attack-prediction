@@ -408,9 +408,6 @@ elif st.session_state.page == 'eda':
         <li>Impact of BMI</li>
         <li>Relationship with medical histories such as Angina</li>
     </ul>
-    
-    <em>Important Note:</em> Our dataset shows significant class imbalance - only 5.3% of respondents reported heart attacks. 
-    This context is crucial when interpreting subsequent predictive models.
     </div>
     """, unsafe_allow_html=True)
 
@@ -453,7 +450,8 @@ elif st.session_state.page == 'eda':
     </style>
     
     <div class="analysis-text">
-    🔍 <strong>Analysis:</strong> Only 5.3% of respondents experienced a heart attack.
+    🔍 <strong>Important Note:</strong> The dataset shows significant class imbalance - only 5.3% of respondents reported heart attacks. 
+    This context is crucial when interpreting subsequent visualization and ML Model.
     </div>
     """, unsafe_allow_html=True)
 

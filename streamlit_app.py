@@ -686,28 +686,6 @@ elif st.session_state.page == 'ml':
         <li>Evaluated test recall scores post-adjustment to verify real-world detection capability</li>
         <li>Logistic Regression and Naive Bayes demonstrated optimal recall-FPR balance</li>
     </ul>
-    
-    <h4>Clinical Impact</h4>
-    <ul>
-        <li>79.9% recall enables identification of 4/5 true at-risk patients</li>
-        <li>20.3% false positive rate necessitates secondary screening protocols</li>
-        <li>Model alignment with 83% of AHA preventive care thresholds</li>
-    </ul>
-    </div>
-    
-    ### Key Outcomes
-    <ul>
-        <li>650,000+ preventable cases identified annually at scale</li>
-        <li>$12M ER cost avoidance per 100,000 screenings</li>
-        <li>17% earlier detection than traditional risk scoring methods</li>
-    </ul>
-    
-    ### Operational Considerations
-    <ul>
-        <li>$500k unnecessary costs per 100k screenings from false positives</li>
-        <li>Required implementation of ML-literate clinical staff</li>
-        <li>Need for automated triage protocols to manage alert volume</li>
-    </ul>
     """, unsafe_allow_html=True)
     
     st.markdown("""

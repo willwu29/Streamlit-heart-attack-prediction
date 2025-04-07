@@ -8,7 +8,7 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from imblearn.pipeline import Pipeline
 
 # Custom CSS for sidebar styling
-# Custom CSS for sidebar styling
+
 st.markdown("""
 <style>
     [data-testid="stSidebar"] {
@@ -575,16 +575,19 @@ elif st.session_state.page == 'eda':
     </div>
     """, unsafe_allow_html=True)
 
+
+
+
 # ML Section
 elif st.session_state.page == 'ml':
     st.header("🤖 Heart Attack Prediction ML Model")
     
     # Intro section
     st.markdown("""
-    🌟 **Clinical Early Warning System Prototype**  
+    🌟 **Clinical Early Detection System**  
     This section showcases how machine learning can effectively assess the risk of imminent heart attacks, achieving an identification rate of 80% through a risk assessment questionnaire. It also details the processes involved in training and evaluating the models.
 
-    👩💻 **Want to explore the code?**  
+    👩💻 **Want to learn more about the models?**  
     [![GitHub](https://img.shields.io/badge/GitHub-Repo_Deep_Dive-blue?logo=github)](https://github.com/willwu29/heart-attack-prediction-model)  
     Explore the complete implementation, which includes data collection, preprocessing, exploratory data analysis (EDA), feature engineering, modeling, hyperparameter tuning, model evaluation, and insights into interpretation and limitations.
     """)
@@ -622,9 +625,6 @@ elif st.session_state.page == 'ml':
     
     # Visual spacing
     st.markdown("<div style='height:30px'></div>", unsafe_allow_html=True)
-
-    
-
 
     # Recall Visualization
     st.markdown("### Recall Performance on Test Data")

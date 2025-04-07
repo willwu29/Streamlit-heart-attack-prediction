@@ -430,7 +430,7 @@ elif st.session_state.page == 'eda':
     """, unsafe_allow_html=True)
 
         # Add some space
-    st.markdown("<br><br>", unsafe_allow_html=True)  # Two line breaks
+    st.markdown("<br>", unsafe_allow_html=True)  # Two line breaks
 
     
     # Second image Age group
@@ -464,7 +464,7 @@ elif st.session_state.page == 'eda':
 
 
     # Add some space
-    st.markdown("<br><br>", unsafe_allow_html=True)  # Two line breaks
+    st.markdown("<br>", unsafe_allow_html=True)  # Two line breaks
 
     # Third plot
     st.markdown("#### Heart Attack Likelihood By Smoking Status")
@@ -490,7 +490,7 @@ elif st.session_state.page == 'eda':
     """, unsafe_allow_html=True)
 
     # Add some space
-    st.markdown("<br><br>", unsafe_allow_html=True)  # Two line breaks
+    st.markdown("<br>", unsafe_allow_html=True)  # Two line breaks
 
     # Fourth plot
     st.markdown("#### Heart Attack Likelihood By BMI Category")
@@ -517,7 +517,7 @@ elif st.session_state.page == 'eda':
 
     
     # Add some space
-    st.markdown("<br><br>", unsafe_allow_html=True)  # Two line breaks
+    st.markdown("<br>", unsafe_allow_html=True)  # Two line breaks
 
     # Fifth plot
     st.markdown("#### Heart Attack Likelihood By Angina")
@@ -548,7 +548,7 @@ elif st.session_state.page == 'eda':
 
 # ML Section
 elif st.session_state.page == 'ml':
-    st.header("🤖 Machine Learning Model Behind the Scene.")
+    st.header("🤖 Heart Attack Prediction ML Model")
     
     # Project Flowchart
     st.markdown("### End-to-End Project Workflow")
@@ -583,8 +583,11 @@ elif st.session_state.page == 'ml':
     # Visual spacing
     st.markdown("<div style='height:30px'></div>", unsafe_allow_html=True)
 
+    
+    st.markdown("### Recall Performance on Test Data")
+
     # Recall Visualization
-    st.markdown("#### Recall Performance on Test Data")
+    st.markdown("### Recall Performance on Test Data")
     try:
         st.image("src/recall_scores.png", width=1000)
     except FileNotFoundError:

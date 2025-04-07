@@ -515,6 +515,36 @@ elif st.session_state.page == 'eda':
     </div>
     """, unsafe_allow_html=True)
 
+    
+    # Add some space
+    st.markdown("<br><br>", unsafe_allow_html=True)  # Two line breaks
+
+    # Fifth plot
+    st.markdown("#### Heart Attack Likelihood By Angina")
+    try:
+        st.image("src/heart_attack_had_angina.png", width=1000)
+    except FileNotFoundError:
+        st.error("Heart attack by angina image not found at src/heart_attack_had_angina.png")
+    
+    # Analysis text for Angina
+    st.markdown("""
+    <style>
+    .analysis-text {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+    </style>
+    
+    <div class="analysis-text">
+    🔍 <strong>Analysis:</strong> Angina:
+    <ul>
+        <li>Angina is a type of chest pain or discomfort caused by reduced blood flow to the heart muscle.</li>
+        <li>Respondents with angina have a 45.4% likelihood of experiencing a heart attack—nearly 9x higher than the baseline population (5.3%).</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
 
 # ML Section
 elif st.session_state.page == 'ml':

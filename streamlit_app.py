@@ -49,8 +49,8 @@ with st.sidebar:
     pages = {
         '🏠 Welcome': 'welcome',
         '📝 Risk Assessment': 'predict',
-        '🧮 Additional Calculators': 'calculators', 
-        '📊 Data Analysis': 'eda',  # Renamed and rearranged
+        '🧮 Additional Assessment Tools': 'calculators', 
+        '📊 Data Insights': 'eda',  # Renamed and rearranged
         '🤖 ML Model': 'ml',
         '📧 Contact': 'contact'
     }
@@ -101,9 +101,9 @@ if st.session_state.page == 'welcome':
         
         step_content = [
             ("1. Assess", "📝 Risk Assessment", "Assess heart attack risk using my ML model"),
-            ("2. Validate", "🧮 Calculators", "Cross-check your risk with external clinical tools"),
-            ("3. Explore", "📊 Data Analysis", "Learn more about heart attack through data analysis"),
-            ("4. Learn", "🤖 ML Insights", "Discover my machine learning model for risk assessment")
+            ("2. Validate", "🧮 Additional Tools", "Cross-check your risk with external clinical tools"),
+            ("3. Explore", "📊 Data Insights", "Learn more about heart attack through data analysis"),
+            ("4. Learn", "🤖 ML Model", "Discover my machine learning model for risk assessment")
         ]
 
         for i, (step_num, title, text) in enumerate(step_content):
@@ -133,7 +133,7 @@ if st.session_state.page == 'welcome':
         <ul style='font-size: 14px; padding-left: 20px;'>
             <li>Leading cause of death in the US with over 800k incidents annually -> one heart attack every 40 seconds.</li>
             <li>Heart attack healthcare costs exceed $160 million USD each year.</li>
-            <li>Current assessment tools (🧮 Additional Calculators) overlook individuals aged 18-29 and 80+.</li>
+            <li>Current assessment tools (🧮 Additional Tools) overlook individuals aged 18-29 and 80+.</li>
             <li>Current assessment tools also require blood test inputs, limiting accessibility.</li>
         </ul>
     </div>
@@ -299,7 +299,7 @@ elif st.session_state.page == 'predict':
                             Keep up the good work and maintain a healthy lifestyle!""")
                     
                 st.markdown("---")
-                st.info("💡 **Recommendation:** Validate results using 🧮 Additional Calculators")
+                st.info("💡 **Recommendation:** Validate results using 🧮 Additional Assessment Tools")
         
             except Exception as e:
                 st.error(f"System error: {str(e)}")
@@ -307,7 +307,7 @@ elif st.session_state.page == 'predict':
 
 # Add the new page handler
 elif st.session_state.page == 'calculators':
-    st.header("🧮 Additional Heart Health Calculators")
+    st.header("🧮 Additional Heart Health Assessment Tools")
     st.markdown("""
     <style>
         .calculator-box {
@@ -384,7 +384,33 @@ elif st.session_state.page == 'calculators':
 
 # EDA Section
 elif st.session_state.page == 'eda':
-    st.header("📊 Exploratory Data Analysis")
+    st.header("📊 Insights: Heart Attack Risk Factors")
+    
+    # Page introduction
+    st.markdown("""
+    <style>
+    .intro-text {
+        font-size: 17px;
+        line-height: 1.7;
+        margin-bottom: 30px;
+    }
+    </style>
+    
+    <div class="intro-text">
+    This analysis explores key cardiovascular risk patterns from a health survey dataset of <strong>~400k adults by CDC Behavioral Risk Factor Surveillance System (BFRSS) in 2022 annd 2023 </strong>. 
+    Below you'll find visualizations showing:
+    <ul>
+        <li>Prevalence of heart attacks in the population</li>
+        <li>Age-related risk progression</li>
+        <li>Impact of smoking habits</li>
+        <li>Impact of BMI</li>
+        <li>Relationship with medical histories such as Angina</li>
+    </ul>
+    
+    <em>Important Note:</em> Our dataset shows significant class imbalance - only 5.3% of respondents reported heart attacks. 
+    This context is crucial when interpreting subsequent predictive models.
+    </div>
+    """, unsafe_allow_html=True)
 
     # Load data with caching and error handling
     @st.cache_data
@@ -457,7 +483,7 @@ elif st.session_state.page == 'eda':
     🔍 <strong>Key Insights:</strong>
     <ul>
         <li>Heart attack risk increases exponentially after age 45</li>
-        <li>Existing models (🧮 Additional Heart Health Calculators) exclude individuals aged 80+, leaving this high-risk group inaccessible to existing early detection tools</li>
+        <li>Existing models (🧮 Additional Heart Attack Assessment Tools) exclude individuals aged 80+, leaving this high-risk group inaccessible to existing early detection tools</li>
     </ul>
     </div>
     """, unsafe_allow_html=True)
@@ -574,7 +600,7 @@ elif st.session_state.page == 'ml':
     st.markdown("<div style='height:30px'></div>", unsafe_allow_html=True)
     
     st.markdown("""
-    ### Success Metrics
+    ### Models Trained 
     - **🔍 Trained Models**: Logistic Regression, Naive Bayes, Decision Tree, Random Forest, XGBoost, Neural Network
     - **✅ Final Selection**: Logistic Regression (Superior recall-FPR balance + clinical interpretability)
     """)
@@ -584,7 +610,7 @@ elif st.session_state.page == 'ml':
     st.markdown("<div style='height:30px'></div>", unsafe_allow_html=True)
 
     
-    st.markdown("### Recall Performance on Test Data")
+
 
     # Recall Visualization
     st.markdown("### Recall Performance on Test Data")
@@ -620,7 +646,7 @@ elif st.session_state.page == 'ml':
     st.markdown("<div style='height:30px'></div>", unsafe_allow_html=True)
 
     # Recall Visualization
-    st.markdown("#### False Positive Rate on Test Data")
+    st.markdown("### False Positive Rate on Test Data")
     try:
         st.image("src/false_positive_rate.png", width=1000)
     except FileNotFoundError:

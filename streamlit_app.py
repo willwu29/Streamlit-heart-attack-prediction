@@ -549,18 +549,33 @@ elif st.session_state.page == 'eda':
 # ML Section
 elif st.session_state.page == 'ml':
     st.header("🤖 Machine Learning Engine")
+    
+    # Project Flowchart
+    st.markdown("### End-to-End Project Workflow")
+    try:
+        st.image("src/project_flowchart.png", 
+                 width=1000,
+                 caption="From data collection to model deployment: Full project architecture")
+    except FileNotFoundError:
+        st.error("Critical workflow diagram missing: Please ensure 'project_flowchart.png' exists in /src directory")
+        st.stop()
+
     st.markdown("""
     ### Success Metrics
-    - **Accuracy Paradox**: Accuracy metric is deceptive for our imbalanced dataset (5.3% positive cases). A classifier predicting all negatives would achieve 94.7% accuracy but wouldn't identify any positive cases.
-    - **Primary Objective**: Maximize Recall (Sensitivity) to identify ≥80% of true high-risk patients. Recall measures the model's ability to identify true positives, crucial for timely intervention.
-    - **Secondary Control**: Maintain False Positive Rate as low as possible to prevent system from excessive false positive alarms.  High recall can lead to excessive false positives, incorrectly flagging low-risk individuals as high-risk, resulting in unnecessary consultations and resource waste, ultimately undermining the model's
-    """)
+    <div style='margin:20px 0;'>
+    - 🚨 **Accuracy Paradox**: Accuracy metric is deceptive for our imbalanced dataset (5.3% positive cases). A classifier predicting all negatives would achieve 94.7% accuracy but wouldn't identify any positive cases.
+    - 🎯 **Primary Objective**: Maximize Recall (Sensitivity) to identify ≥80% of true high-risk patients. Recall measures the model's ability to identify true positives, crucial for timely intervention.
+    - ⚖️ **Secondary Control**: Maintain False Positive Rate <20% to prevent system overload from excessive false alarms
+    </div>
+    """, unsafe_allow_html=True)
 
     st.markdown("""
     ### Model Selection Process
-    - **Evaluated Algorithms**: Logistic Regression, Naive Bayes, Decision Tree, Random Forest, XGBoost, Neural Network
-    - **Final Selection**: Logistic Regression (Superior recall-FPR balance + clinical interpretability)
-    """)
+    <div style='background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;'>
+    - 🔍 **Evaluated Algorithms**: Logistic Regression, Naive Bayes, Decision Tree, Random Forest, XGBoost, Neural Network
+    - ✅ **Final Selection**: Logistic Regression (Superior recall-FPR balance + clinical interpretability)
+    </div>
+    """, unsafe_allow_html=True)
     
     # Visual spacing
     st.markdown("<div style='height:30px'></div>", unsafe_allow_html=True)
@@ -568,7 +583,7 @@ elif st.session_state.page == 'ml':
     # Recall Visualization
     st.markdown("#### Recall Performance on Test Data")
     try:
-        st.image("src/recall_scores.png", width=900)
+        st.image("src/recall_scores.png", width=1000)
     except FileNotFoundError:
         st.error("Critical visualization missing: Please ensure 'recall_scores.png' exists in /src directory")
         st.stop()  # Halt execution if key visual missing
@@ -601,7 +616,7 @@ elif st.session_state.page == 'ml':
     # Recall Visualization
     st.markdown("#### False Positive Rate on Test Data")
     try:
-        st.image("src/false_positive_rate.png", width=900)
+        st.image("src/false_positive_rate.png", width=1000)
     except FileNotFoundError:
         st.error("Critical visualization missing: Please ensure 'recall_scores.png' exists in /src directory")
         st.stop()  # Halt execution if key visual missing

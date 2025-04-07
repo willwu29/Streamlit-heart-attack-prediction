@@ -717,8 +717,7 @@ elif st.session_state.page == 'ml':
     st.markdown("### Model Feature Interpretation")
     try:
         st.image("src/model_coefficients.png", 
-                 width=1000,
-                 caption="Feature Coefficients from Logistic Regression Model")
+                 width=1000)
     except FileNotFoundError:
         st.error("Critical interpretation missing: Please ensure 'model_coefficients.png' exists in /src directory")
         st.stop()

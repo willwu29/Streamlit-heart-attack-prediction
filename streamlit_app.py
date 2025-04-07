@@ -441,13 +441,16 @@ elif st.session_state.page == 'eda':
     # Show the plot in Streamlit
     st.pyplot(fig)
 
-    # Add analysis text
-    if len(percentages) == 2:
-        analysis_text = f"**Analysis:** In the overall dataset, only {percentages.iloc[1]:.1f}% of people had experienced heart attack."
-    else:
-        analysis_text = "**Analysis:** Dataset contains multiple outcome categories."
-    
-    st.markdown(analysis_text)
+    # Add analysis text  
+    st.markdown(f"####**Analysis:** In the overall dataset, only {percentages.iloc[1]:.1f}% of people had experienced heart attack.")
+
+        st.markdown("#### Age Group Distribution of Heart Attacks")
+    try:
+        st.image("src/heart_attack_age_group.png", 
+                 width=600,  # Adjust width as needed
+                 caption="Heart Attack Distribution Across Age Groups")
+    except FileNotFoundError:
+        st.error("Age group distribution image not found at src/heart_attack_age_group.png")
 
 # ML Section
 elif st.session_state.page == 'ml':

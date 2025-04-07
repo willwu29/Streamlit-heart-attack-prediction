@@ -11,8 +11,8 @@ from imblearn.pipeline import Pipeline
 st.markdown("""
 <style>
     [data-testid="stSidebar"] {
-        min-width: 250px !important;  # Increased width
-        max-width: 250px !important;  # Increased width
+        min-width: 150px !important;  # Increased width
+        max-width: 150px !important;  # Increased width
     }
     .stButton>button {
         width: 100%;

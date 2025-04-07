@@ -411,6 +411,8 @@ elif st.session_state.page == 'eda':
     </div>
     """, unsafe_allow_html=True)
 
+    
+
     # Load data with caching and error handling
     @st.cache_data
     def load_data():
@@ -428,7 +430,8 @@ elif st.session_state.page == 'eda':
     df = load_data()
     
 
-    # Customize plot
+    # Add some space
+    st.markdown("<br>", unsafe_allow_html=True)  # Two line breaks
 
     # First Plot
     st.markdown("#### Heart Attack Occurrence Distribution")

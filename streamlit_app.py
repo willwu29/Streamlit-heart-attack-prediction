@@ -551,7 +551,7 @@ elif st.session_state.page == 'ml':
     st.header("🤖 Machine Learning Engine")
     st.markdown("""
     ### Success Metrics & Clinical Priorities
-    - **Accuracy Paradox**: While overall accuracy reaches 94.7% (predicting all negatives), this metric is deceptive for our imbalanced dataset (5.3% positive cases). Pure accuracy fails to capture critical heart attack risks.
+    - **Accuracy Trap**: While overall accuracy reaches 94.7% (predicting all negatives), this metric is deceptive for our imbalanced dataset (5.3% positive cases). Pure accuracy fails to capture critical heart attack risks.
     - **Primary Objective**: Maximize Recall (Sensitivity) to identify ≥80% of true high-risk patients. Each missed case carries 300x greater financial/health cost than a false alert.
     - **Secondary Control**: Maintain False Positive Rate <20% to prevent system overload from unnecessary interventions.
     """)

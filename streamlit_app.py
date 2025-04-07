@@ -664,8 +664,10 @@ elif st.session_state.page == 'ml':
     try:
         st.image("src/false_positive_rate.png", width=1000)
     except FileNotFoundError:
-        st.error("Critical visualization missing: Please ensure 'recall_scores.png' exists in /src directory")
+        st.error("Critical visualization missing: Please ensure 'false_positive_rate.png' exists in /src directory")
         st.stop()  # Halt execution if key visual missing
+
+
     
     # Enhanced analysis with clinical context
     st.markdown("""
@@ -711,46 +713,44 @@ elif st.session_state.page == 'ml':
     </div>
     """, unsafe_allow_html=True)
     
-    # Results interpretation with balanced perspective
-    cols = st.columns(2)
-    with cols[0]:
-        st.markdown("""
-        ### Clinical Benefits
-        <div style="margin-left: -1.2rem;">
-            <div style="display: flex; align-items: baseline;">
-                ✅&nbsp;<strong>4/5 High Risk Detection</strong>
-            </div>
-            <div style="margin-left: 1.5rem; margin-top: -0.5rem;">
-                (Flags 4 of 5 true at-risk users)
-            </div>
-            <div style="display: flex; align-items: baseline; margin-top: 0.5rem;">
-                →&nbsp;<strong>Population Impact:</strong>&nbsp;650,000+ preventable cases annually
-            </div>
-            <div style="display: flex; align-items: baseline;">
-                →&nbsp;<strong>Resource Efficiency:</strong>&nbsp;\$12M+ ER savings/100k screens
-            </div>
+    # Results interpretation with vertical layout
+    st.markdown("""
+    ### Clinical Benefits
+    <div style="margin-left: -1.2rem;">
+        <div style="display: flex; align-items: baseline;">
+            ✅&nbsp;<strong>4/5 High Risk Detection</strong>
         </div>
-        """, unsafe_allow_html=True)
+        <div style="margin-left: 1.5rem; margin-top: -0.5rem;">
+            (Flags 4 of 5 true at-risk users)
+        </div>
+        <div style="display: flex; align-items: baseline; margin-top: 0.5rem;">
+            →&nbsp;<strong>Population Impact:</strong>&nbsp;650,000+ preventable cases annually
+        </div>
+        <div style="display: flex; align-items: baseline;">
+            →&nbsp;<strong>Resource Efficiency:</strong>&nbsp;\$12M+ ER savings/100k screens
+        </div>
+    </div>
     
-    with cols[1]:
-        st.markdown("""
-        ### Implementation Challenges
-        <div style="margin-left: -1.2rem;">
-            <div style="display: flex; align-items: baseline;">
-                ⚠️&nbsp;<strong>1:5 False Alarms</strong>
-            </div>
-            <div style="margin-left: 1.5rem; margin-top: -0.5rem;">
-                (1 healthy user flagged per 5 assessments)
-            </div>
-            <div style="display: flex; align-items: baseline; margin-top: 0.5rem;">
-                →&nbsp;<strong>Financial Impact:</strong>&nbsp;\$500k wasted/100k screens
-            </div>
-            <div style="display: flex; align-items: baseline;">
-                →&nbsp;<strong>Operational Burden:</strong>&nbsp;Requires triage protocols
-            </div>
+    <div style="height: 2rem;"></div>
+    
+    ### Implementation Challenges
+    <div style="margin-left: -1.2rem;">
+        <div style="display: flex; align-items: baseline;">
+            ⚠️&nbsp;<strong>1:5 False Alarms</strong>
         </div>
-        """, unsafe_allow_html=True)
+        <div style="margin-left: 1.5rem; margin-top: -0.5rem;">
+            (1 healthy user flagged per 5 assessments)
+        </div>
+        <div style="display: flex; align-items: baseline; margin-top: 0.5rem;">
+            →&nbsp;<strong>Financial Impact:</strong>&nbsp;\$500k wasted/100k screens
+        </div>
+        <div style="display: flex; align-items: baseline;">
+            →&nbsp;<strong>Operational Burden:</strong>&nbsp;Requires triage protocols
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
+    
     st.markdown("""
     ### Critical Risk Multipliers
     <div style='background: #fff5f5; padding: 1rem; border-radius: 8px; margin: 1rem 0;'>

@@ -427,16 +427,24 @@ elif st.session_state.page == 'eda':
     ax.set_ylabel("Percentage", fontsize=12)
 
 
-    # Add percentage labels to bars
+    # Add percentage labels to bars with adjusted y-position
     for i in range(len(percentages)):
         percentage = f'{percentages.values[i]:.1f}%'
+        
+        # Adjust the vertical position based on the height of the bar
+        y_position = percentages.values[i]
+        if y_position > 10:  # Adjust this threshold as needed
+            y_offset = 5  # Offset for taller bars
+        else:
+            y_offset = -10  # Offset for shorter bars
+            
         ax.annotate(percentage,
-                    (i, percentages.values[i]), 
-                    ha='center', va='bottom', 
-                    xytext=(0, 5), 
+                    (i, y_position), 
+                    ha='center', va='bottom' if y_offset > 0 else 'top',
+                    xytext=(0, y_offset), 
                     textcoords='offset points',
                     fontsize=10)
-
+    
     # Show the plot in Streamlit
     st.pyplot(fig)
 

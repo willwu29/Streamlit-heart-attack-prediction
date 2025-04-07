@@ -407,7 +407,7 @@ elif st.session_state.page == 'eda':
     st.markdown("#### Heart Attack Occurrence Distribution")
     try:
         st.image("src/Heart_Attack_Occurrence_Distribution.png", 
-                 width=500)
+                 width=600)
     except FileNotFoundError:
         st.error("Heart attack distribution image not found at src/Heart_Attack_Occurrence_Distribution.png")  # Fixed error message
 

@@ -546,7 +546,7 @@ elif st.session_state.page == 'eda':
 
     
     # Add some space
-    st.markdown("<br>", unsafe_allow_html=True)  # Two line breaks
+    st.markdown("<br>", unsafe_allow_html=True)  
 
     # Fifth plot
     st.markdown("#### Heart Attack Likelihood By Angina")
@@ -686,7 +686,11 @@ elif st.session_state.page == 'ml':
     </ul>
     """, unsafe_allow_html=True)
 
+    
+    # Add some space
+    st.markdown("<br>", unsafe_allow_html=True)  
 
+    
     # Clinical benefits and limitations   
     st.markdown("""
     ### 📈 Clinical Benefits
@@ -703,10 +707,13 @@ elif st.session_state.page == 'ml':
     </ul>
     """, unsafe_allow_html=True)
 
+
     
-     # Visual spacing
-    st.markdown("<div style='height:30px'></div>", unsafe_allow_html=True)
+    # Add some space
+    st.markdown("<br>", unsafe_allow_html=True)  
     
+
+    # Model coefficients interpretations
     st.markdown("### Model Feature Interpretation")
     try:
         st.image("src/model_coefficients.png", 
@@ -730,14 +737,16 @@ elif st.session_state.page == 'ml':
     🔍 <strong>Key Feature Analysis:</strong>
     <ul>
         <li> ⚠️ <strong>Top Risk Factors:</strong><br>
-        - Chest pain type (1.82x odds increase)<br>
-        - ST depression (1.65x odds increase)<br>
-        - Exercise-induced angina (1.43x odds increase)</li>
+        - Angina Presense:  (8.94x odds increase)<br>
+        - Stroke Presense (2.94x odds increase)<br>
+        - Age 80+ (2.15x odds increase)</li>
+        - Smoker Status: Everyday Smoker (1.44x odds increase)</li>
         
         <li> ✅ <strong>Protective Factors:</strong><br>
-        - Normal blood pressure (0.62x odds reduction)<br>
-        - Fasting blood sugar < 120 mg/dl (0.58x odds reduction)<br>
-        - Resting ECG within normal limits (0.55x odds reduction)</li>
+        - Age within 18-24 (0.23x odds reduction)<br>
+        - Gender is Female  (0.55x odds reduction)<br>
+        - Excellent general health condition (0.56x odds reduction)</li>
+        - Race/Ethnicity is Asian (0.74x odds reduction)</li>
     </ul>
     
     💡 <strong>Clinical Relevance:</strong><br>
@@ -766,7 +775,7 @@ elif st.session_state.page == 'contact':
     ### Have questions or feedback?
     **Email:** [willwu2912@gmail.com](willwu2912@gmail.com)  
     **LinkedIn:** [Will Wu](https://www.linkedin.com/in/willwu2912/)  
-    **GitHub: **[![GitHub](https://img.shields.io/badge/GitHub-Repo_Deep_Dive-blue?logo=github)](https://github.com/willwu29)  
+    **GitHub: **[![GitHub](https://img.shields.io/badge/GitHub-blue?logo=github)](https://github.com/willwu29)
     """)
 
     # Optionally, you can provide some markdown description

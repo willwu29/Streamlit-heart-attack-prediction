@@ -7,35 +7,47 @@ import os
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from imblearn.pipeline import Pipeline
 
-# Custom CSS for sidebar styling with narrower width
-# Custom CSS with text optimization
+# Custom CSS for sidebar styling
 st.markdown("""
 <style>
     [data-testid="stSidebar"] {
-        width: 260px !important;
         min-width: 260px !important;
         max-width: 260px !important;
     }
-    /* Button text styling */
-    .stButton>button div p {
-        white-space: nowrap !important;
-        overflow: visible !important;
-        font-size: 0.9rem !important;
+    /* Remove button containers */
+    [data-testid="stVerticalBlock"] > [style*="flex-direction: column"] > [data-testid="stVerticalBlock"] {
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
         margin: 0 !important;
+        gap: 0 !important;
     }
-    /* Button container adjustments */
+    /* Button styling */
     .stButton>button {
-        padding: 0.35rem 0.8rem !important;  /* Reduced padding */
-        text-overflow: ellipsis !important;
+        width: 100%;
+        justify-content: left;
+        padding: 0.5rem 1rem !important;
+        margin: 2px 0 !important;
+        background-color: #f0f2f6 !important;
+        border: none !important;
+        border-radius: 4px !important;
+        box-shadow: none !important;
+        transition: all 0.2s !important;
     }
-    /* Original button hover effects preserved */
     .stButton>button:hover {
         background-color: #e6e8ec !important;
         color: #FF5733 !important;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+        transform: translateX(4px);
+    }
+    /* Remove section container */
+    [data-testid="stSidebarNav"] {
+        padding: 0 !important;
+        margin: 0 !important;
     }
 </style>
 """, unsafe_allow_html=True)
+
+
 # Initialize session state
 if 'page' not in st.session_state:
     st.session_state.page = 'welcome'

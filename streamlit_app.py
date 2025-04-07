@@ -59,31 +59,32 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-
 # Initialize session state
 if 'page' not in st.session_state:
     st.session_state.page = 'welcome'
 
-# Sidebar navigation
+# Clean sidebar implementation
 with st.sidebar:
     st.markdown("## Navigation")
     
-    # Create navigation buttons without a container
     pages = {
         '🏠 Welcome': 'welcome',
         '📝 Risk Assessment': 'predict',
-        '🧮 Additional Tools': 'calculators', 
-        '📊 Data Insights': 'eda',  # Renamed and rearranged
+        '🧮 Additional Tools': 'calculators',
+        '📊 Data Insights': 'eda',
         '🤖 ML Model': 'ml',
         '📧 Contact': 'contact'
     }
-for label, page_key in pages.items():
-    st.button(
-        label,
-        key=page_key,
-        use_container_width=True,
-        type="primary" if st.session_state.page == page_key else "secondary",
-        on_click=lambda p=page_key: setattr(st.session_state, 'page', p)
+    
+    for label, page_key in pages.items():
+        st.button(
+            label,
+            key=page_key,
+            use_container_width=True,
+            type="primary" if st.session_state.page == page_key else "secondary",
+            on_click=lambda p=page_key: setattr(st.session_state, 'page', p)
+            
+        
                         
 # Load Model (keep your original model loading code)
 @st.cache_resource

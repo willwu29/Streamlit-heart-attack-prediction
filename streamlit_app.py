@@ -560,12 +560,22 @@ elif st.session_state.page == 'ml':
         st.error("Critical workflow diagram missing: Please ensure 'project_flowchart.png' exists in /src directory")
         st.stop()
 
-    st.markdown("""
+   st.markdown("""
     ### Success Metrics
-    <div style='margin:20px 0;'>
-    - 🚨 **Accuracy Paradox**: Accuracy metric is deceptive for our imbalanced dataset (5.3% positive cases). A classifier predicting all negatives would achieve 94.7% accuracy but wouldn't identify any positive cases.
-    - 🎯 **Primary Objective**: Maximize Recall (Sensitivity) to identify ≥80% of true high-risk patients. Recall measures the model's ability to identify true positives, crucial for timely intervention.
-    - ⚖️ **Secondary Control**: Maintain False Positive Rate <20% to prevent system overload from excessive false alarms
+    <div style='margin:1rem 0 2rem 0; padding-left:1rem; border-left:3px solid #e63946;'>
+    <ul style='list-style-type: none; padding-left: 0; margin: 0.8rem 0;'>
+        <li style='margin-bottom: 1rem;'>🚨 <strong>Accuracy Paradox</strong><br>
+        Baseline accuracy of 94.7% (all-negative prediction) fails to detect<br> 
+        <span style='color: #e63946;'>any of the 5.3% critical positive cases</span></li>
+        
+        <li style='margin-bottom: 1rem;'>🎯 <strong>Primary Objective: Recall ≥80%</strong><br>
+        Detect 4 out of 5 true high-risk patients needing intervention<br>
+        <span style='font-size:0.9em; color: #2a9d8f;'>Current achievement: 79.9% recall</span></li>
+        
+        <li>⚖️ <strong>Secondary Control: FPR <20%</strong><br>
+        Limit false alarms to 1:5 ratio in healthy population<br>
+        <span style='font-size:0.9em; color: #e76f51;'>Current status: 20.3% FPR</span></li>
+    </ul>
     </div>
     """, unsafe_allow_html=True)
 

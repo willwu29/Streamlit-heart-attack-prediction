@@ -594,6 +594,7 @@ elif st.session_state.page == 'ml':
     """, unsafe_allow_html=True)
     
     ### Interpretations of Results
+    st.markdown("""
     1. **Recall Analysis**:  
        ▸ Target vs Achieved: 80% Goal → 79.9% Actual  
        ▸ Clinical Impact: Enables preventive care for 79.9% of vulnerable patients  

@@ -371,12 +371,108 @@ elif st.session_state.page == 'calculators':
     </div>
     """, unsafe_allow_html=True)
 
+
+
+
 # EDA Section
 elif st.session_state.page == 'eda':
     st.header("📊 Exploratory Data Analysis")
     st.subheader("Key Insights from Health Data")
-    st.write("Coming Soon: Interactive visualizations...")
+    st.subheader("Heart Attack Occurrence Distribution")
 
+    # Load data with caching and error handling
+    @st.cache_data
+    def load_data():
+        file_path = 'data/df.csv'
+        try:
+            df = pd.read_csv(file_path)
+            return df
+        except FileNotFoundError:
+            st.error(f"Error: File not found at {file_path}")
+            return None
+        except Exception as e:
+            st.error(f"Error loading data: {str(e)}")
+            return None
+
+    df = load_data()
+
+    if df is not None:
+        # Get target column (last column)
+        target_col = df.columns[-1]
+
+        # Validation check
+        if target_col != 'had_heart_attack':
+            st.warning(f"Warning: Last column is '{target_col}' instead of 'had_heart_attack'")
+
+        # Create two columns layout
+        col1, col2 = st.columns([3, 2])
+
+        with col1:
+            # Create normalized countplot
+            st.markdown("#### Distribution of Heart Attack History")
+            fig, ax = plt.subplots(figsize=(8, 4))
+            
+            # Calculate percentages
+            total = len(df)
+            ax = sns.countplot(
+                x=target_col, 
+                data=df, 
+                stat='percent',
+                order=['Yes', 'No'],
+                palette=['#FF5733', '#2E86C1']
+            )
+            
+            # Customize plot
+            ax.set_xlabel("Had Heart Attack", fontsize=12)
+            ax.set_ylabel("Percentage", fontsize=12)
+            ax.set_title("Normalized Distribution of Heart Attack Occurrence", 
+                        fontsize=14, pad=20)
+            
+            # Add percentage labels
+            for p in ax.patches:
+                percentage = f'{p.get_height():.1f}%'
+                ax.annotate(percentage, 
+                            (p.get_x() + p.get_width() / 2., p.get_height()), 
+                            ha='center', va='center', 
+                            xytext=(0, 5), 
+                            textcoords='offset points',
+                            fontsize=10)
+
+            st.pyplot(fig)
+
+        with col2:
+            # Display key statistics
+            st.markdown("#### Key Statistics")
+            
+            # Calculate values
+            counts = df[target_col].value_counts()
+            percentages = df[target_col].value_counts(normalize=True).mul(100).round(1)
+            
+            # Create metric boxes
+            st.metric(label="Total Samples", value=f"{len(df):,}")
+            st.markdown("---")
+            st.metric(label="Heart Attack Cases (Yes)", 
+                     value=f"{counts.get('Yes', 0):,}",
+                     delta=f"{percentages.get('Yes', 0)}% of total")
+            st.metric(label="No Heart Attack Cases (No)", 
+                     value=f"{counts.get('No', 0):,}",
+                     delta=f"{percentages.get('No', 0)}% of total")
+            
+            # Add interpretation
+            st.markdown("---")
+            st.markdown("""
+            **Interpretation:**
+            - This distribution shows the proportion of individuals
+            - A balanced dataset helps machine learning models
+            - Consider potential class imbalance in modeling
+            """)
+
+        # Add dataset preview
+        st.markdown("---")
+        st.markdown("#### Dataset Preview")
+        st.dataframe(df.head(10), 
+                     use_container_width=True,
+                     column_config={target_col: {"label": "Heart Attack Status"}})
 
 # ML Section
 elif st.session_state.page == 'ml':

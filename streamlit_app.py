@@ -723,25 +723,24 @@ elif st.session_state.page == 'ml':
         st.error("Critical interpretation missing: Please ensure 'model_coefficients.png' exists in /src directory")
         st.stop()
 
-    # Clinical interpretation
-    # Clinical benefits and limitations   
+    # Clinical (coefficient)interpretation
     st.markdown("""
-    ### ⚠️ Top Risk Factors 
-    <ul>
-        <li><strong>Angina Presense:  (8.94x odds increase)</li>
-        <li><strong>Stroke Presense (2.94x odds increase)</li>
-        <li><strong>Age 80+ (2.15x odds increase)</li>
-        <li><strong>Smoker Status: Everyday Smoker (1.44x odds increase)</li>
-    </ul>
-
-    ### ✅ Protective Factors
-    <ul>
-        <li><strong>Age within 18-24 (0.23x odds reduction)</li>
-        <li><strong>Gender is Female  (0.55x odds reduction)</li>
-        <li><strong>Excellent general health condition (0.56x odds reduction)</li>
-        <li><strong>Race/Ethnicity is Asian (0.74x odds reduction)</li>
-    </ul>
-    """, unsafe_allow_html=True)
+        ### ⚠️ Top Risk Factors: <small>Increase the odds of high risk, indicated by red bars</small>
+        <ul>
+            <li><strong>Angina Presence:</strong> (8.94x odds increase)</li>
+            <li><strong>Stroke Presence:</strong> (2.94x odds increase)</li>
+            <li><strong>Age 80+:</strong> (2.15x odds increase)</li>
+            <li><strong>Smoker Status:</strong> Everyday Smoker (1.44x odds increase)</li>
+        </ul>
+    
+        ### ✅ Protective Factors: <small>Decrease the odds of high risk, indicated by blue bars.</small>
+        <ul>
+            <li><strong>Age within 18-24:</strong> (0.23x odds reduction)</li>
+            <li><strong>Gender is Female:</strong> (0.55x odds reduction)</li>
+            <li><strong>Excellent general health condition:</strong> (0.56x odds reduction)</li>
+            <li><strong>Race/Ethnicity is Asian:</strong> (0.74x odds reduction)</li>
+        </ul>
+        """, unsafe_allow_html=True)
     
 
 

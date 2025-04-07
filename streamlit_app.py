@@ -579,15 +579,15 @@ elif st.session_state.page == 'eda':
 elif st.session_state.page == 'ml':
     st.header("🤖 Heart Attack Prediction ML Model")
     
-    # Intro section
-     st.markdown("""
-    🌟 **Clinical Early Warning System Prototype**  
-    This section showcases how machine learning can effectively assess the risk of imminent heart attacks, achieving an identification rate of 80% through a risk assessment questionnaire. It also details the processes involved in training and evaluating the models.
+    # # Intro section
+    #  st.markdown("""
+    # 🌟 **Clinical Early Warning System Prototype**  
+    # This section showcases how machine learning can effectively assess the risk of imminent heart attacks, achieving an identification rate of 80% through a risk assessment questionnaire. It also details the processes involved in training and evaluating the models.
     
-    👩💻 **Interested in the code?**  
-    [![GitHub](https://img.shields.io/badge/GitHub-Repo_Deep_Dive-blue?logo=github)](https://github.com/willwu29/heart-attack-prediction-model)  
-    Explore the complete implementation, which includes data collection, preprocessing, exploratory data analysis (EDA), feature engineering, modeling, hyperparameter tuning, model evaluation, and insights into interpretation and limitations.
-    """)
+    # 👩💻 **Interested in the code?**  
+    # [![GitHub](https://img.shields.io/badge/GitHub-Repo_Deep_Dive-blue?logo=github)](https://github.com/willwu29/heart-attack-prediction-model)  
+    # Explore the complete implementation, which includes data collection, preprocessing, exploratory data analysis (EDA), feature engineering, modeling, hyperparameter tuning, model evaluation, and insights into interpretation and limitations.
+    # """)
     
     # Project Flowchart
     st.markdown("### End-to-End Project Workflow")

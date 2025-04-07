@@ -423,30 +423,31 @@ elif st.session_state.page == 'eda':
     )
 
     # Customize plot
+   # Customize plot
     ax.set_xlabel("Had Heart Attack", fontsize=12)
     ax.set_ylabel("Percentage", fontsize=12)
+    ax.set_ylim(0, 100)  # Fixes annotation overflow issue
 
-
-    # Add percentage labels to bars with adjusted y-position
+    # Add percentage labels to bars
     for i in range(len(percentages)):
         percentage = f'{percentages.values[i]:.1f}%'
-        
-        # Adjust the vertical position based on the height of the bar
-        y_position = percentages.values[i]
-        if y_position > 10:  # Adjust this threshold as needed
-            y_offset = 5  # Offset for taller bars
-        else:
-            y_offset = -10  # Offset for shorter bars
-            
         ax.annotate(percentage,
-                    (i, y_position), 
-                    ha='center', va='bottom' if y_offset > 0 else 'top',
-                    xytext=(0, y_offset), 
+                    (i, percentages.values[i]), 
+                    ha='center', va='bottom', 
+                    xytext=(0, 5), 
                     textcoords='offset points',
                     fontsize=10)
-    
+
     # Show the plot in Streamlit
     st.pyplot(fig)
+
+    # Add analysis text
+    if len(percentages) == 2:
+        analysis_text = f"**Analysis:** In the overall dataset, only {percentages.iloc[1]:.1f}% of people had experienced heart attack."
+    else:
+        analysis_text = "**Analysis:** Dataset contains multiple outcome categories."
+    
+    st.markdown(analysis_text)
 
 # ML Section
 elif st.session_state.page == 'ml':

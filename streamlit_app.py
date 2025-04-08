@@ -162,68 +162,91 @@ if st.session_state.page == 'welcome':
 
 # Risk Assessment page
 elif st.session_state.page == 'predict':
-    # Your original Risk Assessment code
     col1, spacer, col2 = st.columns([1.2, 0.3, 1.2])
 
     with col1:
         # Personal Information
         st.header("Personal Info")
-        sex = st.selectbox("Gender:", ["Male", "Female"])
+        sex = st.selectbox("Gender:", ["Male", "Female"], 
+                         key='predict_sex')  # Session key added
         race_ethnicity = st.selectbox("Race/Ethnicity:", 
-                                    ["White", "Hispanic", "Black", "Asian", "Multiracial", "Other", "Unknown"])
+                                    ["White", "Hispanic", "Black", "Asian", "Multiracial", "Other", "Unknown"],
+                                    key='predict_race')  # Session key added
         age_category = st.selectbox("Age Category:", 
                                     ["18-24", "25-29", "30-34", "35-39", "40-44", "45-49", 
-                                    "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80+"])
+                                    "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80+"],
+                                    key='predict_age')  # Session key added
         
         # Health Condition
         st.markdown("<div style='height: 30px;'></div>", unsafe_allow_html=True)
         st.header("Health Status")
         bmi_category = st.selectbox("BMI Category:", 
                                     ["Underweight", "Healthy", "Overweight", "Obese", "Unknown"],
-                                    help="Underweight ≤18.4, Healthy 18.5-24.9, Overweight 25.0-29.9, Obese ≥30.0")
+                                    help="Underweight ≤18.4, Healthy 18.5-24.9, Overweight 25.0-29.9, Obese ≥30.0",
+                                    key='predict_bmi')  # Session key added
         general_health = st.selectbox("How would you rate your Health Condition:", 
-                                    ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"])
+                                    ["Excellent", "Very good", "Good", "Fair", "Poor", "Unknown"],
+                                    key='predict_health')  # Session key added
         deaf_or_hard_of_hearing = st.selectbox("Hearing Difficulty:", 
                                                ["No", "Yes", "Unknown"],
-                                                help="Are you deaf or do you have serious difficulty hearing?")  
+                                               help="Are you deaf or do you have serious difficulty hearing?",
+                                               key='predict_hearing')  # Session key added
         blind_or_vision_difficulty = st.selectbox("Vision Difficulty:", 
                                                   ["No", "Yes", "Unknown"],
-                                                  help="Are you blind or do you have serious difficulty seeing, even when wearing glasses?")  
+                                                  help="Are you blind or do you have serious difficulty seeing, even when wearing glasses?",
+                                                  key='predict_vision')  # Session key added
         difficulty_walking = st.selectbox("Walking & Climbing stairs Difficulty:", 
                                           ["No", "Yes", "Unknown"],
-                                          help="Do you have serious difficulty walking or climbing stairs?")  
+                                          help="Do you have serious difficulty walking or climbing stairs?",
+                                          key='predict_walking')  # Session key added
         difficulty_dressing_bathing = st.selectbox("Dressing & Bathing Difficulty:", 
                                                    ["No", "Yes", "Unknown"],
-                                                   help="Do you have difficulty dressing or bathing?")
+                                                   help="Do you have difficulty dressing or bathing?",
+                                                   key='predict_dressing')  # Session key added
 
     with col2:
         # Habits & Lifestyle
         st.header("Habits & Lifestyle")
-        physical_activities = st.selectbox("Any Physical activities in past 30 days:", ["No", "Yes", "Unknown"])  
-        alcohol_drinker = st.selectbox("Any Alcohol consumption in past 30 days:", ["No", "Yes", "Unknown"])  
+        physical_activities = st.selectbox("Any Physical activities in past 30 days:", 
+                                         ["No", "Yes", "Unknown"],
+                                         key='predict_activities')  # Session key added
+        alcohol_drinker = st.selectbox("Any Alcohol consumption in past 30 days:", 
+                                     ["No", "Yes", "Unknown"],
+                                     key='predict_alcohol')  # Session key added
         smoker_status = st.selectbox("Smoking status:", 
-                                   ["Never", "Former", "Every day smoker", "Some days smoker"])
+                                   ["Never", "Former", "Every day smoker", "Some days smoker"],
+                                   key='predict_smoker')  # Session key added
         
         # Medical History
         st.markdown("<div style='height: 40px;'></div>", unsafe_allow_html=True)
         st.header("Medical History")
-        had_depressive_disorder = st.selectbox("Depressive disorder diagnosis:", ["No", "Yes", "Unknown"]) 
-        had_diabetes = st.selectbox("Diabetes diagnosis:", ["No", "Yes", "Pre-diabetes", "Gestational-diabetes", "Unknown"])  
+        had_depressive_disorder = st.selectbox("Depressive disorder diagnosis:", 
+                                             ["No", "Yes", "Unknown"],
+                                             key='predict_depression')  # Session key added
+        had_diabetes = st.selectbox("Diabetes diagnosis:", 
+                                   ["No", "Yes", "Pre-diabetes", "Gestational-diabetes", "Unknown"],
+                                   key='predict_diabetes')  # Session key added
         had_kidney_disease = st.selectbox("Kidney disease diagnosis:", 
-                                          ["No", "Yes", "Unknown"],
-                                         help="Not including kidney stones, bladder infection or incontinence")  
+                                         ["No", "Yes", "Unknown"],
+                                         help="Not including kidney stones, bladder infection or incontinence",
+                                         key='predict_kidney')  # Session key added
         had_angina = st.selectbox("Angina diagnosis:", 
-                                  ["No", "Yes", "Unknown"],
-                                 help="Angina is chest pain or discomfort caused by reduced blood flow to the heart muscle, often triggered by physical exertion or stress.")  
+                                 ["No", "Yes", "Unknown"],
+                                 help="Angina is chest pain or discomfort caused by reduced blood flow to the heart muscle, often triggered by physical exertion or stress.",
+                                 key='predict_angina')  # Session key added
         had_stroke = st.selectbox("Stroke history:", 
-                                  ["No", "Yes", "Unknown"],
-                                 help="Stroke is a medical emergency that occurs when blood flow to the brain is interrupted, causing brain damage and potentially leading to loss of function such as speech, movement, or memory.") 
+                                 ["No", "Yes", "Unknown"],
+                                 help="Stroke is a medical emergency that occurs when blood flow to the brain is interrupted, causing brain damage and potentially leading to loss of function such as speech, movement, or memory.",
+                                 key='predict_stroke')  # Session key added
         had_copd = st.selectbox("COPD (Chronic Obstructive Pulmonary Disease) diagnosis:", 
-                                ["No", "Yes", "Unknown"],
-                               help=" COPD is a progressive lung disease characterized by airflow limitation, making it difficult to breathe.")  
+                               ["No", "Yes", "Unknown"],
+                               help=" COPD is a progressive lung disease characterized by airflow limitation, making it difficult to breathe.",
+                               key='predict_copd')  # Session key added
         had_arthritis = st.selectbox("Arthritis diagnosis:", 
-                                     ["No", "Yes", "Unknown"],
-                                     help="Arthritis is a chronic inflammation of the joints that leads to pain, stiffness, swelling, and reduced mobility, commonly affecting the hands, knees, and hips")
+                                    ["No", "Yes", "Unknown"],
+                                    help="Arthritis is a chronic inflammation of the joints that leads to pain, stiffness, swelling, and reduced mobility, commonly affecting the hands, knees, and hips",
+                                    key='predict_arthritis')  # Session key added
+
 
     # Handle Unknown values
     bmi_category = "Healthy" if bmi_category == "Unknown" else bmi_category

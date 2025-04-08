@@ -620,8 +620,7 @@ elif st.session_state.page == 'ml':
     st.markdown("### End-to-End Project Workflow")
     try:
         st.image("src/project_flowchart.png", 
-                 width=1000,
-                 caption="From data collection to model deployment: Full project architecture")
+                 width=800")
     except FileNotFoundError:
         st.error("Critical workflow diagram missing: Please ensure 'project_flowchart.png' exists in /src directory")
         st.stop()

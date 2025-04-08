@@ -398,7 +398,7 @@ elif st.session_state.page == 'calculators':
     <div style='background-color: #f8f9fa; padding: 15px; border-radius: 10px; margin-top: 20px;'>
         <p style='color: #6c757d; font-size: 14px; margin-bottom: 0;'>
         🔍 These clinical tools are provided by reputable medical organizations and open in new tabs.<br>
-        🔄 Use these clinical tools alongside our app's predictions to cross-validate your risk assessment results.<br>
+        🔄 Use these clinical tools alongside my app's predictions to cross-validate your risk assessment results.<br>
         💡 Always consult with a healthcare professional about your results.
         </p>
     </div>

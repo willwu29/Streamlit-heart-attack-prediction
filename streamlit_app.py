@@ -49,7 +49,7 @@ with st.sidebar:
     # Create navigation buttons without a container
     pages = {
         '🏠 Welcome': 'welcome',
-        '📝 Risk Assessment': 'predict',
+        '📝 Heart Attack Assessment': 'predict',
         '🧮 Additional Tools': 'calculators', 
         '📊 Data Insights': 'eda',  # Renamed and rearranged
         '🤖 ML Model': 'ml',

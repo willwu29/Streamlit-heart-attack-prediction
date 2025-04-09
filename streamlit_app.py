@@ -775,6 +775,41 @@ elif st.session_state.page == 'ml':
     </ul>
     """, unsafe_allow_html=True)
 
+
+    
+    # Add some space
+    st.markdown("<br>", unsafe_allow_html=True)  
+
+    # ROC AUC Analysis
+    st.markdown("<div style='height:30px'></div>", unsafe_allow_html=True)
+
+    # Recall Visualization
+    st.markdown("### False Positive Rate on Test Data")
+    try:
+        st.image("src/ROC_AUC_curve.png", width=1000)
+    except FileNotFoundError:
+        st.error("Critical visualization missing: Please ensure 'ROC_AUC_curve.png' exists in /src directory")
+        st.stop()  # Halt execution if key visual missing
+
+     st.markdown("""
+    <style>
+    .clinical-insight {
+        border-left: 4px solid #ff4b4b;
+        padding-left: 1rem;
+        margin: 1.5rem 0;
+    }
+    </style>
+    
+    <div class='clinical-insight'>
+    <h4>ROC Curve and AUC Score for the Final Model-Logistic Regression</h4>
+    <ul>
+        <li>Area Under the Curve (AUC Score) meansres how well the model distinguishes between two classes (e.g., had_heart_attack vs. not_had_heart_attack)</li>
+        <li>AUC=0.5: No discrimination (equivalent to random guessing).</li>
+        <li>AUC=1.0: Perfect discrimination (all predictions are correct).</li>
+        <li>AUC=0.882 falls in the "good to excellent" range, meaning the final model is highly effective at ranking positive instances higher than negative ones.</li>
+    </ul>
+    """, unsafe_allow_html=True)
+
     
     # Add some space
     st.markdown("<br>", unsafe_allow_html=True)  

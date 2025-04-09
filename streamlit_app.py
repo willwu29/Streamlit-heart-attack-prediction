@@ -481,8 +481,8 @@ elif st.session_state.page == 'eda':
     </div>
     """, unsafe_allow_html=True)
 
-        # Add some space
-    st.markdown("<br>", unsafe_allow_html=True)  # Two line breaks
+    # Add some space
+    st.markdown("<br>", unsafe_allow_html=True)  
 
     
     # Second image Age group
@@ -599,6 +599,41 @@ elif st.session_state.page == 'eda':
     🔍 <strong>Analysis:</strong> The likelihood of having a heart attack differs across various BMI categories. The Healthy group shows a notably lower likelihood of experiencing a heart attack, while the Obese group exhibits a higher likelihood.
     </div>
     """, unsafe_allow_html=True)
+
+
+    # Add some space
+    st.markdown("<br>", unsafe_allow_html=True)  
+
+    
+    # By General Health
+    st.markdown("#### Heart Attack Likelihood By General Health Condition")
+    try:
+        st.image("src/heart_attack_general_health.png", 
+                 width=1000)
+    except FileNotFoundError:
+        st.error("General Health distribution image not found at src/heart_attack_general_health.png")
+
+    
+    # Second analysis text with bullet points
+    st.markdown("""
+    <style>
+    .bullet-points {
+        font-size: 16px;
+        line-height: 1.8;
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+    </style>
+    
+    <div class="bullet-points">
+    🔍 <strong>Key Insights:</strong>
+    <ul>
+        <li>General health condition reflects individuals' perceptions of their health. </li>
+        <li>Individuals' self-assessments of their general health align with their likelihood of experiencing a heart attack. Those who perceive their health as 'poor' have a higher risk of suffering a heart attack.</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+
 
     
     # Add some space

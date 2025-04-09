@@ -518,6 +518,39 @@ elif st.session_state.page == 'eda':
     # Add some space
     st.markdown("<br>", unsafe_allow_html=True)  # Two line breaks
 
+    
+    # Second image Age group
+    st.markdown("#### Heart Attack Likelihood By Gender")
+    try:
+        st.image("src/heart_attack_gender.png", 
+                 width=1000)
+    except FileNotFoundError:
+        st.error("Gender distribution image not found at src/heart_attack_gender.png")
+
+    
+    # Second analysis text with bullet points
+    st.markdown("""
+    <style>
+    .bullet-points {
+        font-size: 16px;
+        line-height: 1.8;
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+    </style>
+    
+    <div class="bullet-points">
+    🔍 <strong>Key Insights:</strong>
+    <ul>
+        <li>Male exhibits higher risk in having a heart attack</li>
+           </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    
+
+    # Add some space
+    st.markdown("<br>", unsafe_allow_html=True)  # Two line breaks
+
     # Third plot
     st.markdown("#### Heart Attack Likelihood By Smoking Status")
     try:

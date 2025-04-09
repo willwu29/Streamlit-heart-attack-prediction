@@ -791,7 +791,7 @@ elif st.session_state.page == 'ml':
         st.error("Critical visualization missing: Please ensure 'ROC_AUC_curve.png' exists in /src directory")
         st.stop()  # Halt execution if key visual missing
 
-     st.markdown("""
+    st.markdown("""
     <style>
     .clinical-insight {
         border-left: 4px solid #ff4b4b;

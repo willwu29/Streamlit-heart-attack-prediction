@@ -668,102 +668,6 @@ elif st.session_state.page == 'eda':
 
 
     
-     # Add some space
-    # Model Limitations
-    st.markdown("<br>", unsafe_allow_html=True)  
-    st.markdown("#### Model Limitations by Age Group")
-    try:
-        st.image("src/model_limitations_age_category.png", width=1000)
-    except FileNotFoundError:
-        st.error("Model limitations image not found at src/model_limitations_age_category.png")
-
-    # Analysis text for model limitations
-    st.markdown("""
-    <style>
-    .bullet-points {
-        font-size: 16px;
-        line-height: 1.8;
-        margin-top: 15px;
-        margin-bottom: 30px;
-    }
-    </style>
-    
-    <div class="bullet-points">
-    🔍 <strong>Key Observations:</strong>
-    <ul>
-        <li>For younger adults (18-44):
-            <ul>
-                <li>Recall below 50% (6/44 correct in 18-24 group)</li>
-                <li>Extreme class imbalance (44 at-risk in 11,884 observations)</li>
-                <li>Low-risk predictions dominate due to training data patterns</li>
-            </ul>
-        </li>
-        <li>For elderly patients (70+):
-            <ul>
-                <li>High false positive rate (62% in 80+ group)</li>
-                <li>Overestimated risk despite 90% recall</li>
-                <li>Model over-indexes on age correlation in training data</li>
-            </ul>
-        </li>
-        <li>Clinical recommendations:
-            <ul>
-                <li>Young adults: Negative results require validation through clinical assessment</li>
-                <li>Elderly patients: Positive alerts need confirmation via blood tests/imaging</li>
-                <li>All age groups: Combine model results with ACC/AHA calculators</li>
-            </ul>
-        </li>
-    </ul>
-    </div>
-    """, unsafe_allow_html=True)
-
-       # Model Limitations by Angina History
-    st.markdown("#### Model Limitations by Angina History")
-    try:
-        st.image("src/model_limitations_had_angina.png", width=1000)
-    except FileNotFoundError:
-        st.error("Model limitations image not found at src/model_limitations_had_angina.png")
-
-    # Add some space
-    # Second Model Limitations 
-    st.markdown("<br>", unsafe_allow_html=True)  
-    
-    # Analysis text for angina limitations
-    st.markdown("""
-    <style>
-    .bullet-points {
-        font-size: 16px;
-        line-height: 1.8;
-        margin-top: 15px;
-        margin-bottom: 30px;
-    }
-    </style>
-    
-    <div class="bullet-points">
-    🔍 <strong>Key Observations:</strong>
-    <ul>
-        <li>For individuals without angina history:
-            <ul>
-                <li>Moderate risk detection (60% recall) using non-angina factors</li>
-                <li>Demonstrates ability to identify risk through alternative indicators</li>
-            </ul>
-        </li>
-        <li>For angina patients:
-            <ul>
-                <li>Near 100% false positive rate due to dataset imbalance</li>
-                <li>45% of angina patients in training data had heart attacks vs 5% baseline</li>
-                <li>Model over-prioritizes angina history, triggering excessive alerts</li>
-            </ul>
-        </li>
-        <li>Clinical recommendation:
-            <ul>
-                <li>Angina patients should seek comprehensive evaluation regardless of model results</li>
-                <li>Model alerts should complement - not replace - medical assessments</li>
-            </ul>
-        </li>
-    </ul>
-    </div>
-    """, unsafe_allow_html=True)
-
 
 
 # ML Section
@@ -928,6 +832,101 @@ elif st.session_state.page == 'ml':
     </ul>
     """, unsafe_allow_html=True)
 
+         # Add some space
+    # Model Limitations
+    st.markdown("<br>", unsafe_allow_html=True)  
+    st.markdown("#### Model Limitations by Age Group")
+    try:
+        st.image("src/model_limitations_age_category.png", width=1000)
+    except FileNotFoundError:
+        st.error("Model limitations image not found at src/model_limitations_age_category.png")
+
+    # Analysis text for model limitations
+    st.markdown("""
+    <style>
+    .bullet-points {
+        font-size: 16px;
+        line-height: 1.8;
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+    </style>
+    
+    <div class="bullet-points">
+    🔍 <strong>Key Observations:</strong>
+    <ul>
+        <li>For younger adults (18-44):
+            <ul>
+                <li>Recall below 50% (6/44 correct in 18-24 group)</li>
+                <li>Extreme class imbalance (44 at-risk in 11,884 observations)</li>
+                <li>Low-risk predictions dominate due to training data patterns</li>
+            </ul>
+        </li>
+        <li>For elderly patients (70+):
+            <ul>
+                <li>High false positive rate (62% in 80+ group)</li>
+                <li>Overestimated risk despite 90% recall</li>
+                <li>Model over-indexes on age correlation in training data</li>
+            </ul>
+        </li>
+        <li>Clinical recommendations:
+            <ul>
+                <li>Young adults: Negative results require validation through clinical assessment</li>
+                <li>Elderly patients: Positive alerts need confirmation via blood tests/imaging</li>
+                <li>All age groups: Combine model results with ACC/AHA calculators</li>
+            </ul>
+        </li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+
+       # Model Limitations by Angina History
+    st.markdown("#### Model Limitations by Angina History")
+    try:
+        st.image("src/model_limitations_had_angina.png", width=1000)
+    except FileNotFoundError:
+        st.error("Model limitations image not found at src/model_limitations_had_angina.png")
+
+    # Add some space
+    # Second Model Limitations 
+    st.markdown("<br>", unsafe_allow_html=True)  
+    
+    # Analysis text for angina limitations
+    st.markdown("""
+    <style>
+    .bullet-points {
+        font-size: 16px;
+        line-height: 1.8;
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+    </style>
+    
+    <div class="bullet-points">
+    🔍 <strong>Key Observations:</strong>
+    <ul>
+        <li>For individuals without angina history:
+            <ul>
+                <li>Moderate risk detection (60% recall) using non-angina factors</li>
+                <li>Demonstrates ability to identify risk through alternative indicators</li>
+            </ul>
+        </li>
+        <li>For angina patients:
+            <ul>
+                <li>Near 100% false positive rate due to dataset imbalance</li>
+                <li>45% of angina patients in training data had heart attacks vs 5% baseline</li>
+                <li>Model over-prioritizes angina history, triggering excessive alerts</li>
+            </ul>
+        </li>
+        <li>Clinical recommendation:
+            <ul>
+                <li>Angina patients should seek comprehensive evaluation regardless of model results</li>
+                <li>Model alerts should complement - not replace - medical assessments</li>
+            </ul>
+        </li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
 
     
     # Add some space

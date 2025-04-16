@@ -671,8 +671,6 @@ elif st.session_state.page == 'eda':
      # Add some space
     # Model Limitations
     st.markdown("<br>", unsafe_allow_html=True)  
-
-    # Model Limitations by Age Group
     st.markdown("#### Model Limitations by Age Group")
     try:
         st.image("src/model_limitations_age_category.png", width=1000)
@@ -693,12 +691,25 @@ elif st.session_state.page == 'eda':
     <div class="bullet-points">
     🔍 <strong>Key Observations:</strong>
     <ul>
-        <li>The recall scores for age groups between 18 and 44 are lower than 50%, with even poorer performance for those under 30. Additionally, the false positive rate for those above 70 is relatively high. Analysis of the data reveals:
+        <li>For younger adults (18-44):
             <ul>
-                <li>Among 11,884 observations in the age 18-24 group, only 44 were at risk. The model's low recall (6/44 correctly identified) is due to extreme class imbalance, leading it to predict low risk for most in this group</li>
-                <li>Individuals who are between 18-44 and concerned about their heart attack risk should not alleviate their worries solely based on 'Negative' prediction results from the model.</li>
-                <li>For the 80+ age group, the model correctly identifies 90.3% of at-risk individuals but has a 62% false positive rate, indicating overestimation of risk in older adults</li>             
-                <li>Individuals over 70 should not immediately take preventive measures based solely on 'Positive' alerts from the model. Instead, they should consult with healthcare professionals or consider using alternative models that employ different features to further validate their heart attack risk.</li>
+                <li>Recall below 50% (6/44 correct in 18-24 group)</li>
+                <li>Extreme class imbalance (44 at-risk in 11,884 observations)</li>
+                <li>Low-risk predictions dominate due to training data patterns</li>
+            </ul>
+        </li>
+        <li>For elderly patients (70+):
+            <ul>
+                <li>High false positive rate (62% in 80+ group)</li>
+                <li>Overestimated risk despite 90% recall</li>
+                <li>Model over-indexes on age correlation in training data</li>
+            </ul>
+        </li>
+        <li>Clinical recommendations:
+            <ul>
+                <li>Young adults: Negative results require validation through clinical assessment</li>
+                <li>Elderly patients: Positive alerts need confirmation via blood tests/imaging</li>
+                <li>All age groups: Combine model results with ACC/AHA calculators</li>
             </ul>
         </li>
     </ul>

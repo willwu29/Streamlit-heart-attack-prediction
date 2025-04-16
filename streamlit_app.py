@@ -693,11 +693,12 @@ elif st.session_state.page == 'eda':
     <div class="bullet-points">
     🔍 <strong>Key Observations:</strong>
     <ul>
-        <li>The recall scores for age groups between 18 and 44 are lower than 50%, with even poorer performance for those under 30. Additionally, the false positive rate for those above 75 is relatively high. Analysis of the data reveals:
+        <li>The recall scores for age groups between 18 and 44 are lower than 50%, with even poorer performance for those under 30. Additionally, the false positive rate for those above 70 is relatively high. Analysis of the data reveals:
             <ul>
                 <li>Among 11,884 observations in the age 18-24 group, only 44 were at risk. The model's low recall (6/44 correctly identified) is due to extreme class imbalance, leading it to predict low risk for most in this group</li>
-                <li>Low sample sizes for at-risk individuals in younger groups make recall scores unreliable and sensitive to dataset variations</li>
-                <li>For the 80+ age group, the model correctly identifies 90.3% of at-risk individuals but has a 62% false positive rate, indicating overestimation of risk in older adults</li>
+                <li>Individuals who are between 18-44 and concerned about their heart attack risk should not alleviate their worries solely based on 'Negative' prediction results from the model.</li>
+                <li>For the 80+ age group, the model correctly identifies 90.3% of at-risk individuals but has a 62% false positive rate, indicating overestimation of risk in older adults</li>             
+                <li>Individuals over 70 should not immediately take preventive measures based solely on 'Positive' alerts from the model. Instead, they should consult with healthcare professionals or consider using alternative models that employ different features to further validate their heart attack risk.</li>
             </ul>
         </li>
     </ul>

@@ -667,6 +667,43 @@ elif st.session_state.page == 'eda':
     """, unsafe_allow_html=True)
 
 
+    
+     # Add some space
+    # Model Limitations
+    st.markdown("<br>", unsafe_allow_html=True)  
+
+    # Model Limitations by Age Group
+    st.markdown("#### Model Limitations by Age Group")
+    try:
+        st.image("src/model_limitations_age_category.png", width=1000)
+    except FileNotFoundError:
+        st.error("Model limitations image not found at src/model_limitations_age_category.png")
+
+    # Analysis text for model limitations
+    st.markdown("""
+    <style>
+    .bullet-points {
+        font-size: 16px;
+        line-height: 1.8;
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+    </style>
+    
+    <div class="bullet-points">
+    🔍 <strong>Key Observations:</strong>
+    <ul>
+        <li>The recall scores for age groups between 18 and 44 are lower than 50%, with even poorer performance for those under 30. Additionally, the false positive rate for those above 75 is relatively high. Analysis of the data reveals:
+            <ul>
+                <li>Among 11,884 observations in the age 18-24 group, only 44 were at risk. The model's low recall (6/44 correctly identified) is due to extreme class imbalance, leading it to predict low risk for most in this group</li>
+                <li>Low sample sizes for at-risk individuals in younger groups make recall scores unreliable and sensitive to dataset variations</li>
+                <li>For the 80+ age group, the model correctly identifies 90.3% of at-risk individuals but has a 62% false positive rate, indicating overestimation of risk in older adults</li>
+            </ul>
+        </li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+
 
 
 # ML Section
